@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Andreas Reich">
+    <title>Sitzung 1: Einführung & Organisation – Methodenprojekt C SS 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="session1.css">
+</head>
+
+<body>
+
+    <header>
+        <a href="https://www.uni-hohenheim.de" target="_blank">
+            <img src="uni-logo-de_hoh_weiss.png" alt="Universität Hohenheim Logo" class="uni-logo">
+        </a>
+        <h1>Methodenprojekt C: Generative KI</h1>
+        <p class="subtitle">Sitzung 1: Einführung, Methoden-Split & Gruppenbildung</p>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="index.html">Kursübersicht</a></li>
+                <li><a href="session1.html" class="active">Sitzung 1</a></li>
+                <li><a href="session2.html">Sitzung 2</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <h2>Willkommen zur Expedition Forschung</h2>
+            <p>In diesem Semester werden Sie nicht nur über Forschung lesen – Sie werden sie selbst machen. Das
+                Methodenprojekt C ist ein <strong>Praxis-Seminar</strong>. Mein Ziel ist es, Sie durch den gesamten
+                Prozess einer empirischen Studie zu führen, um Sie optimal auf Ihre Bachelorarbeit vorzubereiten.</p>
+
+            <div class="agenda-list">
+                <h3>Was wir heute besprechen:</h3>
+                <ul>
+                    <li>Organisation, ECTS und "Der rote Faden"</li>
+                    <li>Thematischer Fokus: <strong>Generative Künstliche Intelligenz (KI)</strong></li>
+                    <li>Der Methoden-Split: Inhaltsanalyse, Befragung, Experiment oder freie Methode</li>
+                    <li><strong>Workshop:</strong> Find Your Research Tribe (Gruppenbildung)</li>
+                    <li>Hausaufgabe: Den Grundstein legen -> Exposé schreiben und Arbeitsfähigkeit erlangen</li>
+                </ul>
+            </div>
+
+            <hr>
+
+            <!-- Die Forschungs-Expedition (Interaktive Map) -->
+            <h2>Unsere Philosophie: Die Forschungsexpedition</h2>
+            <p>Wir betrachten das Projekt als eine Reise zum Gipfel der Erkenntnis. Klicken Sie auf die Phasen, um den
+                Weg zu verstehen:</p>
+
+            <div id="expedition-container">
+                <div class="expedition-map">
+                    <!-- Stage 1: Konzeption -->
+                    <div class="expedition-stage" id="stage-1" data-title="Phase 1: Der Blueprint"
+                        data-text="Hier planen wir die Reise. Wir definieren das Problem, sichten die Literatur und stellen das Exposé sowie die Forschungsfrage auf.">
+                        <div class="stage-icon">🧭</div>
+                        <div class="stage-label">Konzeption</div>
+                        <div class="stage-units">Woche 1-4</div>
+                    </div>
+
+                    <div class="expedition-arrow">→</div>
+
+                    <!-- Stage 2: Design -->
+                    <div class="expedition-stage" id="stage-2" data-title="Phase 2: Das Werkzeug"
+                        data-text="Wir bauen unser Instrument. Hier legen wir Untersuchungsdimensionen fest und entscheiden, wie wir die Realität messbar machen (Operationalisierung).">
+                        <div class="stage-icon">⚙️</div>
+                        <div class="stage-label">Design</div>
+                        <div class="stage-units">Woche 5-6</div>
+                    </div>
+
+                    <div class="expedition-arrow">→</div>
+
+                    <!-- Stage 3: Feldphase -->
+                    <div class="expedition-stage" id="stage-3" data-title="Phase 3: Im Feld"
+                        data-text="Die Datenerhebung. Hier trifft Theorie auf Realität. Wir führen den Pretest durch, überarbeiten das Instrument und sammeln die Daten.">
+                        <div class="stage-icon">🗺️</div>
+                        <div class="stage-label">Feldphase</div>
+                        <div class="stage-units">Woche 7-9</div>
+                    </div>
+
+                    <div class="expedition-arrow">→</div>
+
+                    <!-- Stage 4: Analyse -->
+                    <div class="expedition-stage" id="stage-4" data-title="Phase 4: Die Schatzsuche"
+                        data-text="Datenmanagement & Auswertung. Wir reinigen den Datensatz und suchen mit statistischen Tools oder qualitativen Methoden nach Antworten.">
+                        <div class="stage-icon">📊</div>
+                        <div class="stage-label">Analyse</div>
+                        <div class="stage-units">Woche 10-12</div>
+                    </div>
+
+                    <div class="expedition-arrow">→</div>
+
+                    <!-- Stage 5: Summit -->
+                    <div class="expedition-stage" id="stage-5" data-title="Phase 5: Der Gipfel"
+                        data-text="Die Präsentation. Wir teilen unsere Entdeckungen in der Abschlusspräsentation und dokumentieren den Prozess im Forschungsbericht.">
+                        <div class="stage-icon">🏆</div>
+                        <div class="stage-label">Summit</div>
+                        <div class="stage-units">Woche 13-14</div>
+                    </div>
+                </div>
+
+                <div class="expedition-details-container">
+                    <div class="expedition-details-content">
+                        <div class="details-text"></div>
+                        <div class="details-animation"></div>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <!-- START: Methoden-Pfade (Vollbreite) -->
+            <h2>Wählen Sie Ihren Forschungspfad</h2>
+            <p>Jede Gruppe entscheidet sich für eine methodische Spezialisierung. Hier sind die vier Wege der
+                Expedition:</p>
+
+            <div class="method-paths-container">
+
+                <!-- Pfad 1: Inhaltsanalyse -->
+                <div class="method-path-card ia-path">
+                    <div class="path-icon">🔎</div>
+                    <div class="path-content">
+                        <h3>Pfad 1: Quantitative Inhaltsanalyse</h3>
+                        <p>Sie untersuchen nicht Menschen, sondern <strong>Artefakte</strong>. Sie analysieren, wie die
+                            Welt über KI spricht oder wie KI-Inhalte beschaffen sind.</p>
+                        <div class="path-details">
+                            <p><strong>Typische Fragestellung:</strong> „Wie werden die Risiken von Deepfakes in
+                                deutschen Leitmedien im Vergleich zu Tech-Blogs gerahmt?“</p>
+                            <p><strong>Ihr Datensatz:</strong> YouTube-Transkripte, Nachrichtenartikel,
+                                TikTok-Kommentare oder Werbeclips.</p>
+                        </div>
+                        <a target="_blank" href="https://dl.acm.org/doi/full/10.1145/3613905.3651057">Initiales Paper
+                            als
+                            Orientierungshilfe</a>
+                    </div>
+                    <div class="path-meta">
+                        <div class="meta-item"><span>Kernfokus</span>Systematische Erfassung von Inhalten</div>
+                        <div class="meta-item"><span>Ihr Werkzeug</span>Codebuch & Reliabilitäts-Check</div>
+                    </div>
+                </div>
+
+                <!-- Pfad 2: Befragung -->
+                <div class="method-path-card survey-path">
+                    <div class="path-icon">📋</div>
+                    <div class="path-content">
+                        <h3>Pfad 2: Standardisierte Befragung</h3>
+                        <p>Sie gehen direkt an die Quelle: Den <strong>Nutzer</strong>. Hier erforschen Sie subjektive
+                            Einstellungen, Ängste und Nutzungsmuster.</p>
+                        <div class="path-details">
+                            <p><strong>Typische Fragestellung:</strong> „Inwieweit korreliert die
+                                ChatGPT-Nutzungsfrequenz von Studierenden mit deren wahrgenommener akademischer
+                                Selbstwirksamkeit?“</p>
+                            <p><strong>Ihr Datensatz:</strong> Antworten von hunderten Teilnehmenden aus Ihrer
+                                Zielgruppe.</p>
+                        </div>
+                        <a target="_blank" href="https://link.springer.com/article/10.1186/s40561-023-00269-3">Initiales
+                            Paper als
+                            Orientierungshilfe</a>
+                    </div>
+                    <div class="path-meta">
+                        <div class="meta-item"><span>Kernfokus</span>Meinungen, Einstellungen & Verhalten</div>
+                        <div class="meta-item"><span>Ihr Werkzeug</span>SoSci Survey & Skalenanalyse</div>
+                    </div>
+                </div>
+
+                <!-- Pfad 3: Experiment -->
+                <div class="method-path-card exp-path">
+                    <div class="path-icon">🧪</div>
+                    <div class="path-content">
+                        <h3>Pfad 3: Psychologisches Experiment</h3>
+                        <p>Der „Goldstandard“ für <strong>Kausalität</strong>. Sie manipulieren eine Variable, um zu
+                            sehen, wie die Probanden reagieren.</p>
+                        <div class="path-details">
+                            <p><strong>Typische Fragestellung:</strong> „Hat die Kennzeichnung eines Textes als
+                                'KI-generiert' einen negativen Einfluss auf die wahrgenommene Glaubwürdigkeit der
+                                Information?“</p>
+                            <p><strong>Ihr Datensatz:</strong> Vergleich von Experimental- und Kontrollgruppen unter
+                                kontrollierten Bedingungen.</p>
+                        </div>
+                        <a target="_blank"
+                            href="https://www.sciencedirect.com/science/article/pii/S0969698924000869">Initiales Paper
+                            als Orientierungshilfe</a>
+
+                    </div>
+                    <div class="path-meta">
+                        <div class="meta-item"><span>Kernfokus</span>Ursache-Wirkungs-Zusammenhänge</div>
+                        <div class="meta-item"><span>Ihr Werkzeug</span>Randomisierter Stimulus & Pre-Post-Test</div>
+                    </div>
+                </div>
+
+                <!-- Pfad 4: Freie / Qualitative Methode -->
+                <div class="method-path-card free-path">
+                    <div class="path-icon">✨</div>
+                    <div class="path-content">
+                        <h3>Pfad 4: Offener Forschungspfad</h3>
+                        <p>Für Entdecker, die jenseits der Standard-Quantifizierung arbeiten wollen oder
+                            <strong>Mixed-Methods</strong> bevorzugen.
+                        </p>
+                        <div class="path-details">
+                            <p><strong>Möglichkeiten:</strong> Qualitative Leitfadeninterviews mit Experten, explorative
+                                Fokusgruppen oder innovative KI-gestützte Methoden.</p>
+                            <p><strong>Voraussetzung:</strong> Eine klare methodische Begründung und enge Absprache mit
+                                mir.</p>
+                            <a href="https://logophoman.github.io/polkomm-ss25/session1.html#Netzwerkanalyse:~:text=Beispielhafte%20Visualisierung%20eines%20Netzwerks.%20Knoten%20und%20Kanten%20bewegen%20sich%20durch%20anfassen."
+                                target="_blank">Hier
+                                gibt es noch von einem anderen meiner anderen Kurse weitere Forshcungsmethoden</a>
+                        </div>
+                    </div>
+                    <div class="path-meta">
+                        <div class="meta-item"><span>Kernfokus</span>Tiefe Exploration & neue Phänomene</div>
+                        <div class="meta-item"><span>Ihr Werkzeug</span>Leitfaden, Transkription & Qualitative Analyse
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- ENDE: Methoden-Pfade -->
+            <hr>
+
+            <!-- Platzhalter für KI Einführung -->
+            <div class="topic-intro-box" style="justify-items: center;">
+                <div class="topic-title">Deep Dive: Wie funktioniert KI?</div>
+                <p>Bevor wir forschen, müssen wir verstehen, was KI überhaupt ist:</p>
+                <!-- PLATZHALTER LINK -->
+                <a href="https://logophoman.github.io/ki-praesentation-03-02-2026/" target="_blank" class="btn-control"
+                    style="background: white; color: var(--primary-color); display: inline-block; padding: 0.75rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 1rem;">
+                    🚀 Grundlagen: Generative Large Language Models
+                </a>
+            </div>
+
+            <hr>
+
+            <!-- Gruppenfindung Section -->
+            <section id="tribe-finder">
+                <h2>Workshop: Find Your Research Tribe</h2>
+                <p>Wir nutzen das folgende Spiel, um Teams zu finden, die ähnliche Interessen, aber unterschiedliche
+                    Talente haben.</p>
+
+                <!-- RECYCLED GAME COMPONENT -->
+                <div id="group-former-container">
+                    <div class="tribe-room">
+                        <div class="tribe-card" id="card-a" data-option="A">
+                            <div class="card-content">
+                                <div class="card-emoji"></div>
+                                <div class="card-text"></div>
+                            </div>
+                            <div class="card-label">A</div>
+                            <div class="peer-count">0</div>
+                        </div>
+                        <div class="tribe-card" id="card-b" data-option="B">
+                            <div class="card-content">
+                                <div class="card-emoji"></div>
+                                <div class="card-text"></div>
+                            </div>
+                            <div class="card-label">B</div>
+                            <div class="peer-count">0</div>
+                        </div>
+                        <div class="tribe-card" id="card-c" data-option="C">
+                            <div class="card-content">
+                                <div class="card-emoji"></div>
+                                <div class="card-text"></div>
+                            </div>
+                            <div class="card-label">C</div>
+                            <div class="peer-count">0</div>
+                        </div>
+                        <div class="tribe-card" id="card-d" data-option="D">
+                            <div class="card-content">
+                                <div class="card-emoji"></div>
+                                <div class="card-text"></div>
+                            </div>
+                            <div class="card-label">D</div>
+                            <div class="peer-count">0</div>
+                        </div>
+                        <div class="tribe-overlay visible" id="game-overlay">
+                            <h3 id="overlay-title">Bereit für die Gruppenbildung?</h3>
+                            <button id="start-game-btn" class="tribe-button">Spiel starten</button>
+                        </div>
+                    </div>
+                    <div class="tribe-controls">
+                        <div class="question-area">
+                            <span id="question-counter"></span>
+                            <h4 id="question-text"></h4>
+                        </div>
+                        <div class="timer-area">
+                            <div id="timer-bar-container">
+                                <div id="timer-bar"></div>
+                            </div>
+                            <span id="timer-text">0:10</span>
+                        </div>
+                        <button id="next-question-btn" class="tribe-button" disabled>Nächste Frage</button>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+
+            <!-- START: KI-Nutzungs-Kodex -->
+            <section id="ai-policy">
+                <div class="ai-policy-box">
+                    <div class="ai-header">
+                        <span style="font-size: 2.5rem;">🤖</span>
+                        <h3>KI als Co-Pilot: Dein Kodex für diesen Kurs</h3>
+                    </div>
+
+                    <p>Die Nutzung von KI-Tools ist in diesem Projekt <strong>optional, aber ausdrücklich
+                            empfohlen</strong>. Ich will, dass du lernst, diese Werkzeuge professionell einzusetzen.
+                        Aber Vorsicht: Ein Co-Pilot ersetzt nicht den Kapitän – <strong>du bist für jeden Satz und jede
+                            Quelle in deiner Arbeit voll verantwortlich.</strong></p>
+
+                    <div class="ai-grid">
+                        <!-- Gefahr: Halluzinationen -->
+                        <div class="ai-card warning-card">
+                            <h4><span>⚠️</span> Die rote Linie</h4>
+                            <p>KI-Modelle <strong>halluzinieren</strong> gerne. Sie erfinden Quellen, die plausibel
+                                klingen, aber nicht existieren.
+                                <br><strong>Merke dir:</strong> Eine erfundene oder ungeprüfte Quelle ist ein
+                                <strong>Täuschungsversuch</strong>.
+                            </p>
+                        </div>
+
+                        <!-- Chance: Research & APA -->
+                        <div class="ai-card boost-card">
+                            <h4><span>🚀</span> Dein Produktivitäts-Boost</h4>
+                            <p>Nutze KI, um dir komplexe Paper zusammenfassen zu lassen oder um zu prüfen, ob deine
+                                Zitate korrekt nach <strong>APA 7</strong> formatiert sind. Sie ist ein exzellenter
+                                Mentor für Struktur und Form.</p>
+                        </div>
+
+                        <!-- Die Paywall-Falle -->
+                        <div class="ai-card">
+                            <h4><span>🔓</span> Die Open-Access-Falle</h4>
+                            <p>KI "kennt" meist nur frei verfügbare Texte (Open Access). In der
+                                Kommunikationswissenschaft liegt das Gold aber oft hinter Paywalls (WISO, Springer,
+                                Elsevier).
+                                Vertrau der KI bei der Literaturrecherche nur für den ersten Überblick – die echte Tiefe
+                                findest du in den Uni-Datenbanken.</p>
+                        </div>
+
+                        <!-- Qualitäts-Check -->
+                        <div class="ai-card">
+                            <h4><span>🔍</span> Vertrauen ist gut, Kontrolle ist besser</h4>
+                            <p>Ich prüfe jedes Dokument <strong>automatisiert auf die Korrektheit der Quellen</strong>.
+                                Mach es wie ich: Nutze KI, um deine eigene Arbeit kritisch zu hinterfragen. Wo sind
+                                Lücken? Wo ist die Argumentation schwach?</p>
+                        </div>
+
+                        <!-- SLOP Warnung -->
+                        <div class="ai-card full-width-card">
+                            <h4><span>🧠</span> Aktive Steuerung vs. "Slop"</h4>
+                            <p>KI geht oft den Weg des geringsten Widerstands. Das Ergebnis ist "SLOP" – generischer,
+                                inhaltsleerer Text-Brei.
+                                Vermeide Slop, indem du den Prozess aktiv steuerst. Nutze KI zum Brainstorming und zur
+                                Kritik, aber das <strong>Steuer der Argumentation</strong> musst du selbst in der Hand
+                                behalten.</p>
+                            <div class="slop-warning">
+                                <strong>Tipp:</strong> Lass die KI deine Arbeit kritisieren ("Übernimm die Rolle eines
+                                kritischen Dozenten und greif deine eigene Arbeit an 'Das ist ja mal Mist'..."), statt sie nur schreiben zu lassen. So lernst du am meisten.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- ENDE: KI-Nutzungs-Kodex -->
+
+            <hr>
+
+            <!-- START: Hausaufgabe & Exposé Guide -->
+            <section id="homework-section">
+                <h2>Deine Mission bis zur nächsten Sitzung</h2>
+                <p>Um das Forschungsprojekt erfolgreich zu starten, müsst ihr als Team jetzt das Fundament legen:
+                    <strong>Das Forschungsexposé.</strong>
+                </p>
+
+                <div class="homework-box">
+                    <ol>
+                        <li><strong>Teams fixieren:</strong> Findet euch in Gruppen von <strong>genau 6
+                                Personen</strong> zusammen.</li>
+                        <li><strong>Methoden-Wahl:</strong> Entscheidet euch für einen Pfad (Inhaltsanalyse, Befragung,
+                            Experiment oder Frei).</li>
+                        <li><strong>Exposé-Entwurf schreiben:</strong> Erstellt ein 2-3 seitiges Dokument, das eure
+                            erste Idee skizziert.</li>
+                    </ol>
+                </div>
+
+                <div class="expose-guide">
+                    <h3>Struktur-Guide: Was gehört in dein Exposé?</h3>
+                    <p>Das Exposé hilft euch dabei, euer Vorhaben präzise zu planen und erstes Feedback einzuholen.
+                        Nutze diese Checkliste für euren Entwurf:</p>
+
+                    <ul class="expose-checklist">
+                        <li class="checklist-card">
+                            <strong>1. Einleitung & Relevanz</strong>
+                            <p>Warum ist das Thema "KI" in diesem Bereich spannend? Warum sollten wir das unbedingt
+                                erforschen?</p>
+                        </li>
+                        <li class="checklist-card">
+                            <strong>2. Problemstellung</strong>
+                            <p>Mit welcher spezifischen Herausforderung oder Wissenslücke setzt ihr euch auseinander?
+                            </p>
+                        </li>
+                        <li class="checklist-card">
+                            <strong>3. Fragestellung (RQ)</strong>
+                            <p>Formuliert eure zentrale Forschungsfrage. Was genau wollt ihr am Ende wissen?</p>
+                        </li>
+                        <li class="checklist-card">
+                            <strong>4. Ziel & Forschungslücke</strong>
+                            <p>Was ist der Beitrag eurer Studie? Was wissen wir nach eurer Arbeit, was wir vorher nicht
+                                wussten?</p>
+                        </li>
+                        <li class="checklist-card">
+                            <strong>5. Vorgehen (Theorie & Methode)</strong>
+                            <p>Welche Theorien nutzt ihr? Wie sieht euer methodisches Design grob aus?</p>
+                        </li>
+                        <li class="checklist-card">
+                            <strong>6. Material & Quellen</strong>
+                            <p>Liste erste zentrale Quellen (nach APA 7) auf, die ihr bereits für euer Thema gefunden
+                                habt.</p>
+                        </li>
+                    </ul>
+
+                    <div class="less-is-more">
+                        <div class="icon">💡</div>
+                        <div>
+                            <strong>Weniger ist oft mehr!</strong>
+                            <p>Versucht nicht, die ganze Welt der KI zu erklären. Beantwortet lieber eine
+                                <strong>kleine, genau definierte Frage</strong> exzellent, als an einem riesigen Projekt
+                                zu scheitern. Zielt auf <strong>2 bis 4 überprüfbare Hypothesen</strong> ab. Alternativ: schreibt <strong>Forschungsfragen</strong>. 
+                                Passt auf - KI will euch immer Hypothesen bauen manchmal ist eine Forschungsfrage besser geeignet (z.B. weil das Feld offen ist).
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        style="margin-top: 2rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; font-size: 0.9rem;">
+                        <p><strong>Formalien:</strong> 2-3 DIN A4-Seiten, wissenschaftlicher Schreibstil, Zitation nach
+                            APA 7 inklusive mindestens 4 wissenschaftliche Quellen (keine Sekundärliteratur).
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <!-- ENDE: Hausaufgabe & Exposé Guide -->
+
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2026 Andreas Reich - Universität Hohenheim</p>
+    </footer>
+
+    <script src="session1.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Andreas Reich">
+    <!-- TITEL HIER ANPASSEN -->
+    <title>Sitzung X: Coming Soon – Methodenprojekt C</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Spezifisches "Coming Soon" Styling */
+        .coming-soon-container {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: radial-gradient(circle at center, #ffffff 0%, #f0f4f8 100%);
+            border-radius: var(--border-radius);
+            border: 2px dashed var(--primary-color);
+            margin: 2rem 0;
+            min-height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Die pulsierende KI-Animation */
+        .ai-loader {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 2rem;
+        }
+
+        .ai-loader div {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: pulse 2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+            opacity: 0;
+        }
+
+        .ai-loader div:nth-child(2) { animation-delay: 0.5s; }
+        .ai-loader div:nth-child(3) { animation-delay: 1s; }
+
+        @keyframes pulse {
+            0% { transform: scale(0); opacity: 0.8; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        .ai-brain-icon {
+            font-size: 3.5rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+
+        .status-box {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .blinking-cursor {
+            font-weight: bold;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            from, to { color: transparent; }
+            50% { color: white; }
+        }
+
+        .funny-hint {
+            margin-top: 2rem;
+            font-style: italic;
+            color: #666;
+            max-width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="https://www.uni-hohenheim.de" target="_blank">
+            <img src="uni-logo-de_hoh_weiss.png" alt="Universität Hohenheim Logo" class="uni-logo">
+        </a>
+        <h1>Methodenprojekt C: Generative KI</h1>
+        <!-- SESSION NUMMER HIER ANPASSEN -->
+        <p class="subtitle">Sitzung X: Inhalte noch nicht Freigeschaltet</p>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="index.html">Zur Kursübersicht</a></li>
+                <li><a href="session1.html">Sitzung 1</a></li>
+                <li><a href="#" class="active">Sitzung X</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <div class="coming-soon-container">
+                <div class="ai-loader">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <span class="ai-brain-icon">🧠</span>
+                </div>
+
+                <h2>Neugierig? Keine Sorge die Inhalte kommen noch...</h2>
+                <p>Die Inhalte für diese Etappe unserer Expedition werden noch von mir finalisiert.</p>
+
+                <div class="status-box">
+                    <span id="status-text">Initialisiere Forschungs-Module...</span><span class="blinking-cursor">_</span>
+                </div>
+
+                <p class="funny-hint">
+                    "Keine Sorge, ich halluziniere die Folien nicht einfach mit KI zusammen."
+                </p>
+
+                <div style="margin-top: 3rem;">
+                    <a href="index.html" class="a" style="text-decoration: none; font-weight: bold; color: var(--accent-color);">
+                        ← Zurück zum Basislager (Übersicht)
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2026 Andreas Reich - Universität Hohenheim</p>
+    </footer>
+
+    <script>
+        // Ein kleiner Generator für witzige KI-Statusmeldungen
+        const statuses = [
+            "Sammle Trainingsdaten für das Exposé...",
+            "Entferne Slop aus den Theorie-Kapiteln...",
+            "Prüfe Quellen auf Halluzinationen...",
+            "Optimiere Prompt für die nächste Sitzung...",
+            "Analysiere Wahrscheinlichkeiten für gute Noten...",
+            "GPU-Temperatur im grünen Bereich...",
+            "Lade Forschungs-Spirit in den Buffer...",
+            "Dekodiere komplexe KOWI-Theorien...",
+            "Synchronisiere Co-Pilot mit dem Lehrplan...",
+            "Formatiere APA-Zitate im Hintergrund..."
+        ];
+
+        let index = 0;
+        const statusEl = document.getElementById('status-text');
+
+        function updateStatus() {
+            statusEl.style.opacity = 0;
+            setTimeout(() => {
+                statusEl.textContent = statuses[index];
+                statusEl.style.opacity = 1;
+                index = (index + 1) % statuses.length;
+            }, 500);
+        }
+
+        statusEl.style.transition = "opacity 0.5s ease";
+        setInterval(updateStatus, 3000);
+    </script>
+</body>
+
+</html>
