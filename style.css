@@ -173,14 +173,15 @@ a:hover {
 }
 
 footer {
-    background: var(--text-color);
+    background: var(--primary-color);
     color: #fff;
-    text-align: center;
+    text-align: center !important;
     padding: 1rem 0;
     position: fixed;
     bottom: 0;
     width: 100%;
     z-index: 100;
+    padding-left: 50px;
 }
 
 /* Course Schedule Table Styles */
