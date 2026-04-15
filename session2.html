@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Andreas Reich">
+    <title>Sitzung 2: Forschungsprozesse & Weichenstellung – Methodenprojekt C</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="session1.css"> <!-- Wir nutzen die Expedition-Styles weiter -->
+    <link rel="stylesheet" href="session2.css"> <!-- Wir nutzen die Expedition-Styles weiter -->
+
+    <style>
+        :root {
+            --primary-color: #003366;
+            /* Dark Blue */
+            --secondary-color: #3498db;
+            /* Bright Blue */
+            --accent-color: #e74c3c;
+            /* Red */
+            --background-color: #f8f9fa;
+            /* Very Light Gray */
+            --text-color: #34495e;
+            /* Dark Gray */
+            --box-bg-color: #ffffff;
+            /* White */
+            --box-border-color: #adb5bd;
+            /* Medium Gray */
+            --highlight-color: #f1c40f;
+            /* Yellow */
+            --connector-color: #526b7e;
+            /* Darker Gray-Blue */
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --svg-text-size: 11px;
+            --svg-text-size-small: 9.5px;
+            --svg-text-size-label: 10px;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        nav {
+            background: rgb(243, 243, 243);
+        }
+
+        .container {
+            max-width: 900px;
+
+            background-color: var(--box-bg-color);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        h1,
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        /* Tabs */
+        .tab-navigation {
+            display: flex;
+            border-bottom: 1px solid #dee2e6;
+            /* Slightly lighter border */
+            margin-bottom: 25px;
+        }
+
+        .tab-button {
+            padding: 12px 20px;
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+            font-size: 1em;
+            font-weight: 600;
+            /* Slightly bolder */
+            color: var(--text-color);
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            margin-right: 5px;
+        }
+
+        .tab-button:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--secondary-color);
+        }
+
+        .tab-button.active {
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* SVG Styles */
+        .process-model-svg {
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border: 1px solid #e9ecef;
+            /* Lighter border for SVG area */
+            border-radius: 4px;
+            padding: 15px;
+            background-color: #ffffff;
+            /* White background for clarity */
+            display: block;
+            /* Prevent extra space below */
+            box-sizing: border-box;
+        }
+
+        .process-box {
+            fill: var(--box-bg-color);
+            stroke: var(--box-border-color);
+            stroke-width: 1.2;
+            cursor: pointer;
+            transition: fill 0.2s ease, stroke 0.2s ease, stroke-width 0.2s ease;
+        }
+
+        .process-box.multi-part {
+            /* Dashed border for multi-part boxes */
+            stroke-dasharray: 5, 3;
+            stroke-width: 1;
+        }
+
+        .process-box.dashed-border {
+            /* Specific class for Brosius example */
+            stroke-dasharray: 5, 3;
+            stroke-width: 1;
+            fill: none;
+            /* Often used as just a container */
+            pointer-events: none;
+            /* Don't capture clicks on the container itself */
+        }
+
+
+        .process-box:hover {
+            stroke: var(--secondary-color);
+            stroke-width: 1.5;
+        }
+
+        .process-box.highlighted {
+            stroke: var(--highlight-color);
+            stroke-width: 2.5;
+            fill: #fffadf;
+            /* Light yellow fill */
+        }
+
+        .process-text {
+            font-family: var(--font-family);
+            font-size: var(--svg-text-size);
+            fill: var(--text-color);
+            text-anchor: middle;
+            dominant-baseline: central;
+            /* Better vertical centering */
+            pointer-events: none;
+            /* Allow line breaks using dy */
+        }
+
+        .process-text tspan {
+            pointer-events: none;
+        }
+
+        .process-text.small {
+            font-size: var(--svg-text-size-small);
+        }
+
+        .process-text.label {
+            font-size: var(--svg-text-size-label);
+            font-style: italic;
+            fill: #555;
+        }
+
+        .process-text.phase-label {
+            font-size: var(--svg-text-size-label);
+            font-weight: bold;
+            fill: var(--primary-color);
+            text-anchor: end;
+            /* Align to the right */
+        }
+
+        .process-text.context-label {
+            font-family: var(--font-family);
+            font-size: var(--svg-text-size-label);
+            font-style: italic;
+            fill: #666;
+            text-anchor: end;
+        }
+
+        .process-text.rotated {
+            font-size: var(--svg-text-size-label);
+            font-style: italic;
+            fill: #666;
+            text-anchor: middle;
+        }
+
+
+        .arrow {
+            stroke: var(--connector-color);
+            stroke-width: 1.3;
+            fill: none;
+        }
+
+        .arrow-head {
+            fill: var(--connector-color);
+            stroke: none;
+            /* No border on arrowhead */
+        }
+
+        .phase-line {
+            stroke: var(--box-border-color);
+            stroke-width: 1;
+            stroke-dasharray: 4, 2;
+        }
+
+        .context-separator {
+            stroke: #ced4da;
+            /* Lighter gray for context lines */
+            stroke-width: 1;
+            stroke-dasharray: 6, 3;
+        }
+
+
+        /* Interaction Feedback Area */
+        .interaction-feedback {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #e9f5ff;
+            /* Light blue background */
+            border: 1px solid #bde0fe;
+            /* Blue border */
+            border-radius: 4px;
+            min-height: 50px;
+            /* Ensure it's visible even when empty */
+            display: none;
+            /* Hide initially */
+        }
+
+        .interaction-feedback p {
+            margin: 0;
+            color: var(--primary-color);
+        }
+
+        .interaction-feedback strong {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .tooltip {
+            position: absolute;
+            background-color: rgba(44, 62, 80, 0.9);
+            /* Dark blue, slightly transparent */
+            color: #ffffff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            max-width: 250px;
+            text-align: center;
+            z-index: 1000;
+            pointer-events: none;
+            /* Tooltip itself shouldn't be clickable */
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .tooltip.visible {
+            opacity: 1;
+        }
+
+        /* Optional: Triangle pointer for the tooltip */
+        .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            /* At the bottom of the tooltip */
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: rgba(44, 62, 80, 0.9) transparent transparent transparent;
+        }
+
+        .toggle-help-button {
+            display: inline-block;
+            /* Allows margin */
+            margin-top: 20px;
+            margin-bottom: 10px;
+            padding: 8px 15px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .toggle-help-button:hover {
+            background-color: #2980b9;
+            /* Darker blue */
+        }
+
+        .specific-help-content {
+            margin-top: 10px;
+            padding: 15px;
+            background-color: #fdfdff;
+            /* Very light background */
+            border: 1px solid #e0e0ff;
+            /* Light blue/purple border */
+            border-radius: 4px;
+            display: none;
+            /* Initially hidden */
+            animation: fade 0.5s;
+            /* Reuse existing fade-in */
+        }
+
+        .specific-help-content h4 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 8px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 4px;
+        }
+
+        .specific-help-content p {
+            margin-bottom: 12px;
+            font-size: 0.95em;
+        }
+
+        .specific-help-content strong {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .specific-help-content ul {
+            margin-top: 5px;
+            margin-bottom: 12px;
+            padding-left: 25px;
+        }
+
+        .specific-help-content li {
+            margin-bottom: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <a href="https://www.uni-hohenheim.de" target="_blank">
+            <img src="uni-logo-de_hoh_weiss.png" alt="Universität Hohenheim Logo" class="uni-logo">
+        </a>
+        <h1>Sitzung 2: Das Navigationssystem der Forschung</h1>
+        <p class="subtitle">Forschungsprozessmodelle & Methodische Weichenstellung</p>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="index.html">Kursübersicht</a></li>
+                <li><a href="session1.html">Sitzung 1</a></li>
+                <li><a href="session2.html" class="active">Sitzung 2</a></li>
+                <!-- <li><a href="session3.html">Sitzung 3</a></li> -->
+            </ul>
+        </nav>
+
+        <main>
+            <!-- 1. STATUS BOARD: Wo stehen wir? -->
+            <section id="status-board">
+                <h2>Basislager-Check: Aus den ersten Exposés lernen</h2>
+                <p>Ein guter Forschungsplan braucht keine blumigen Worte, sondern <strong>scharfe Kanten</strong>.
+                    Klickt auf die Karten, um die Profi-Lösung zu sehen:</p>
+
+                <div class="audit-grid">
+                    <!-- Karte 1 -->
+                    <div class="audit-card">
+                        <h4><span>👻</span> Die "Geister-Variablen"</h4>
+                        <p>Ein Begriff wird in der Einleitung groß aufgeblasen, taucht aber in der Messung nie wieder
+                            auf.</p>
+                        <div class="audit-issue"><strong>Fehler:</strong> "Wir schreiben viel über Komplexität, messen
+                            sie aber nicht."</div>
+                        <div id="fix-1" class="audit-fix"><strong>Profi-Fix:</strong> Radikaler Fokus. Jedes Wort in der
+                            Hypothese braucht eine Entsprechung im Datensatz.</div>
+                        <button class="reveal-btn" onclick="revealFix('fix-1', this)">Lösung anzeigen</button>
+                    </div>
+
+                    <!-- Karte 2 -->
+                    <div class="audit-card">
+                        <h4><span>📉</span> Die "Varianz-Falle"</h4>
+                        <p>Ihr stellt Hypothesen über Altersunterschiede auf, befragt aber nur Studierende (18–25 J.).
+                        </p>
+                        <div class="audit-issue"><strong>Fehler:</strong> "Wir vermuten, dass Ältere der KI weniger
+                            trauen." (Stichprobe: 95% Studis).</div>
+                        <div id="fix-2" class="audit-fix"><strong>Profi-Fix:</strong> Keine Hypothese ohne Varianz.
+                            Konzentriert euch auf Faktoren, die bei Studis variieren (z.B. Vorwissen).</div>
+                        <button class="reveal-btn" onclick="revealFix('fix-2', this)">Lösung anzeigen</button>
+                    </div>
+
+                    <!-- Karte 3 -->
+                    <div class="audit-card">
+                        <h4><span>📏</span> Das APA-Maßband</h4>
+                        <p>Zitationen sind in der Wissenschaft die Währung der Glaubwürdigkeit.</p>
+                        <div class="audit-issue"><strong>Fehler:</strong> Unvollständige Quellen, Google-Links statt
+                            DOIs, falsche Klammern.</div>
+                        <div id="fix-3" class="audit-fix"><strong>Profi-Fix:</strong> Nutzt Zotero oder KI-Prüfung gegen
+                            APA 7. Ein falsches Zitat wirkt wie ein Tippfehler auf der Visitenkarte.</div>
+                        <button class="reveal-btn" onclick="revealFix('fix-3', this)">Lösung anzeigen</button>
+                    </div>
+
+                    <!-- Karte 4 -->
+                    <div class="audit-card">
+                        <h4><span>🧩</span> Der Methoden-Match</h4>
+                        <p>Die gewählte Methode (z.B. Experiment) passt nicht zur Forschungsfrage.</p>
+                        <div class="audit-issue"><strong>Fehler:</strong> "Wir machen ein Experiment, um langfristige
+                            Nutzungsgewohnheiten zu messen."</div>
+                        <div id="fix-4" class="audit-fix"><strong>Profi-Fix:</strong> Experimente messen
+                            <strong>Reaktionen</strong>
+                            auf Reize. Gewohnheiten misst man per Befragung oder Tagebuchstudie.
+                        </div>
+                        <button class="reveal-btn" onclick="revealFix('fix-4', this)">Lösung anzeigen</button>
+                    </div>
+
+                    <!-- Halluzinations-Warnung (Ganzbreit unter dem 2x2 Grid) -->
+                    <div class="hallucination-warning">
+                        <span>🚫</span>
+                        <div>
+                            <h4>Halluzinierte / falsch zitierte Quellen</h4>
+                            <p>KI erfindet gerne Quellen. <strong>Wichtig:</strong> Eine erfundene Quelle im
+                                Forschungsbericht gilt als Täuschungsversuch. Ich prüfe immer jede Quelle.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+
+            <!-- 2. DIE LANDKARTE: Forschungsprozessmodelle -->
+            <div class="container">
+                <h1>Interaktive Forschungsprozessmodelle</h1>
+
+                <div class="tab-navigation">
+                    <button class="tab-button active" data-tab="content-analysis">Inhaltsanalyse (Rössler)</button>
+                    <button class="tab-button" data-tab="survey">Befragung (Scholl)</button>
+                    <button class="tab-button" data-tab="experiment">Experiment (Brosius)</button>
+                </div>
+
+                <!-- Tab: Content Analysis (Rössler) -->
+                <div id="tab-content-analysis" class="tab-content active">
+                    <h2>Forschungsprozess: Inhaltsanalyse (nach Rössler)</h2>
+
+                    <svg class="process-model-svg" id="roessler-svg" viewBox="0 0 650 880"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <!-- Definitions -->
+                        <defs>
+                            <marker id="arrowhead-roessler" markerWidth="8" markerHeight="6" refX="8" refY="3"
+                                orient="auto" markerUnits="userSpaceOnUse">
+                                <path d="M0,0 L8,3 L0,6 Z" fill="var(--connector-color)" />
+                            </marker>
+                        </defs>
+
+                        <!-- Context Separators -->
+                        <line class="context-separator" x1="20" y1="60" x2="630" y2="60" />
+                        <line class="context-separator" x1="20" y1="780" x2="630" y2="780" />
+
+                        <!-- Context Labels -->
+                        <text class="process-text context-label" x="627" y="50">Entdeckungszusammenhang</text>
+                        <text class="process-text context-label" x="630" y="67">Begründungszusammenhang</text>
+                        <!-- Adjusted Y -->
+                        <text class="process-text context-label" x="630" y="770">Begründungszusammenhang</text>
+                        <text class="process-text context-label" x="628" y="787">Verwertungszusammenhang</text>
+                        <!-- Adjusted Y -->
+
+                        <!-- Top Level Boxes -->
+                        <rect id="roessler-erkenntnisinteresse" class="process-box" x="245" y="20" width="160"
+                            height="30" />
+                        <text class="process-text" x="325" y="35">Erkenntnisinteresse</text>
+                        <text class="process-text label" x="150" y="10">wissenschaftlich-theoretisch</text>
+                        <text class="process-text label" x="500" y="10">konkret-situativ</text>
+
+                        <rect id="roessler-fundierung" class="process-box" x="70" y="80" width="160" height="40" />
+                        <text class="process-text" x="150" y="100">
+                            <tspan x="150" dy="-0.5em">Fundierung</tspan>
+                            <tspan x="150" dy="1.2em">durch Theorie</tspan>
+                        </text>
+
+                        <rect id="roessler-forschungsstand" class="process-box" x="420" y="80" width="160"
+                            height="40" />
+                        <text class="process-text" x="500" y="100">Forschungsstand</text>
+
+                        <rect id="roessler-begriffe" class="process-box" x="245" y="140" width="160" height="40" />
+                        <text class="process-text" x="325" y="160">
+                            <tspan x="325" dy="-0.5em">Definition zentraler</tspan>
+                            <tspan x="325" dy="1.2em">Begriffe</tspan>
+                        </text>
+
+                        <rect id="roessler-hypothesen" class="process-box" x="245" y="200" width="160" height="30" />
+                        <text class="process-text" x="325" y="215">Hypothesenbildung</text>
+
+                        <!-- Methodenwahl Container -->
+                        <rect class="process-box multi-part" x="50" y="260" width="550" height="450" />
+                        <text class="process-text" x="325" y="275" font-weight="bold">METHODENWAHL
+                            (Inhaltsanalyse)</text>
+
+                        <!-- Inner Boxes & Phase Lines -->
+                        <!-- Planungsphase -->
+                        <rect id="roessler-problemstellung" class="process-box" x="70" y="300" width="150"
+                            height="40" />
+                        <text class="process-text" x="145" y="320">Problemstellung</text>
+                        <rect id="roessler-projektplanung" class="process-box" x="365" y="296" width="150"
+                            height="50" />
+                        <text class="process-text" x="445" y="325">
+                            <tspan x="445" dy="-1.2em">Projektplanung:</tspan>
+                            <tspan x="445" dy="1.2em">Geld, Zeit, Codierer</tspan>
+                        </text>
+                        <line class="phase-line" x1="60" y1="370" x2="590" y2="370" />
+                        <text class="process-text phase-label" x="585" y="360">Planungsphase</text>
+
+                        <!-- Entwicklungsphase -->
+                        <rect id="roessler-material" class="process-box" x="255" y="390" width="150" height="50" />
+                        <text class="process-text" x="330" y="415">Untersuchungsmaterial</text>
+                        <text class="process-text small" x="115" y="400" dy="-0.8em">(ggf. Hypo-</text>
+                        <text class="process-text small" x="115" y="400" dy="0.2em">thesen-</text>
+                        <text class="process-text small" x="115" y="400" dy="1.2em">Bildung)</text>
+                        <rect id="roessler-analyseeinheiten" class="process-box" x="70" y="460" width="300"
+                            height="40" />
+                        <text class="process-text" x="150" y="480">
+                            <tspan x="215" dy="-0.5em">Definition der</tspan>
+                            <tspan x="215" dy="1.2em">Analyseeinheiten</tspan>
+                        </text>
+                        <line class="phase-line" x1="60" y1="580" x2="590" y2="580" />
+                        <text class="process-text phase-label" x="585" y="570">Entwicklungsphase</text>
+
+                        <!-- Testphase -->
+                        <rect id="roessler-kategorien" class="process-box" x="70" y="540" width="300" height="30" />
+                        <text class="process-text" x="220" y="555">Kategorienbildung</text>
+                        <text class="process-text label" x="190" y="518">theoriegeleitet</text>
+                        <text class="process-text label" x="380" y="518">empiriegeleitet</text>
+                        <rect id="roessler-probecodierung" class="process-box" x="170" y="590" width="130"
+                            height="30" />
+                        <text class="process-text" x="235" y="605">Probecodierung</text>
+                        <rect id="roessler-codierschulung" class="process-box" x="350" y="590" width="130"
+                            height="30" />
+                        <text class="process-text" x="415" y="605">Codierschulung</text>
+                        <line class="phase-line" x1="60" y1="640" x2="590" y2="640" />
+                        <text class="process-text phase-label" x="585" y="630">Testphase</text>
+
+                        <!-- Anwendungsphase -->
+                        <rect id="roessler-codebuch" class="process-box" x="70" y="660" width="150" height="30" />
+                        <text class="process-text" x="140" y="675">Codebuch</text>
+                        <rect id="roessler-codierung" class="process-box" x="350" y="660" width="130" height="30" />
+                        <text class="process-text" x="415" y="675">Codierung</text>
+                        <!-- No line needed here, it's the end of the Methodenwahl box -->
+                        <text class="process-text phase-label" x="585" y="680">Anwendungs-</text>
+                        <text class="process-text phase-label" x="585" y="692">phase</text>
+
+
+                        <!-- Bottom Level Boxes -->
+                        <rect id="roessler-auswertung" class="process-box" x="175" y="720" width="300" height="50" />
+                        <!-- Below Methodenwahl -->
+                        <text class="process-text" x="325" y="745">
+                            <tspan x="325" dy="-1.2em">Auswertungsphase: Datenerfassung &</tspan>
+                            <tspan x="325" dy="1.2em">-aufbereitung; statistische Analyse</tspan>
+                        </text>
+
+                        <rect id="roessler-interpretation" class="process-box" x="70" y="790" width="160" height="30" />
+                        <text class="process-text" x="150" y="805">Interpretation, Inferenz</text>
+                        <rect id="roessler-darstellung" class="process-box" x="270" y="790" width="160" height="30" />
+                        <text class="process-text" x="350" y="805">Darstellung der Ergebnisse</text>
+
+                        <rect id="roessler-publikation" class="process-box" x="70" y="840" width="160" height="30" />
+                        <text class="process-text" x="150" y="855">Publikationen</text>
+                        <rect id="roessler-forschungsbericht" class="process-box" x="270" y="840" width="160"
+                            height="30" />
+                        <text class="process-text" x="350" y="855">Forschungsbericht</text>
+
+                        <!-- Arrows -->
+                        <polyline class="arrow" points="220,280 150,300" marker-end="url(#arrowhead-roessler)" />
+                        <!-- Methodenwahl -> Problem -->
+                        <polyline class="arrow" points="420,280 445,295" marker-end="url(#arrowhead-roessler)" />
+                        <!-- Methodenwahl -> Projektplanung -->
+                        <polyline class="arrow" points="325,300 325,390" marker-end="url(#arrowhead-roessler)" />
+                        <!-- Methodenwahl -> Material. -->
+
+                        <polyline class="arrow" points="325,50 150,80" marker-end="url(#arrowhead-roessler)" />
+                        <!-- Erkenntnis -> Fundierung -->
+                        <polyline class="arrow" points="325,50 500,80" marker-end="url(#arrowhead-roessler)" />
+                        <!-- Erkenntnis -> Forschungsstand -->
+                        <polyline class="arrow" points="150,120 150,140 245,150"
+                            marker-end="url(#arrowhead-roessler)" />
+                        <!-- Fundierung -> Begriffe -->
+                        <polyline class="arrow" points="500,120 500,140 405,150"
+                            marker-end="url(#arrowhead-roessler)" />
+                        <!-- Forschungsstand -> Begriffe -->
+                        <polyline class="arrow" points="325,180 325,200" marker-end="url(#arrowhead-roessler)" />
+                        <!-- Begriffe -> Hypothesen -->
+                        <polyline class="arrow" points="325,230 325,260" marker-end="url(#arrowhead-roessler)" />
+                        <!-- Hypothesen -> Methodenwahl -->
+
+                        <!-- Arrows within Methodenwahl -->
+                        <polyline class="arrow" points="145,340 145,460" marker-end="url(#arrowhead-roessler)" />
+                        <!-- Problemst -> Analyseeinh -->
+                        <polyline class="arrow" points="445,345 445,590" marker-end="url(#arrowhead-roessler)" />
+                        <!-- Planung -> Codierschulung -->
+                        <polyline class="arrow" points="325,440 325,460" marker-end="url(#arrowhead-roessler)" />
+                        <!-- Material -> Analyseeinh. -->
+                        <polyline class="arrow" points="325,500 325,540" marker-end="url(#arrowhead-roessler)" />
+                        <!-- Analyseeinh -> Kategorien -->
+                        <polyline class="arrow" points="145,500 145,540" marker-end="url(#arrowhead-roessler)" />
+                        <!-- Analyseeinh -> Kategorien -->
+                        <polyline class="arrow" points="235,570 235,590" marker-end="url(#arrowhead-roessler)" />
+                        <!-- Kategorien -> Probecod. -->
+                        <!-- <polyline class="arrow" points="325,570 325,590 415,590" marker-end="url(#arrowhead-roessler)" /> -->
+                        <!-- Kategorien -> Codierschul. -->
+                        <polyline class="arrow" points="145,570 145,660" marker-end="url(#arrowhead-roessler)" />
+                        <!-- Kategorien -> Codebuch -->
+                        <polyline class="arrow" points="235,620 145,660" marker-end="url(#arrowhead-roessler)" />
+                        <!-- Probecod -> Codebuch -->
+                        <polyline class="arrow" points="415,620 415,660" marker-end="url(#arrowhead-roessler)" />
+                        <!-- Codierschul -> Codierung -->
+                        <polyline class="arrow" points="350,605 300,605" marker-end="url(#arrowhead-roessler)" />
+                        <!-- Codierschul -> Probecodierung -->
+                        <polyline class="arrow" points="235,620 350,660" marker-end="url(#arrowhead-roessler)" />
+                        <!-- Probecod -> Codierung -->
+
+                        <!-- Arrows connecting Methodenwahl to Auswertung -->
+                        <!-- <polyline class="arrow" points="145,690 145,720 175,730" marker-end="url(#arrowhead-roessler)" /> -->
+                        <!-- Codebuch -> Auswertung -->
+                        <polyline class="arrow" points="415,690 415,720" marker-end="url(#arrowhead-roessler)" />
+                        <!-- Codierung -> Auswertung -->
+
+                        <!-- Bottom Arrows -->
+                        <!-- <polyline class="arrow" points="255,770 150,790" marker-end="url(#arrowhead-roessler)" /> -->
+                        <!-- Auswertung -> Interpretation -->
+                        <polyline class="arrow" points="350,770 350,790" marker-end="url(#arrowhead-roessler)" />
+                        <!-- Auswertung -> Darstellung -->
+                        <polyline class="arrow" points="230,805 270,805" marker-end="url(#arrowhead-roessler)" />
+                        <!-- Interpretation -> Darstellung -->
+                        <polyline class="arrow" points="350,820 350,840" marker-end="url(#arrowhead-roessler)" />
+                        <!-- Darstellung -> Forschungsbericht -->
+                        <polyline class="arrow" points="315,820 145,840" marker-end="url(#arrowhead-roessler)" />
+                        <!-- Darstellung -> Publikationen -->
+                        <!-- <polyline class="arrow" points="150,820 270,845" marker-end="url(#arrowhead-roessler)" /> -->
+                        <!-- Interpretation -> Forschungsbericht -->
+
+                        <!-- Feedback Loops (Curved) -->
+                        <path class="arrow" d="M 30 215 Q 0 150 70 100" fill="none"
+                            marker-end="url(#arrowhead-roessler)" />
+                        <!-- Hypothesen -> Fundierung -->
+                        <path class="arrow" d="M 30 215 Q 0 150 245,150" fill="none"
+                            marker-end="url(#arrowhead-roessler)" />
+                        <!-- Hypothesen -> Definition -->
+                        <path class="arrow" d="M 30 215 Q 0 150 245,215" fill="none"
+                            marker-end="url(#arrowhead-roessler)" />
+                        <!-- Hypothesen -> Hypothesen -->
+                        <path class="arrow" d="M 30 215 Q -20 500 70 805" fill="none"
+                            marker-end="url(#arrowhead-roessler)" />
+                        <!-- Hypothesen -> Interpretation -->
+                        <!-- <path class="arrow" d="M 60 415 Q 40 300 245 215" fill="none" marker-end="url(#arrowhead-roessler)" /> -->
+                        <!-- Material -> Hypothesen -->
+
+                        <!-- Dashed Arrow: Erkenntnisinteresse -> Publikationen -->
+                        <polyline class="arrow" points="245,35 5,35 5,860 70,860" stroke-dasharray="5, 3" fill="none"
+                            marker-end="url(#arrowhead-roessler)" />
+
+                    </svg>
+
+                    <div class="interaction-feedback" id="roessler-feedback">
+                        <p><strong id="roessler-feedback-title"></strong> <span id="roessler-feedback-text"></span></p>
+                    </div>
+
+                </div>
+
+                <!-- Tab: Survey (Scholl) -->
+                <div id="tab-survey" class="tab-content">
+                    <h2>Forschungsprozess: Standardisierte Untersuchung (Befragung nach Scholl)</h2>
+
+                    <svg class="process-model-svg" id="scholl-svg" viewBox="0 0 600 780"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <!-- Definitions -->
+                        <defs>
+                            <marker id="arrowhead-scholl" markerWidth="8" markerHeight="6" refX="8" refY="3"
+                                orient="auto" markerUnits="userSpaceOnUse">
+                                <path d="M0,0 L8,3 L0,6 Z" fill="var(--connector-color)" />
+                            </marker>
+                            <!-- No start marker needed for loops 1 & 2 -->
+                        </defs>
+
+                        <!-- BOX POSITIONS & SIZES - Achieving Symmetry -->
+                        <!-- Central Axis around x=300 -->
+                        <!-- Box Widths (adjust as needed for text, keep symmetrical ones same) -->
+                        <!-- Example: Konzept/Grundg = 180, Methode/Auswahl = 180, Operation/Auswahl = 180 -->
+                        <!-- Standard Box Height: 40 or 50/60 for multi-line -->
+
+                        <rect id="scholl-fragestellung" class="process-box" x="200" y="20" width="200" height="40" />
+                        <rect id="scholl-konzeptualisierung" class="process-box" x="200" y="100" width="200"
+                            height="60" />
+
+                        <!-- Level 1 Symmetry -->
+                        <rect id="scholl-methode" class="process-box" x="80" y="200" width="180" height="50" />
+                        <rect id="scholl-grundgesamtheit" class="process-box" x="340" y="200" width="180" height="40" />
+                        <!-- Aligned with Methode -->
+
+                        <!-- Level 2 Symmetry -->
+                        <rect id="scholl-operationalisierung" class="process-box" x="80" y="290" width="180"
+                            height="50" />
+                        <rect id="scholl-auswahl" class="process-box" x="340" y="290" width="180" height="50" />
+                        <!-- Aligned with Operationalisierung -->
+
+
+                        <rect id="scholl-pretest" class="process-box" x="250" y="380" width="100" height="30" />
+                        <!-- Centered -->
+
+                        <rect id="scholl-hauptuntersuchung" class="process-box" x="200" y="450" width="200"
+                            height="40" />
+                        <rect id="scholl-aufbereitung" class="process-box" x="200" y="530" width="200" height="50" />
+                        <rect id="scholl-auswertung" class="process-box" x="200" y="620" width="200" height="50" />
+                        <rect id="scholl-datenpraesentation" class="process-box" x="200" y="710" width="200"
+                            height="30" />
+
+
+                        <!-- TEXT POSITIONS -->
+                        <text class="process-text" x="300" y="40">
+                            <tspan x="300" dy="-0.5em">Fragestellung/</tspan>
+                            <tspan x="300" dy="1.2em">Problemformulierung</tspan>
+                        </text>
+                        <text class="process-text" x="300" y="130">
+                            <tspan x="300" dy="-1.2em">Konzeptualisierung</tspan>
+                            <tspan x="300" dy="1.2em" class="small">(eventuell mit Hypothesen</tspan>
+                            <tspan x="300" dy="1.2em" class="small">oder Theorie)</tspan>
+                        </text>
+                        <text class="process-text" x="170" y="225"> <!-- Text for Methode -->
+                            <tspan x="170" dy="-0.5em">Wahl der Methode</tspan>
+                            <tspan x="170" dy="1.2em" class="small">(hier: Befragung)</tspan>
+                        </text>
+                        <text class="process-text" x="430" y="220">Definition der Grundgesamtheit</text>
+                        <!-- Text for Grundgesamtheit -->
+
+                        <text class="process-text" x="170" y="315"> <!-- Text for Operationalisierung -->
+                            <tspan x="170" dy="-0.5em">Operationalisierung</tspan>
+                            <tspan x="170" dy="1.2em" class="small">(hier: Fragebogen)</tspan>
+                        </text>
+                        <text class="process-text" x="430" y="307"> <!-- Text for Auswahl -->
+                            <tspan x="430" dy="-0.5em">Auswahl der</tspan>
+                            <tspan x="430" dy="1.2em">Untersuchungsfälle</tspan>
+                            <tspan x="430" dy="1.2em" class="small">(hier: Befragte)</tspan>
+                        </text>
+
+                        <text class="process-text" x="300" y="395">Pretest</text>
+                        <text class="process-text" x="300" y="470">
+                            <tspan x="300" dy="-0.5em">Hauptuntersuchung</tspan>
+                            <tspan x="300" dy="1.2em" class="small">(Datenerhebung)</tspan>
+                        </text>
+                        <text class="process-text" x="300" y="555">
+                            <tspan x="300" dy="-1.2em">Datenaufbereitung</tspan>
+                            <tspan x="300" dy="1.2em" class="small">(Datenerfassung und</tspan>
+                            <tspan x="300" dy="1.2em" class="small">Datenbereinigung)</tspan>
+                        </text>
+                        <text class="process-text" x="300" y="645">
+                            <tspan x="300" dy="-0.5em">Datenauswertung</tspan>
+                            <tspan x="300" dy="1.2em" class="small">(inklusive Datenmodifikation)</tspan>
+                        </text>
+                        <text class="process-text" x="300" y="725">Datenpräsentation</text>
+
+
+                        <!-- ARROWS - Corrected Paths -->
+                        <polyline class="arrow" points="300,60 300,100" marker-end="url(#arrowhead-scholl)" />
+                        <!-- Frage -> Konzeptualisierung -->
+
+                        <polyline class="arrow" points="300,160 170,200" marker-end="url(#arrowhead-scholl)" />
+                        <!-- Konzept -> Methode -->
+                        <polyline class="arrow" points="300,160 430,200" marker-end="url(#arrowhead-scholl)" />
+                        <!-- Konzept -> Grundgesamtheit -->
+
+                        <polyline class="arrow" points="430,240 430,290" marker-end="url(#arrowhead-scholl)" />
+                        <!-- Grundges -> Auswahl -->
+                        <polyline class="arrow" points="170,250 170,290" marker-end="url(#arrowhead-scholl)" />
+                        <!-- Methode -> Operation. -->
+
+                        <polyline class="arrow" points="430,340 430,370 350,395" marker-end="url(#arrowhead-scholl)" />
+                        <!-- Auswahl -> Pretest -->
+                        <polyline class="arrow" points="170,340 170,370 250,395" marker-end="url(#arrowhead-scholl)" />
+                        <!-- Operation. -> Pretest -->
+
+                        <polyline class="arrow" points="300,410 300,450" marker-end="url(#arrowhead-scholl)" />
+                        <!-- Pretest -> Hauptuntersuchung -->
+                        <polyline class="arrow" points="300,490 300,530" marker-end="url(#arrowhead-scholl)" />
+                        <!-- Hauptuntersuchung -> Aufbereitung -->
+                        <polyline class="arrow" points="300,580 300,620" marker-end="url(#arrowhead-scholl)" />
+                        <!-- Aufbereitung -> Auswertung -->
+                        <polyline class="arrow" points="300,670 300,710" marker-end="url(#arrowhead-scholl)" />
+                        <!-- Auswertung -> Datenpräsentation -->
+
+
+                        <!-- FEEDBACK LOOPS (CURVED) - Corrected Direction & Markers -->
+
+                        <!-- Loop (1): Datenauswertung -> Fragestellung -->
+                        <path class="arrow" d="M 200,645 C -50,550 -20,100 200,40" stroke-width="1.5" fill="none"
+                            marker-end="url(#arrowhead-scholl)" /> <!-- ONLY marker-end -->
+                        <text class="process-text small" x="60" y="140">(1)</text>
+
+                        <!-- Loop (2): Datenauswertung -> Konzeptualisierung -->
+                        <path class="arrow" d="M 200,640 C 50,500 50,200 200,130" stroke-width="1.5" fill="none"
+                            marker-end="url(#arrowhead-scholl)" /> <!-- ONLY marker-end -->
+                        <text class="process-text small" x="130" y="170">(2)</text>
+
+                        <!-- Loop (3): Pretest -> Operationalisierung -->
+                        <path class="arrow" d="M 250,395 C 220,370 190,360 170,340" fill="none" stroke-width="1.5"
+                            marker-end="url(#arrowhead-scholl)" /> <!-- ONLY marker-end -->
+                        <text class="process-text small" x="235" y="355">(3)</text>
+
+
+                    </svg>
+
+                    <div class="interaction-feedback" id="scholl-feedback">
+                        <p><strong id="scholl-feedback-title"></strong> <span id="scholl-feedback-text"></span></p>
+                    </div>
+
+                    <!-- ENDE HILFE GRUPPE D - BEFRAGUNG -->
+                </div>
+
+                <!-- Tab: Experiment (Brosius) -->
+                <div id="tab-experiment" class="tab-content">
+                    <h2>Forschungsprozess: Experiment (nach Brosius et al.)</h2>
+
+                    <svg class="process-model-svg" id="brosius-svg" viewBox="0 0 500 780"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <!-- Definitions -->
+                        <defs>
+                            <marker id="arrowhead-brosius" markerWidth="8" markerHeight="6" refX="8" refY="3"
+                                orient="auto" markerUnits="userSpaceOnUse">
+                                <path d="M0,0 L8,3 L0,6 Z" fill="var(--connector-color)" />
+                            </marker>
+                            <marker id="arrowhead-brosius-start" markerWidth="8" markerHeight="6" refX="0" refY="3"
+                                orient="auto" markerUnits="userSpaceOnUse">
+                                <path d="M8,0 L0,3 L8,6 Z" fill="var(--connector-color)" />
+                            </marker>
+                        </defs>
+
+                        <!-- Context Separators -->
+                        <line class="context-separator" x1="20" y1="145" x2="480" y2="145" />
+                        <line class="context-separator" x1="20" y1="720" x2="480" y2="720" />
+
+                        <!-- Context Labels -->
+                        <text class="process-text context-label" x="480" y="120">Entdeckungs-</text>
+                        <text class="process-text context-label" x="480" y="133">zusammenhang</text>
+                        <text class="process-text context-label" x="480" y="675">Begründungs-</text>
+                        <text class="process-text context-label" x="480" y="688">zusammenhang</text>
+                        <text class="process-text context-label" x="480" y="760">Verwertungs-</text>
+                        <text class="process-text context-label" x="480" y="773">zusammenhang</text>
+
+                        <!-- Side Label & Arrow -->
+                        <line class="arrow" x1="80" y1="45" x2="80" y2="695" stroke-width="1.5" />
+                        <text class="process-text rotated" x="65" y="370" transform="rotate(-90, 65, 370)">Lösung des
+                            sozialen
+                            Problems</text>
+
+                        <!-- Small connector lines from vertical arrow -->
+                        <line class="arrow" x1="80" y1="45" x2="100" y2="45" stroke-width="1"
+                            marker-end="url(#arrowhead-brosius)" /> <!-- To Phänomen -->
+                        <line class="arrow" x1="80" y1="200" x2="160" y2="200" stroke-width="1"
+                            marker-end="url(#arrowhead-brosius)" /> <!-- To Fundierung -->
+                        <line class="arrow" x1="80" y1="355" x2="160" y2="355" stroke-width="1"
+                            marker-end="url(#arrowhead-brosius)" /> <!-- To Hypothesenbildung -->
+                        <line class="arrow" x1="80" y1="695" x2="160" y2="695" stroke-width="1" />
+                        <!-- To Ergebnisdarstellung -->
+
+
+                        <!-- Boxes -->
+                        <rect id="brosius-phaenomen" class="process-box" x="100" y="20" width="140" height="50" />
+                        <text class="process-text" x="170" y="45">
+                            <tspan x="170" dy="-0.5em">Phänomen aus</tspan>
+                            <tspan x="170" dy="1.2em">sozialer Realität</tspan>
+                        </text>
+
+                        <rect id="brosius-auftrag" class="process-box" x="260" y="20" width="140" height="50" />
+                        <text class="process-text" x="330" y="45">
+                            <tspan x="330" dy="-0.5em">Auftrag: kommerziell,</tspan>
+                            <tspan x="330" dy="1.2em">selbstgestellt</tspan>
+                        </text>
+
+                        <rect id="brosius-fragestellung" class="process-box" x="160" y="90" width="180" height="40" />
+                        <text class="process-text" x="250" y="110">
+                            <tspan x="250" dy="-0.5em">wissenschaftliche</tspan>
+                            <tspan x="250" dy="1.2em">Fragestellung</tspan>
+                        </text>
+
+                        <rect id="brosius-fundierung" class="process-box" x="160" y="160" width="180" height="80" />
+                        <text class="process-text small" x="250" y="200">
+                            <tspan x="250" dy="-2.4em">Fundierung der</tspan>
+                            <tspan x="250" dy="1.2em">Fragestellung durch</tspan>
+                            <tspan x="250" dy="1.2em">geeignete Theorie,</tspan>
+                            <tspan x="250" dy="1.2em">Darstellung des For-</tspan> <!-- Avoided manual hyphen -->
+                            <tspan x="250" dy="1.2em">schungsgegenstandes</tspan>
+                        </text>
+
+                        <rect id="brosius-begriffe" class="process-box" x="160" y="270" width="180" height="40" />
+                        <text class="process-text" x="250" y="290">
+                            <tspan x="250" dy="-0.5em">Definition der</tspan>
+                            <tspan x="250" dy="1.2em">zentralen Begriffe</tspan>
+                        </text>
+
+                        <rect id="brosius-hypothesen" class="process-box" x="160" y="340" width="180" height="30" />
+                        <text class="process-text" x="250" y="355">Hypothesenbildung</text>
+
+                        <!-- Konzeption Box with Dashed Border -->
+                        <g>
+                            <rect id="brosius-konzeption" class="process-box" x="160" y="400" width="180" height="70" />
+                            <text class="process-text small" x="250" y="435">
+                                <tspan x="250" dy="-2.4em" style="font-size: var(--svg-text-size); font-weight:bold;">
+                                    Konzeption
+                                    der</tspan>
+                                <tspan x="250" dy="1.2em" style="font-size: var(--svg-text-size); font-weight:bold;">
+                                    Untersuchung:</tspan>
+                                <tspan x="250" dy="1.4em">Wahl der Methode</tspan>
+                                <tspan x="250" dy="1.2em">Wahl der Messung</tspan>
+                                <tspan x="250" dy="1.2em">Wahl der Untersuchungsanlage</tspan>
+                            </text>
+                            <!-- Dashed border *around* the konzeption box -->
+                            <rect class="process-box dashed-border" x="155" y="395" width="190" height="80" />
+                        </g>
+
+
+                        <rect id="brosius-indikatoren" class="process-box" x="160" y="500" width="180" height="30" />
+                        <text class="process-text" x="250" y="515">Indikatorenbildung</text>
+
+                        <rect id="brosius-datenerhebung" class="process-box" x="160" y="560" width="180" height="30" />
+                        <text class="process-text" x="250" y="575">Datenerhebung</text>
+
+                        <rect id="brosius-datenanalyse" class="process-box" x="160" y="620" width="180" height="30" />
+                        <text class="process-text" x="250" y="635">Datenanalyse</text>
+
+                        <rect id="brosius-ergebnisdarstellung" class="process-box" x="160" y="680" width="180"
+                            height="30" />
+                        <text class="process-text" x="250" y="695">Ergebnisdarstellung</text>
+
+                        <rect id="brosius-bericht" class="process-box" x="160" y="730" width="180" height="30" />
+                        <text class="process-text" x="250" y="745">Bericht, Publikation</text>
+
+                        <!-- Arrows -->
+                        <polyline class="arrow" points="170,70 170, 90" marker-end="url(#arrowhead-brosius)" />
+                        <!-- Phänomen -> Frage -->
+                        <polyline class="arrow" points="330,70 330, 90" marker-end="url(#arrowhead-brosius)" />
+                        <!-- Auftrag -> Frage -->
+                        <polyline class="arrow" points="250,130 250,160" marker-end="url(#arrowhead-brosius)" />
+                        <!-- Frage -> Fundierung -->
+                        <polyline class="arrow" points="250,240 250,270" marker-end="url(#arrowhead-brosius)" />
+                        <!-- Fundierung -> Begriffe -->
+                        <polyline class="arrow" points="250,310 250,340" marker-end="url(#arrowhead-brosius)" />
+                        <!-- Begriffe -> Hypothesen -->
+                        <polyline class="arrow" points="250,370 250,400" marker-end="url(#arrowhead-brosius)" />
+                        <!-- Hypothesen -> Konzeption -->
+                        <polyline class="arrow" points="250,470 250,500" marker-end="url(#arrowhead-brosius)" />
+                        <!-- Konzeption -> Indikatoren -->
+                        <polyline class="arrow" points="250,530 250,560" marker-end="url(#arrowhead-brosius)" />
+                        <!-- Indikatoren -> Datenerhebung -->
+                        <polyline class="arrow" points="250,590 250,620" marker-end="url(#arrowhead-brosius)" />
+                        <!-- Datenerhebung -> Datenanalyse -->
+                        <polyline class="arrow" points="250,650 250,680" marker-end="url(#arrowhead-brosius)" />
+                        <!-- Datenanalyse -> Ergebnisdarst. -->
+                        <polyline class="arrow" points="250,710 250,730" marker-end="url(#arrowhead-brosius)" />
+                        <!-- Ergebnisdarst. -> Bericht -->
+
+                        <!-- Feedback Loop (Curved) - Revised based on original B&W image -->
+                        <!-- Starts after Hypothesenbildung, goes back up to Fundierung -->
+                        <!-- <path class="arrow" d="M 160 360 C 120 300, 120 250, 160 200" fill="none"
+                    marker-end="url(#arrowhead-brosius)" stroke-width="1.5" /> -->
+
+                    </svg>
+
+                    <div class="interaction-feedback" id="brosius-feedback">
+                        <p><strong id="brosius-feedback-title"></strong> <span id="brosius-feedback-text"></span></p>
+                    </div>
+
+                </div>
+            </div>
+
+            <hr>
+
+            <!-- 3. FOCUS: DIE INHALTSANALYSE (Für das strategische Lenken) -->
+            <section id="content-analysis-deepdive">
+                <h2>Der alternative Pfad: Die Inhaltsanalyse (IA)</h2>
+                <p>Einige von euch kämpfen mit dem "Teilnehmer-Problem" (Rekrutierung, Bias, Alter). Die Inhaltsanalyse
+                    bietet einen Ausweg: Wir untersuchen nicht, was Menschen <em>sagen</em>, sondern was die KI oder die
+                    Medien <em>tatsächlich tun</em>.</p>
+
+                <div class="method-path-card ia-path" style="display: block; width: 100%;">
+                    <div style="display: flex; gap: 1.5rem; align-items: center;">
+                        <span style="font-size: 3rem;">🔎</span>
+                        <div>
+                            <h3>Warum Inhaltsanalyse für KI-Projekte?</h3>
+                            <p>Anstatt Probanden zu fragen, ob sie KI-Bildern trauen, könnten wir systematisch
+                                untersuchen: <strong>"Wie kennzeichnen die Top-100 Tech-YouTuber ihre KI-Inhalte
+                                    eigentlich wirklich?"</strong></p>
+                        </div>
+                    </div>
+                    <div class="ai-grid" style="margin-top: 1rem;">
+                        <div class="ai-card">
+                            <h4>Vorteil 1: Objektivität</h4>
+                            <p>Keine "soziale Erwünschtheit" von Befragten. Die Daten (Videos/Texte) liegen fix vor.</p>
+                        </div>
+                        <div class="ai-card">
+                            <h4>Vorteil 2: Unabhängigkeit</h4>
+                            <p>Ihr braucht keine 200 Teilnehmer rekrutieren. Eure "Teilnehmer" sind eure
+                                Analyse-Einheiten.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+
+            <!-- 4. WORKSHOP: Mapping the Decision Problems -->
+            <section id="workshop-decision">
+                <h2>Workshop: Eure Entscheidungsprobleme</h2>
+                <div class="expose-guide">
+                    <p>Nehmt euer Exposé und das für eure Methode passende Modell zur Hand. Identifiziert für die
+                        nächste Woche die
+                        <strong>zentralen Hürden</strong>:
+                    </p>
+                    <ul class="expose-checklist">
+                        <li class="checklist-card">
+                            <strong>Konzeptualisierung</strong>
+                            <p>Welcher Begriff in eurer Frage ist noch zu schwammig? (z.B. "Empathie" bei Bildern?)</p>
+                        </li>
+                        <li class="checklist-card">
+                            <strong>Operationalisierung</strong>
+                            <p>Wie genau wollt ihr das messen? (Skala? Codebuch? Stimulus?)</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <hr>
+
+            <!-- 5. HAUSAUFGABE -->
+            <section id="homework">
+                <h2>Mission Meilenstein 2: Euer individuelles Forschungsmodell</h2>
+                <p>Ein Forschungsprozessmodell zu erstellen bedeutet nicht, ein Lehrbuch zu kopieren. Es bedeutet, die
+                    <strong>Architektur eueres eigenen Projekts</strong> zu entwerfen. Eine gute Abgabe zeigt mir, dass
+                    ihr die Stolpersteine der nächsten Wochen bereits jetzt kommen seht.</p>
+
+                <div class="expose-guide">
+                    <h3>Was gewünscht ist</h3>
+
+                    <div class="ai-grid">
+                        <!-- Teil 1: Die Visualisierung -->
+                        <div class="ai-card boost-card">
+                            <h4><span>🗺️</span> 1. Die Karte (Grafik)</h4>
+                            <p>Erstellt ein Prozessmodell, das exakt auf euer Projekt zugeschnitten ist.</p>
+                            <ul style="font-size: 0.85rem; margin-top: 0.5rem;">
+                                <li><strong>Baseline:</strong> Nutzt Rössler, Scholl oder Brosius als Basis, aber
+                                    beschriftet die Boxen mit eurem Thema (z.B. "Definition von Empathie" statt
+                                    "Definition zentraler Begriffe").</li>
+                                <li><strong>Entscheidungs-Hotspots:</strong> Markiert die 3-4 Stellen im Modell
+                                    farblich, an denen ihr die schwierigsten Entscheidungen erwartet (z.B.
+                                    "Stimulus-Erstellung" oder "Kategorienschärfe").</li>
+                            </ul>
+                        </div>
+
+                        <!-- Teil 2: Das Handbuch -->
+                        <div class="ai-card">
+                            <h4><span>📄</span> 2. Das Handbuch (Text)</h4>
+                            <p>Beschreibt den Weg auf <strong>3 bis 4 Textseiten</strong> (reiner Fließtext, ohne
+                                Deckblatt/Grafik).</p>
+                            <ul style="font-size: 0.85rem; margin-top: 0.5rem;">
+                                <li><strong>Kontextualisierung:</strong> Erklärt jeden Schritt des Modells kurz in Bezug
+                                    auf eure Studie.</li>
+                                <li><strong>Problem-Fokus:</strong> Konzentriert euch auf die <em>Fragen</em>, nicht auf
+                                    die Lösungen. Beispiel: "Wie stellen wir sicher, dass das Audio für die
+                                    Kontrollgruppe wirklich menschlich klingt?" statt "Wir nehmen eine Person auf."</li>
+                                <li><strong>Ressourcen-Check:</strong> Woher bekommt ihr das Material? (z.B.
+                                    Netflix-Abo, API-Zugang, Teilnehmer-Pool).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Erfolgsfaktoren / Grading Criteria -->
+                    <div class="interaction-feedback"
+                        style="display: block; background: #fffde7; border-color: #f1c40f;">
+                        <h4 style="color: #856404; margin-top: 0;">🌟 Das macht eine "sehr gute" Abgabe aus:</h4>
+                        <ul style="font-size: 0.9rem; color: #856404;">
+                            <li><strong>Sensibilität:</strong> Ihr erkennt die methodischen Gefahren (z.B. Reaktivität
+                                bei Befragten oder Unschärfe bei Kategorien) schon jetzt.</li>
+                            <li><strong>Handwerk:</strong> Sauberes Deckblatt, korrektes Literaturverzeichnis (APA 7!),
+                                fehlerfreier Blocksatz.</li>
+                            <li><strong>Ehrlichkeit:</strong> Wenn ihr merkt, dass euer Design (z.B. Experiment) an der
+                                Realität scheitern könnte, thematisiert das im Text! Seit einfach ehrlich. Was ihr nicht wisst schreibt einfach so runter.</li>
+                        </ul>
+                    </div>
+
+                    <div class="less-is-more">
+                        <div class="icon">📅</div>
+                        <div>
+                            <strong>Verantwortlichkeiten fürs Semester Planen</strong>
+                            <p>Plant bis nächste Woche wer in welchen Sitzungen und Arbeitschritten den Hut aufhat und die Gruppe verantwortet. Jeder ist 1-2 Wochen lang Teamchef und schaut, dass alles läuft und präsentiert auch.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="less-is-more">
+                        <div class="icon">⏱️</div>
+                        <div>
+                            <strong>Deadline & Format</strong>
+                            <p>Montag, <strong>18:00 Uhr</strong> via ILIAS.
+                                <br>1. <strong>PDF-Dokumentation:</strong> (Deckblatt, Modell-Grafik, 3-4 Seiten Text,
+                                Literaturverzeichnis).
+                                <br>2. <strong>Präsentations-Folie:</strong> Nur die Grafik eures Modells als PPT/PDF
+                                für die Sitzung.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2026 Andreas Reich - Universität Hohenheim</p>
+    </footer>
+
+    <script>
+        /**
+         * Schaltet die Sichtbarkeit der Profi-Lösung in den Audit-Karten um
+         * @param {string} id - Die ID des anzuzeigenden Elements
+         * @param {HTMLElement} btn - Der geklickte Button
+         */
+        function revealFix(id, btn) {
+            const fixElement = document.getElementById(id);
+            if (fixElement) {
+                fixElement.classList.add('show');
+                // Animation für den Button (optional)
+                btn.style.opacity = '0';
+                setTimeout(() => {
+                    btn.style.display = 'none';
+                }, 300);
+            }
+        }
+    </script>
+
+    <script>
+        const tabs = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const svgs = {
+            'content-analysis': document.getElementById('roessler-svg'),
+            'survey': document.getElementById('scholl-svg'),
+            'experiment': document.getElementById('brosius-svg')
+        };
+        let currentTooltip = null;
+        let activeBox = null;
+
+        // --- General Explanations (Remain the same) ---
+        const generalExplanations = {
+            // Rössler (Content Analysis) - Keep all entries
+            'roessler-erkenntnisinteresse': "Ausgangspunkt jeder Forschung. Was soll warum untersucht werden? Kann theoretisch motiviert (Wissenslücke schließen) oder praktisch (konkretes Problem lösen) sein.",
+            'roessler-fundierung': "Einordnung der Fragestellung in bestehende Theorien. Welche theoretischen Konzepte sind relevant?",
+            'roessler-forschungsstand': "Sichtung und Darstellung bisheriger Forschung zum Thema. Was ist bereits bekannt, wo gibt es Lücken?",
+            'roessler-begriffe': "Klare Definition der zentralen Konzepte, die in der Untersuchung verwendet werden.",
+            'roessler-hypothesen': "Formulierung von überprüfbaren Annahmen über Zusammenhänge, basierend auf Theorie und Forschungsstand. In der qualitativen Inhaltsanalyse oft offener formuliert oder erst im Prozess generiert.",
+            'roessler-methodenwahl': "Entscheidung für die Inhaltsanalyse als Methode und Planung der spezifischen Vorgehensweise.",
+            'roessler-problemstellung': "Konkretisierung der Forschungsfrage für die Inhaltsanalyse.",
+            'roessler-projektplanung': "Organisation der Analyse: Ressourcen (Geld, Zeit), Personal (Codierer), Zeitplan.",
+            'roessler-material': "Auswahl und Beschaffung des zu analysierenden Materials (Texte, Bilder, Videos etc.). Ggf. Anpassung/Bildung von Hypothesen basierend auf erstem Materialkontakt.",
+            'roessler-analyseeinheiten': "Festlegung, was genau die Einheiten sind, die codiert werden (z.B. Artikel, Szene, Tweet, Satz).",
+            'roessler-kategorien': "Entwicklung des Kategoriensystems zur Erfassung der relevanten Merkmale. Kann deduktiv (theoriegeleitet) oder induktiv (empiriegeleitet) erfolgen.",
+            'roessler-probecodierung': "Test des Kategoriensystems an einem kleinen Teil des Materials, um Verständlichkeit und Anwendbarkeit zu prüfen.",
+            'roessler-codierschulung': "Training der Codierer, um eine einheitliche Anwendung des Kategoriensystems sicherzustellen.",
+            'roessler-codebuch': "Finale Version des Kategoriensystems mit genauen Definitionen, Beispielen und Codieranweisungen.",
+            'roessler-codierung': "Systematische Anwendung des Codebuchs auf das gesamte Untersuchungsmaterial.",
+            'roessler-auswertung': "Dateneingabe, -aufbereitung und statistische Analyse der codierten Daten (bei quantitativer IA) oder qualitative Interpretation (bei qualitativer IA).",
+            'roessler-interpretation': "Deutung der Ergebnisse im Lichte der Forschungsfrage, Hypothesen und Theorie.",
+            'roessler-darstellung': "Aufbereitung und Präsentation der Ergebnisse (Tabellen, Grafiken, Berichte).",
+            'roessler-publikation': "Veröffentlichung der Ergebnisse in wissenschaftlichen Journalen, Büchern etc.",
+            'roessler-forschungsbericht': "Umfassende Dokumentation des gesamten Forschungsprozesses und der Ergebnisse.",
+
+            // Scholl (Survey) - Keep all entries
+            'scholl-fragestellung': "Die klare Formulierung des Forschungsproblems oder der Frage, die beantwortet werden soll.",
+            'scholl-konzeptualisierung': "Definition der theoretischen Konzepte und ggf. Ableitung von Hypothesen oder Bezug zu einer Theorie.",
+            'scholl-methode': "Auswahl der Befragung als Methode (z.B. online, telefonisch, persönlich).",
+            'scholl-operationalisierung': "Übersetzung der theoretischen Konzepte in messbare Fragen (Erstellung des Fragebogens).",
+            'scholl-grundgesamtheit': "Definition der Population, über die eine Aussage getroffen werden soll.",
+            'scholl-auswahl': "Auswahl der Stichprobe (Teilnehmende) aus der Grundgesamtheit (z.B. Zufallsstichprobe, Quotenstichprobe).",
+            'scholl-pretest': "Test des Fragebogens mit einer kleinen Gruppe, um Verständlichkeit, Länge und technische Funktion zu prüfen.",
+            'scholl-hauptuntersuchung': "Durchführung der eigentlichen Befragung mit der ausgewählten Stichprobe (Datenerhebung).",
+            'scholl-aufbereitung': "Eingabe der Daten in eine Datenbank, Prüfung auf Fehler und Bereinigung des Datensatzes.",
+            'scholl-auswertung': "Statistische Analyse der erhobenen Daten zur Beantwortung der Forschungsfrage und Überprüfung der Hypothesen.",
+            'scholl-datenpraesentation': "Darstellung und Veröffentlichung der Ergebnisse.",
+
+            // Brosius (Experiment) - Keep all entries
+            'brosius-phaenomen': "Beobachtung eines Phänomens in der Realität oder einer Wissenslücke, die untersucht werden soll.",
+            'brosius-auftrag': "Der Anlass der Forschung kann ein externer Auftrag oder eigenes wissenschaftliches Interesse sein.",
+            'brosius-fragestellung': "Präzise Formulierung der wissenschaftlichen Frage, oft nach einem Ursache-Wirkungs-Zusammenhang.",
+            'brosius-fundierung': "Theoretische Einbettung der Fragestellung, Begründung der Relevanz, Darstellung des Forschungsstands.",
+            'brosius-begriffe': "Klare Definition aller relevanten Konstrukte und Variablen (unabhängige, abhängige, Kontrollvariablen).",
+            'brosius-hypothesen': "Formulierung spezifischer, testbarer Kausalhypothesen (Wenn X, dann Y).",
+            'brosius-konzeption': "Detaillierte Planung des Experiments: Wahl des Designs (z.B. Between-Subjects, Within-Subjects), Festlegung der Manipulation (UV), Wahl der Messinstrumente (AV), Wahl der Untersuchungsanlage.",
+            'brosius-indikatoren': "Konkrete Messvorschriften für die abhängigen Variablen (Operationalisierung der AV).",
+            'brosius-datenerhebung': "Durchführung des Experiments unter kontrollierten Bedingungen, Messung der abhängigen Variablen.",
+            'brosius-datenanalyse': "Statistische Auswertung der Daten, um den Effekt der Manipulation (UV) auf die Messung (AV) zu prüfen (z.B. T-Test, ANOVA).",
+            'brosius-ergebnisdarstellung': "Zusammenfassung und Visualisierung der Ergebnisse.",
+            'brosius-bericht': "Verfassen eines Forschungsberichts oder einer Publikation, die den Prozess und die Ergebnisse dokumentiert."
+        };
+
+        // --- Tooltip Functions ---
+        function showTooltip(boxElement, text) {
+            // Remove existing tooltip first
+            hideTooltip();
+
+            const tooltip = document.createElement('div');
+            tooltip.className = 'tooltip';
+            tooltip.innerHTML = text;
+            document.body.appendChild(tooltip);
+            currentTooltip = tooltip; // Store reference
+
+            const boxRect = boxElement.getBoundingClientRect();
+            const tooltipRect = tooltip.getBoundingClientRect();
+
+            // Calculate position (above the box, centered)
+            let top = boxRect.top + window.scrollY - tooltipRect.height - 10; // 10px spacing
+            let left = boxRect.left + window.scrollX + (boxRect.width / 2) - (tooltipRect.width / 2);
+
+            // Adjust if tooltip goes off-screen horizontally
+            if (left < 0) left = 5;
+            const rightEdge = left + tooltipRect.width;
+            if (rightEdge > window.innerWidth) {
+                left = window.innerWidth - tooltipRect.width - 5;
+            }
+            // Adjust if tooltip goes off-screen vertically (top)
+            if (top < window.scrollY) { // If it goes above the viewport top
+                top = boxRect.bottom + window.scrollY + 10; // Position below instead
+                // Adjust pointer - this requires more complex CSS or JS to flip the triangle
+                // For simplicity, we might omit the pointer flip for now.
+            }
+
+
+            tooltip.style.top = `${top}px`;
+            tooltip.style.left = `${left}px`;
+
+            // Make it visible after positioning
+            requestAnimationFrame(() => {
+                tooltip.classList.add('visible');
+            });
+        }
+
+        function hideTooltip() {
+            if (currentTooltip) {
+                currentTooltip.remove();
+                currentTooltip = null;
+            }
+        }
+
+        // --- Event Listeners ---
+
+        // Tab switching logic
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetTab = tab.getAttribute('data-tab');
+
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === `tab-${targetTab}`) {
+                        content.classList.add('active');
+                    }
+                });
+                // Reset highlighting and hide tooltip when switching tabs
+                resetInteractionState();
+            });
+        });
+
+        // Add click listeners to SVG boxes
+        Object.keys(svgs).forEach(key => {
+            const svg = svgs[key];
+            if (svg) {
+                const boxes = svg.querySelectorAll('.process-box:not(.dashed-border)');
+                boxes.forEach(box => {
+                    box.addEventListener('click', (event) => {
+                        const clickedBox = event.target.closest('.process-box');
+                        if (!clickedBox) return;
+                        const stepId = clickedBox.id;
+                        if (!stepId) return;
+
+                        // --- Highlighting Logic ---
+                        const currentlyHighlighted = svg.querySelector('.highlighted');
+
+                        // If clicking the already active box, deactivate it
+                        if (currentlyHighlighted === clickedBox) {
+                            clickedBox.classList.remove('highlighted');
+                            hideTooltip();
+                            activeBox = null;
+                        } else {
+                            // Deactivate previous box (if any)
+                            if (currentlyHighlighted) {
+                                currentlyHighlighted.classList.remove('highlighted');
+                            }
+                            // Activate new box
+                            clickedBox.classList.add('highlighted');
+                            activeBox = clickedBox; // Store reference to active box
+
+                            // --- Tooltip Logic ---
+                            const description = generalExplanations[stepId] || "Keine Erklärung hinterlegt.";
+                            showTooltip(clickedBox, description);
+                        }
+                    });
+                });
+            }
+        });
+
+        // Hide tooltip on scroll or resize for simplicity
+        window.addEventListener('scroll', hideTooltip);
+        window.addEventListener('resize', hideTooltip);
+
+
+        // Function to reset highlighting and hide tooltips
+        function resetInteractionState() {
+            Object.keys(svgs).forEach(key => {
+                const svg = svgs[key];
+                if (svg) {
+                    const highlighted = svg.querySelector('.highlighted');
+                    if (highlighted) {
+                        highlighted.classList.remove('highlighted');
+                    }
+                }
+            });
+            hideTooltip();
+            activeBox = null;
+        }
+
+        // Initial setup: Ensure no highlights or tooltips are visible
+        resetInteractionState();
+
+        const helpToggleButtons = document.querySelectorAll('.toggle-help-button');
+
+        helpToggleButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const helpContent = button.nextElementSibling; // Assumes the help div is right after the button
+                if (helpContent && helpContent.classList.contains('specific-help-content')) {
+                    const isHidden = helpContent.style.display === 'none' || helpContent.style.display === '';
+                    helpContent.style.display = isHidden ? 'block' : 'none';
+                    button.textContent = isHidden ? button.textContent.replace('anzeigen', 'verbergen') : button.textContent.replace('verbergen', 'anzeigen');
+                } else {
+                    console.error("Could not find the specific-help-content div next to the button:", button);
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

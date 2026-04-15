@@ -1,0 +1,80 @@
+/* Audit Section Styles */
+.audit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.audit-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.audit-card h4 {
+    margin-top: 0;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.audit-issue {
+    background: #fff5f5;
+    border-left: 4px solid #fc8181;
+    padding: 0.8rem;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    color: #c53030;
+}
+
+.audit-fix {
+    background: #f0fff4;
+    border-left: 4px solid #68d391;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    color: #2f855a;
+    display: none; /* Hidden initially, revealed by JS */
+}
+
+.audit-fix.show {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+.reveal-btn {
+    margin-top: auto;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transition: opacity 0.2s;
+}
+
+.reveal-btn:hover {
+    opacity: 0.9;
+}
+
+.hallucination-warning {
+    grid-column: 1 / -1;
+    background: #2d3748;
+    color: #fff;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.hallucination-warning span {
+    font-size: 3rem;
+}
