@@ -42,12 +42,24 @@
             opacity: 0;
         }
 
-        .ai-loader div:nth-child(2) { animation-delay: 0.5s; }
-        .ai-loader div:nth-child(3) { animation-delay: 1s; }
+        .ai-loader div:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .ai-loader div:nth-child(3) {
+            animation-delay: 1s;
+        }
 
         @keyframes pulse {
-            0% { transform: scale(0); opacity: 0.8; }
-            100% { transform: scale(1.5); opacity: 0; }
+            0% {
+                transform: scale(0);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
         }
 
         .ai-brain-icon {
@@ -67,7 +79,7 @@
             font-family: 'Courier New', Courier, monospace;
             font-size: 0.9rem;
             margin-top: 1.5rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .blinking-cursor {
@@ -76,8 +88,15 @@
         }
 
         @keyframes blink {
-            from, to { color: transparent; }
-            50% { color: white; }
+
+            from,
+            to {
+                color: transparent;
+            }
+
+            50% {
+                color: white;
+            }
         }
 
         .funny-hint {
@@ -85,6 +104,308 @@
             font-style: italic;
             color: #666;
             max-width: 500px;
+        }
+
+        #clicker-game-section {
+            padding: 2rem 0;
+            background: #1a1a2e;
+            /* Dark Science Theme */
+            color: #e94560;
+            border-radius: 15px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .game-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .game-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #fff;
+        }
+
+        .game-main {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .clicker-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #e94560;
+        }
+
+        #token-display {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #0f3460;
+            background: #e94560;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        #tps-display {
+            color: #fff;
+            margin-bottom: 2rem;
+        }
+
+        .prompt-btn {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #e94560 0%, #0f3460 100%);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.1s;
+            box-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
+            text-align: center;
+            color: white;
+            user-select: none;
+        }
+
+        .prompt-btn:active {
+            transform: scale(0.95);
+        }
+
+        .prompt-btn .sparkle {
+            font-size: 2rem;
+        }
+
+        .prompt-btn .btn-text {
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .prompt-btn .btn-subtext {
+            font-size: 0.6rem;
+            opacity: 0.7;
+        }
+
+        .shop-area {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        .shop-area h3 {
+            color: #fff;
+            margin-top: 0;
+            border-bottom: 1px solid #e94560;
+        }
+
+        .shop-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .shop-item:hover {
+            background: rgba(233, 69, 96, 0.2);
+        }
+
+        .shop-item.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .item-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .item-icon {
+            font-size: 1.5rem;
+        }
+
+        .item-cost {
+            font-weight: bold;
+            color: #fff;
+            background: #e94560;
+            padding: 2px 8px;
+            border-radius: 3px;
+        }
+
+        #game-log {
+            margin-top: 1.5rem;
+            padding: 10px;
+            background: #000;
+            color: #0f0;
+            font-size: 0.8rem;
+            height: 60px;
+            overflow-y: hidden;
+            border-left: 3px solid #e94560;
+        }
+
+        @keyframes float-up {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+        }
+
+        .token-pop {
+            position: absolute;
+            color: #fff;
+            font-weight: bold;
+            pointer-events: none;
+            animation: float-up 0.8s forwards;
+        }
+
+        #game-log {
+            transition: all 0.3s ease;
+            border-left: 5px solid #e94560;
+            text-transform: none;
+            /* Verhindert dass alles Uppercase ist */
+        }
+
+        /* Optional: Animation für legendäre Events */
+        @keyframes legendary-glow {
+            0% {
+                box-shadow: 0 0 5px #f1c40f;
+            }
+
+            50% {
+                box-shadow: 0 0 20px #f1c40f;
+            }
+
+            100% {
+                box-shadow: 0 0 5px #f1c40f;
+            }
+        }
+
+        .log-legendary {
+            animation: legendary-glow 2s infinite;
+        }
+
+        #clicker-game-section {
+            transition: all 1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Stufen-Designs */
+        .tier-student {
+            border: 2px solid #555;
+        }
+
+        .tier-scholar {
+            border: 2px solid #3498db;
+            box-shadow: inset 0 0 20px #3498db33;
+        }
+
+        .tier-expert {
+            border: 2px solid #9b59b6;
+            box-shadow: inset 0 0 40px #9b59b644;
+        }
+
+        .tier-god {
+            border: 2px solid #f1c40f;
+            box-shadow: inset 0 0 60px #f1c40f55;
+            background: #1a1a2e linear-gradient(180deg, #1a1a2e 0%, #2c3e50 100%);
+        }
+
+        /* Der Rang-Anzeiger */
+        #rank-display {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 10px;
+            opacity: 0.7;
+        }
+
+        /* Button-Evolution */
+        .prompt-btn.glow-rare {
+            box-shadow: 0 0 30px #3498db;
+            border: 3px solid #3498db;
+        }
+
+        .prompt-btn.glow-epic {
+            box-shadow: 0 0 50px #9b59b6;
+            border: 4px solid #9b59b6;
+            animation: pulse-purple 2s infinite;
+        }
+
+        .prompt-btn.glow-legendary {
+            box-shadow: 0 0 80px #f1c40f;
+            border: 5px solid #f1c40f;
+            animation: pulse-gold 1s infinite;
+        }
+
+        @keyframes pulse-purple {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 70px #9b59b6;
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse-gold {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 100px #f1c40f;
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* TPS-Bar: Ein kleiner visueller Tacho */
+        #tps-meter {
+            width: 100%;
+            height: 4px;
+            background: #000;
+            margin-top: 5px;
+            border-radius: 2px;
+        }
+
+        #tps-fill {
+            height: 100%;
+            width: 0%;
+            background: #e94560;
+            transition: width 0.5s ease, background 0.5s ease;
+            box-shadow: 0 0 10px #e94560;
         }
     </style>
 </head>
@@ -122,7 +443,8 @@
                 <p>Die Inhalte für diese Etappe unserer Expedition werden noch von mir finalisiert.</p>
 
                 <div class="status-box">
-                    <span id="status-text">Initialisiere Forschungs-Module...</span><span class="blinking-cursor">_</span>
+                    <span id="status-text">Initialisiere Forschungs-Module...</span><span
+                        class="blinking-cursor">_</span>
                 </div>
 
                 <p class="funny-hint">
@@ -130,13 +452,95 @@
                 </p>
 
                 <div style="margin-top: 3rem;">
-                    <a href="index.html" class="a" style="text-decoration: none; font-weight: bold; color: var(--accent-color);">
+                    <a href="index.html" class="a"
+                        style="text-decoration: none; font-weight: bold; color: var(--accent-color);">
                         ← Zurück zum Basislager (Übersicht)
                     </a>
                 </div>
             </div>
         </main>
     </div>
+
+    <hr>
+    <section id="clicker-game-section">
+        <div class="game-container">
+            <div class="game-header">
+                <h2>The Thesis Grind: AI Expedition</h2>
+                <p>Klicke auf den Prompt, um <strong>Tokens</strong> zu generieren. Aber pass auf den
+                    <strong>SLOP</strong> auf!
+                </p>
+            </div>
+
+            <div class="game-main">
+                <!-- Clicker Area -->
+                <div class="clicker-area">
+                    <div id="rank-display">Rang: Unimmatrikuliert</div>
+                    <div id="token-display">0 Tokens</div>
+                    <div id="tps-display">Tokens/Sek: 0</div>
+                    <div id="tps-meter">
+                        <div id="tps-fill"></div>
+                    </div>
+                    <br>
+                    <div id="big-prompt-button" class="prompt-btn">
+                        <span class="sparkle">✨</span>
+                        <div class="btn-text">PROMPT SENDEN</div>
+                        <div class="btn-subtext">/generate_science_paper</div>
+                    </div>
+                </div>
+
+                <!-- Shop Area -->
+                <div class="shop-area">
+                    <h3>Upgrades & Equipment</h3>
+                    <div class="shop-item" id="buy-coffee" data-cost="15" data-tps="1">
+                        <div class="item-info">
+                            <span class="item-icon">☕</span>
+                            <div class="item-text">
+                                <strong>Mensa-Kaffee</strong><br>
+                                <small>+1 Token/Sek (Zittrige Hände)</small>
+                            </div>
+                        </div>
+                        <div class="item-cost">15 T</div>
+                    </div>
+
+                    <div class="shop-item" id="buy-wiso" data-cost="100" data-tps="5">
+                        <div class="item-info">
+                            <span class="item-icon">🔓</span>
+                            <div class="item-text">
+                                <strong>WISO-Vollzugriff</strong><br>
+                                <small>+5 T/Sek (Keine Paywalls mehr)</small>
+                            </div>
+                        </div>
+                        <div class="item-cost">100 T</div>
+                    </div>
+
+                    <div class="shop-item" id="buy-gpu" data-cost="500" data-tps="20">
+                        <div class="item-info">
+                            <span class="item-icon">🖥️</span>
+                            <div class="item-text">
+                                <strong>H100 GPU-Cluster</strong><br>
+                                <small>+20 T/Sek (Pure Rechenpower)</small>
+                            </div>
+                        </div>
+                        <div class="item-cost">500 T</div>
+                    </div>
+
+                    <div class="shop-item" id="buy-reich" data-cost="2000" data-tps="100">
+                        <div class="item-info">
+                            <span class="item-icon">👑</span>
+                            <div class="item-text">
+                                <strong>Reich's Segen</strong><br>
+                                <small>+100 T/Sek (Validierte Kausalität)</small>
+                            </div>
+                        </div>
+                        <div class="item-cost">2k T</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Log -->
+            <div id="game-log">System bereit. Warte auf Input...</div>
+        </div>
+    </section>
 
     <footer>
         <p>© 2026 Andreas Reich - Universität Hohenheim</p>
@@ -154,7 +558,64 @@
             "Lade Forschungs-Spirit in den Buffer...",
             "Dekodiere komplexe KOWI-Theorien...",
             "Synchronisiere Co-Pilot mit dem Lehrplan...",
-            "Formatiere APA-Zitate im Hintergrund..."
+            "Formatiere APA-Zitate im Hintergrund...",
+
+            "Vektorisierung der Mensa-Speisekarte abgeschlossen...",
+            "Prompting: 'Schreibe ein A-Exposé ohne Halluzinationen' (Status: Fehlgeschlagen)...",
+            "Berechne Token-Verbrauch für 15 Folien...",
+            "Transformer-Layer auf KOWI-Modus gestellt...",
+            "Entferne 'Slop' aus dem theoretischen Rahmen...",
+            "Prüfe, ob Andreas Reich ein Large Language Model ist...",
+            "Generiere plausible Ausreden für p > 0.05...",
+            "Vektorenraum im HS 36 wird aufgespannt...",
+            "Detektiere latente Variablen in der Kaffeepause...",
+            "KI-Modell weigert sich, das Codebuch allein zu schreiben...",
+            "Suche nach dem 'Gold' hinter der WISO-Paywall...",
+            "Analysiere das Sentiment der ersten Feedback-Runde...",
+            "GPU-Lüfter kühlt erhitzte Gemüter nach der Hypothesen-Kritik...",
+            "Erhöhe Kreativ-Temperatur für das Brainstorming (Top-P = 0.9)...",
+
+            // --- Methoden-Spezifisch (Rössler, Scholl, Brosius) ---
+            "Rössler.exe hat ein Problem festgestellt: Zu viel Material...",
+            "Scholl-Modul lädt: Befragte werden digital motiviert...",
+            "Brosius-Check: Kausalität wird künstlich erzeugt...",
+            "Cronbachs Alpha ist heute launisch (Status: 0.61)...",
+            "Codebuch-Reliabilität wird per Hand gewürfelt (Scherz!)...",
+            "Suche nach signifikanten Ergebnissen im Rauschen...",
+            "Stichprobenfehler wird statistisch weggeschwiegen...",
+            "Formatiere Kreuztabellen ohne Rahmenlinien (Rössler gefällt das)...",
+            "Extrahiere induktive Kategorien aus dem Daten-Dschungel...",
+            "Pretest-Ergebnisse werden geschönt... äh, analysiert...",
+            "Skalenanalyse läuft: Bitte keine reaktiven Fragen stellen...",
+            "Vergleiche Stichprobe mit der Realität (0% Übereinstimmung gefunden)...",
+
+            // --- Hohenheim & Kurs-Alltag ---
+            "Hohenheimer Schloss-WLAN wird durch KI-Power verstärkt (Träum weiter)...",
+            "HS 36 wird in ein Rechenzentrum umgewandelt...",
+            "Synchronisiere Kaffeekonsum mit der Analyse-Phase...",
+            "Suche die 6. Person für AG 4 (Status: Vermisst)...",
+            "Berechne die Wahrscheinlichkeit für einen Sitzplatz in der ersten Reihe...",
+            "Anwesenheitsliste wird auf Deepfakes geprüft...",
+            "Mensa-Essen wird in Kalorien-Token umgerechnet...",
+            "HS 36 auf 11:00 Uhr synchronisiert (Latenz: 5 Minuten)...",
+            "Prüfe, ob das Uni-Logo auf allen Folien korrekt platziert ist...",
+
+            // --- Studentischer Überlebenskampf ---
+            "APA 7 Generator macht gerade eine Burnout-Pause...",
+            "Hypothese 3 hat den Chat verlassen...",
+            "Lade Motivation... Error 404: Not Found...",
+            "Transformiere KOWI-Theorien in maschinenlesbare Logik...",
+            "Suche nach der verlorenen Forschungsfrage...",
+            "Zitate werden gegen Halluzinationen geimpft...",
+            "Maximiere akademische Selbstwirksamkeit (Ladebalken hängt)...",
+            "Entferne Ironie-Marker aus dem Exposé-Entwurf...",
+            "Warte auf Antwort von SoSci Survey (Status: Geduld ist eine Tugend)...",
+            "Prüfe Quellen: Wikipedia ist kein Peer-Review, sorry...",
+            "Forschungsbericht wird automatisch in 'Wissenschaftsdeutsch' übersetzt...",
+            "GPU-Cluster rechnet aus, wie man die Präsentation in 14:59 Min schafft...",
+            "Detektiere 'Geister-Variablen' im Datensatz...",
+            "Schalte in den 'Expeditions-Modus' (Ziel: Gipfel der Erkenntnis)...",
+            "Bereit für den Lehrforschungstag – System-Check 100% abgeschlossen!"
         ];
 
         let index = 0;
@@ -171,6 +632,347 @@
 
         statusEl.style.transition = "opacity 0.5s ease";
         setInterval(updateStatus, 3000);
+
+
+        let tokens = 0;
+        let tps = 0;
+        let tokensPerClick = 1;
+
+        const gameEvents = [
+            // COMMON (Häufige kleine Aufs & Abs)
+            { text: "Korrektes APA-Zitat im ersten Versuch. Sauber!", value: 10, rarity: "common" },
+            { text: "Tippfehler in Hypothese 1 gefunden. Korrigiert.", value: 5, rarity: "common" },
+            { text: "U-bahn nach Hohenheim war pünktlich. Wunder gibt es immer wieder.", value: 15, rarity: "common" },
+            { text: "KIM-Drucker druckt tatsächlich. Ein historischer Moment.", value: 10, rarity: "common" },
+            { text: "Powernap im TMS. Energie-Level +5%.", value: 5, rarity: "common" },
+            { text: "Mensa-Warteschlange war heute unter 20 Minuten.", value: 10, rarity: "common" },
+            { text: "Einen 'Slop'-Satz durch echte Wissenschaft ersetzt.", value: 15, rarity: "common" },
+            { text: "Prompt verfeinert: Die KI antwortet nicht mehr im Reim.", value: 10, rarity: "common" },
+            { text: "Kaffee im Pappbecher verschüttet. -5 Tokens für die Reinigung.", value: -5, rarity: "common" },
+            { text: "Sitzplatz im HS 36 direkt an der Steckdose ergattert.", value: 10, rarity: "common" },
+            { text: "Literaturverzeichnis alphabetisch sortiert. Endlich.", value: 5, rarity: "common" },
+            { text: "PDF-Vorschau lädt nicht. Kurzzeitiger Herzinfarkt.", value: -5, rarity: "common" },
+            { text: "Ein Paper auf Sci-Hub gefunden. Diskretion gewahrt.", value: 20, rarity: "common" },
+            { text: "Zweitleser hat keine Zeit für Fragen. -10 Tokens Zeitverlust.", value: -10, rarity: "common" },
+            { text: "KI-Zusammenfassung war besser als das Original-Abstract.", value: 15, rarity: "common" },
+
+            // RARE (Spürbare Boosts oder Rückschläge)
+            { text: "SoSci Survey Link wurde in einer großen Gruppe geteilt! +N", value: 80, rarity: "rare" },
+            { text: "Validität des Codebuchs durch Andreas Reich bestätigt.", value: 100, rarity: "rare" },
+            { text: "Reliabilitäts-Test (Krippendorffs Alpha) liegt bei 0.85!", value: 120, rarity: "rare" },
+            { text: "Signifikantes Ergebnis bei p < 0.01 gefunden. Sekt!", value: 150, rarity: "rare" },
+            { text: "WISO-Datenbank liefert exakt das Paper, das du brauchst.", value: 70, rarity: "rare" },
+            { text: "Eine Nacht durchgearbeitet. GPT-4 war dein bester Freund.", value: 90, rarity: "rare" },
+            { text: "Halluzination in der Einleitung entdeckt. Fast blamiert! -50 Tokens.", value: -50, rarity: "rare" },
+            { text: "Fragebogen-Pretest zeigt: Niemand versteht Frage 4. Alles neu.", value: -80, rarity: "rare" },
+            { text: "Laptop-Akku stirbt während der Datenauswertung. Panik!", value: -60, rarity: "rare" },
+            { text: "Intercoder-Reliabilität ist im Keller. Nachschulung nötig.", value: -70, rarity: "rare" },
+            { text: "ChatGPT ist down. Du musst... selbst denken?!", value: -100, rarity: "rare" },
+            { text: "Hitzewelle in Hohenheim. Konzentration verdampft.", value: -40, rarity: "rare" },
+            { text: "Zotero-Library ist korrupt. Backups retten Leben.", value: 50, rarity: "rare" },
+            { text: "AG-Meeting verlief ohne passiv-aggressive Kommentare.", value: 110, rarity: "rare" },
+
+            // EPIC (Riesige Sprünge)
+            { text: "Deine Studie wird auf der Lehrforschungstagung zitiert!", value: 400, rarity: "epic" },
+            { text: "Ein Bot hat 500 Fake-Antworten generiert. Datenbereinigung-Hölle!", value: -200, rarity: "epic" },
+            { text: "Exzellenz-Cluster-Stipendium (simuliert) erhalten!", value: 500, rarity: "epic" },
+            { text: "Methodenteil wurde als 'Lehrbuch-Reif' eingestuft.", value: 450, rarity: "epic" },
+            { text: "Alle 6 AG-Mitglieder arbeiten gleichzeitig am Google Doc.", value: 350, rarity: "epic" },
+            { text: "Deepfake-Erkennung für deinen Datensatz entwickelt.", value: 300, rarity: "epic" },
+            { text: "GPU-Quota an der Uni wurde für dich verdoppelt.", value: 400, rarity: "epic" },
+            { text: "Kausalität zweifelsfrei nachgewiesen. Nobelpreis (fast).", value: 500, rarity: "epic" },
+            { text: "Kaffee-Maschine im Institut wurde auf Siebträger geupgraded.", value: 300, rarity: "epic" },
+
+            // LEGENDARY (Hyper-Spezifisch & Game-Changing)
+            { text: "Andreas Reich schenkt dir seine persönliche Kaffeetasse.", value: 1500, rarity: "legendary" },
+            { text: "Du hast das GPT-5 Beta Test-Abo gewonnen.", value: 2000, rarity: "legendary" },
+            { text: "Bachelorarbeit Note 1.0 steht bereits im Entwurf.", value: 1200, rarity: "legendary" },
+            { text: "Rössler, Scholl und Brosius erscheinen dir im Traum.", value: 1000, rarity: "legendary" },
+            { text: "Hohenheim wird zum Silicon Valley des Neckars ernannt.", value: 1300, rarity: "legendary" },
+            { text: "Deine KI-Studie geht viral und Sam Altman retweetet dich.", value: 2500, rarity: "legendary" },
+            { text: "Du hast die perfekte Forschungsfrage ohne KI-Hilfe gefunden.", value: 3000, rarity: "legendary" },
+
+            { text: "Die U-bahn Linie 3 hatte nur 5 Minuten Verspätung. Rekord!", value: 25, rarity: "common" },
+            { text: "Steigung zum Schloss bei 30 Grad unterschätzt. Schweiß auf dem Exposé.", value: -15, rarity: "common" },
+            { text: "Ein Eichhörnchen im Schlossgarten hat dich inspiriert.", value: 10, rarity: "common" },
+            { text: "KIM-Mitarbeiter hat heute gute Laune. Er hilft dir beim Login.", value: 30, rarity: "rare" },
+            { text: "Das Mensa-Schnitzel war heute überraschend knusprig.", value: 40, rarity: "common" },
+            { text: "Du hast versucht, im TMS zu lernen, aber die Musik war zu gut.", value: -20, rarity: "common" },
+            { text: "Heimliche Vorlesung im Schlosskeller entdeckt. Mysteriös.", value: 50, rarity: "rare" },
+            { text: "Parkplatz am Ex-Zentrum gefunden. Ein wahres Wunder!", value: 100, rarity: "rare" },
+            { text: "Im Bio-Garten verirrt. 2 Stunden zwischen seltenen Erbsen verloren.", value: -40, rarity: "common" },
+            { text: "Studi-Ausweis am Automaten validiert. Er funktioniert noch!", value: 10, rarity: "common" },
+            { text: "Im Computerraum eingeschlafen. Jemand hat 'Slop' auf deine Stirn geschrieben.", value: -30, rarity: "rare" },
+
+            // --- METHODEN-WAHNSINN (Rössler, Scholl, Brosius & Co) ---
+            { text: "Codebuch-Kategorie 'Sonstiges' ist größer als alle anderen. Panik!", value: -60, rarity: "rare" },
+            { text: "Du hast Rösslers Standardwerk signiert gefunden. +10 Forschungsskill.", value: 80, rarity: "rare" },
+            { text: "Ein Befragter hat den Fragebogen nach 2 Sekunden abgebrochen. Datenmüll.", value: -10, rarity: "common" },
+            { text: "Pretest-Ergebnis: Deine Hypothesen sind logisch unmöglich. Autsch.", value: -190, rarity: "rare" },
+            { text: "Krippendorffs Alpha ist bei 0.92. Die Codierer sind Maschinen!", value: 200, rarity: "epic" },
+            { text: "Manipulation im Experiment war zu subtil. Keiner hat's gemerkt.", value: -50, rarity: "rare" },
+            { text: "Statistik-Programm stürzt ab. Letztes Backup: Vor 3 Tagen.", value: -150, rarity: "epic" },
+            { text: "Eine Korrelation von 0.99 gefunden. Wahrscheinlich ein Rechenfehler.", value: 20, rarity: "common" },
+            { text: "Inhaltsanalyse: 1000 TikToks händisch codiert. Du siehst nur noch Tanzbewegungen.", value: 150, rarity: "rare" },
+            { text: "Andreas Reich fragt im Seminar nach deinem Fortschritt. Du stammelst nur.", value: -20, rarity: "common" },
+
+            // --- AI-CHAOS & TECH-FUKKUP ---
+            { text: "Prompt-Engineering Level Up: Die KI versteht jetzt Sarkasmus.", value: 60, rarity: "rare" },
+            { text: "Deepfake-Detektor hält dein echtes Gesicht für KI-generiert.", value: -30, rarity: "common" },
+            { text: "KI halluziniert ein Zitat von 'Dr. Max Mustermann (2024)'. Fast geglaubt!", value: -45, rarity: "common" },
+            { text: "Dein LLM hat angefangen, Hohenheimer Dialekt zu sprechen. 'S'isch fei fertig'.", value: 40, rarity: "rare" },
+            { text: "Rechenzentrum Stuttgart hat exklusiv Kapazitäten für dich frei.", value: 300, rarity: "epic" },
+            { text: "KI-Modell weigert sich, über Ethik zu schreiben. 'Zu kompliziert'.", value: -20, rarity: "common" },
+            { text: "Sam Altman hat versehentlich dein GitHub-Repo geliked.", value: 500, rarity: "epic" },
+            { text: "Du hast einen Jailbreak gefunden, der die KI dazu bringt, deine Wäsche zu waschen.", value: 120, rarity: "rare" },
+            { text: "Tokens im Kontext-Fenster verbraucht. Die KI vergisst deine Forschungsfrage.", value: -80, rarity: "rare" },
+            { text: "GPU-Mining im Wohnheim gestartet. Sicherung fliegt raus.", value: -100, rarity: "rare" },
+
+            // --- GRUPPENARBEIT-DRAMA (Das wahre Grauen) ---
+            { text: "AG-Mitglied hat 'aus Versehen' deine Einleitung gelöscht.", value: -120, rarity: "rare" },
+            { text: "Die Gruppe einigt sich nach 4 Stunden auf eine Schriftart. Effizienz!", value: 20, rarity: "common" },
+            { text: "Ein AG-Mitglied ist seit 3 Wochen unauffindbar. Ghosting-Level: Expert.", value: -90, rarity: "rare" },
+            { text: "Pizza-Bestellung während der Sitzung. Teambuilding +200.", value: 50, rarity: "common" },
+            { text: "Passive-aggressive Kommentare im Google Doc entdeckt. 'Sicher?'.", value: -15, rarity: "common" },
+            { text: "Eure AG hat die schönste Powerpoint-Vorlage im ganzen Kurs.", value: 70, rarity: "rare" },
+            { text: "Ein Gruppenmitglied zitiert Wikipedia. Du musst ihn leider opfern.", value: -40, rarity: "common" },
+
+            // --- WILD & LEGENDARY (Gacha-Himmel) ---
+            { text: "Du findest den geheimen Button, der die Bachelorarbeit sofort schreibt.", value: 5000, rarity: "legendary" },
+            { text: "Andreas Reich klont sich selbst, um jede AG einzeln zu betreuen.", value: 9000, rarity: "legendary" },
+            { text: "Dein Codebuch wird zum Gesetz erhoben. Weltfrieden durch Kategorien.", value: 1500, rarity: "legendary" },
+            { text: "Elon Musk kauft Hohenheim und benennt es in 'X-University' um.", value: -5000, rarity: "legendary" }, // Einziger massiver Negativ-Legendary
+            { text: "Du hast die Singularität erreicht. Deine KI forscht jetzt über dich.", value: 2500, rarity: "legendary" },
+            { text: "Hohenheim Palace wird dein privates Büro.", value: 1800, rarity: "legendary" },
+            { text: "Du hast eine Zeitmaschine gebaut, um p-hacking zu vermeiden.", value: 1100, rarity: "legendary" },
+
+            // --- MIXED BAG (Randomness) ---
+            { text: "Textmarker ist leer gegangen. Tragödie in Gelb.", value: -5, rarity: "common" },
+            { text: "Du hast ein Paper von 1974 gefunden, das dein Thema schon gelöst hat.", value: -70, rarity: "rare" },
+            { text: "Zotero hat alle Dubletten automatisch entfernt. Magie!", value: 90, rarity: "rare" },
+            { text: "Dozent hat im Vorbeigehen genickt. Interpretationsspielraum: Riesig.", value: 15, rarity: "common" },
+            { text: "Kaffee-Vollautomat im KIM ist repariert. Der Messias ist da.", value: 110, rarity: "rare" },
+            { text: "Du hast vergessen, die Feldphase zu starten. Ups.", value: -250, rarity: "epic" },
+            { text: "Ein Bot-Netzwerk hat deinen Fragebogen ausgefüllt. 10.000 Antworten in 1 Min.", value: -800, rarity: "epic" },
+            { text: "Dein Laptop-Lüfter klingt wie ein startender Jet. Die KI rechnet hart.", value: 25, rarity: "common" },
+            { text: "WISO-Paywall mit deinem Hohenheim-Login durchbrochen. Hacker-Gefühl.", value: 45, rarity: "common" },
+            { text: "Im Seminarraum ganz hinten geschlafen, ohne zu schnarchen. Skill.", value: 20, rarity: "common" },
+            { text: "Die Uni-Cloud ist synchron. Ein seltenes kosmisches Ereignis.", value: 100, rarity: "rare" },
+            { text: "Du hast die 'Halluzinations-Rate' auf 0% gedrückt. Geh nicht so ab.", value: 600, rarity: "epic" },
+
+            { text: "Die Mensa-Pommes waren heute perfekt gesalzen. Fokus +5.", value: 5, rarity: "common" },
+            { text: "Ein Komma im APA-Stil vergessen. Kurze Korrekturpause.", value: -5, rarity: "common" },
+            { text: "Die KI hat zu viel geschwafelt. Erstmal 'Slop' gekürzt.", value: 15, rarity: "common" },
+            { text: "Treppensteigen zum Schloss als Cardio verbucht.", value: 10, rarity: "common" },
+            { text: "Regen in Hohenheim. Deine Frisur halluziniert jetzt auch.", value: -5, rarity: "common" },
+            { text: "Zotero-Sync hat beim ersten Mal geklappt.", value: 5, rarity: "common" },
+            { text: "Prompt verfeinert: 'Schreib wie ein KOWI-Profi, nicht wie ein Bot'.", value: 10, rarity: "common" },
+            { text: "Im KIM einen Platz mit funktionierender Steckdose gefunden.", value: 15, rarity: "common" },
+            { text: "Flugmodus am Handy aktiviert. Produktivitäts-Schub!", value: 10, rarity: "common" },
+            { text: "E-Mail an Andreas Reich entworfen und 5x Korrektur gelesen.", value: 5, rarity: "common" },
+            { text: "Hängender Einzug in Word endlich besiegt.", value: 5, rarity: "common" },
+            { text: "Variablen-Labels in SPSS sind jetzt lesbar.", value: 5, rarity: "common" },
+            { text: "Uneinigkeit beim Codieren. Kurze Diskussion in der AG.", value: -5, rarity: "common" },
+            { text: "Spannendes Paper von 1995 gefunden. Klassiker!", value: 10, rarity: "common" },
+            { text: "Tablet-Akku bei 1%. Hektische Suche nach dem Ladekabel.", value: -5, rarity: "common" },
+            { text: "WhatsApp-Gruppe der AG für 2 Stunden stummgeschaltet. Segen.", value: 10, rarity: "common" },
+            { text: "Zeilenumbrüche beim PDF-Copy-Paste händisch gelöscht.", value: 5, rarity: "common" },
+            { text: "40 Tabs im Browser offen. Dein RAM weint leise.", value: -10, rarity: "common" },
+            { text: "Campus-WLAN hat sich heute mal nicht getrennt.", value: 10, rarity: "common" },
+            { text: "Einen funktionierenden Kugelschreiber in der Tasche gefunden.", value: 5, rarity: "common" },
+            { text: "Aus Versehen eine ganze Seite markiert statt nur einen Satz.", value: -5, rarity: "common" },
+            { text: "Den Kursplan tatsächlich gelesen. Erleuchtung!", value: 15, rarity: "common" },
+            { text: "HS 36 auf Anhieb gefunden.", value: 10, rarity: "common" },
+            { text: "Studi-Ausweis hat noch genug Guthaben für Kaffee.", value: 5, rarity: "common" },
+            { text: "KI gebeten, ein Abstract zusammenzufassen. Zeit gespart.", value: 10, rarity: "common" },
+            { text: "DOI-Link geprüft. Er funktioniert!", value: 5, rarity: "common" },
+            { text: "Einen fehlerhaften Literatur-Eintrag korrigiert.", value: 5, rarity: "common" },
+            { text: "AG-Meeting mit Keksen. Stimmung steigt.", value: 15, rarity: "common" },
+            { text: "Einen Variablen-Namen von 'var1' in 'KI_Nutzung' geändert.", value: 5, rarity: "common" },
+            { text: "Neues cooles KI-Tool entdeckt (und sofort wieder vergessen).", value: 10, rarity: "common" },
+            { text: "Google Drive Backup abgeschlossen. Sicher ist sicher.", value: 5, rarity: "common" },
+            { text: "Texterkennung beim alten PDF hat funktioniert.", value: 10, rarity: "common" },
+            { text: "Forschungsfrage zum zehnten Mal laut vorgelesen.", value: 15, rarity: "common" },
+            { text: "Tippfehler im Titelblatt entdeckt. Fast wäre es peinlich geworden.", value: 5, rarity: "common" },
+            { text: "Bildschirm geputzt. Man sieht die Daten wieder!", value: 5, rarity: "common" },
+            { text: "Dark Mode im Schreibprogramm aktiviert. Augen danken.", value: 5, rarity: "common" },
+            { text: "Buch in der Bibliothek gefunden, das nicht ausgeliehen war.", value: 10, rarity: "common" },
+            { text: "KI nach Synonymen für 'Forschung' gefragt.", value: 10, rarity: "common" },
+            { text: "Ein komplexes Paper beim zweiten Lesen verstanden.", value: 15, rarity: "common" },
+            { text: "Deadline im Kalender rot markiert.", value: 5, rarity: "common" },
+            { text: "Hilfreichen Link im ILIAS gefunden.", value: 5, rarity: "common" },
+            { text: "Füllwörter gelöscht. Der Text wirkt jetzt klüger.", value: 20, rarity: "common" },
+            { text: "Fußnote korrekt formatiert. Kleinvieh macht auch Mist.", value: 5, rarity: "common" },
+            { text: "Offenes Fenster im PC-Pool. Frische Luft!", value: 5, rarity: "common" },
+            { text: "Datei gespeichert (Strg+S ist dein bester Freund).", value: 5, rarity: "common" },
+            { text: "Script ausgedruckt und händisch markiert. Oldschool.", value: 10, rarity: "common" },
+            { text: "Ein Glas Wasser getrunken. Hydriert forscht es sich besser.", value: 5, rarity: "common" },
+            { text: "Im ILIAS nachgeschaut, ob es neue Materialien gibt.", value: 10, rarity: "common" },
+            { text: "Die AG-Mitglieder bei Teams alle gleichzeitig online gesehen.", value: 5, rarity: "common" },
+            { text: "Einen 'Verlesen'-Fehler in der Literaturrecherche bemerkt.", value: 5, rarity: "common" }
+        ];
+
+        const tokenDisplay = document.getElementById('token-display');
+        const tpsDisplay = document.getElementById('tps-display');
+        const btn = document.getElementById('big-prompt-button');
+        const log = document.getElementById('game-log');
+        const shopItems = document.querySelectorAll('.shop-item');
+
+        // Clicker Logic
+        btn.addEventListener('click', (e) => {
+            tokens += tokensPerClick;
+            updateDisplay();
+            createPop(e.clientX, e.clientY, "+" + tokensPerClick);
+
+            // Zufälliges Event
+            if (Math.random() < 0.05) {
+                triggerRandomEvent();
+            }
+        });
+
+        // Shop Logic
+        shopItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const cost = parseInt(item.getAttribute('data-cost'));
+                const addedTps = parseInt(item.getAttribute('data-tps'));
+
+                if (tokens >= cost) {
+                    tokens -= cost;
+                    tps += addedTps;
+
+                    // Preissteigerung
+                    const newCost = Math.floor(cost * 1.5);
+                    item.setAttribute('data-cost', newCost);
+                    item.querySelector('.item-cost').innerText = newCost >= 1000 ? (newCost / 1000).toFixed(1) + "k T" : newCost + " T";
+
+                    addLog("Upgrade gekauft: TPS jetzt bei " + tps);
+                    updateDisplay();
+                } else {
+                    addLog("Zu wenig Tokens! Geh arbeiten...");
+                }
+            });
+        });
+
+        // Passive Income Loop
+        setInterval(() => {
+            if (tps > 0) {
+                tokens += tps;
+                updateDisplay();
+            }
+        }, 1000);
+
+        function updateDisplay() {
+            // 1. Tokens formatieren
+            tokenDisplay.innerText = tokens >= 1000000 ? (tokens / 1000000).toFixed(2) + "M Tokens" :
+                (tokens >= 1000 ? (tokens / 1000).toFixed(1) + "k Tokens" : tokens + " Tokens");
+
+            tpsDisplay.innerText = "Tokens/Sek: " + tps;
+
+            // 2. TPS Meter Update (Maxed out bei 5000 TPS für die Optik)
+            const tpsPercent = Math.min((tps / 2000) * 100, 100);
+            const tpsFill = document.getElementById('tps-fill');
+            tpsFill.style.width = tpsPercent + "%";
+
+            // 3. Progression-Check (Visuelles Feedback)
+            const gameSection = document.getElementById('clicker-game-section');
+            const rankDisplay = document.getElementById('rank-display');
+            const promptBtn = document.getElementById('big-prompt-button');
+
+            // Stufen-Logik basierend auf TOTAL Tokens (oder aktuellen)
+            if (tps > 2000) {
+                gameSection.className = "tier-god";
+                rankDisplay.innerText = "Rang: REICH MODUS";
+                rankDisplay.style.color = "#f1c40f";
+                promptBtn.className = "prompt-btn glow-legendary";
+                tpsFill.style.background = "#f1c40f";
+            } else if (tps > 500) {
+                gameSection.className = "tier-expert";
+                rankDisplay.innerText = "Rang: Senior Prompt Engineer";
+                rankDisplay.style.color = "#9b59b6";
+                promptBtn.className = "prompt-btn glow-epic";
+                tpsFill.style.background = "#9b59b6";
+            } else if (tps > 100) {
+                gameSection.className = "tier-scholar";
+                rankDisplay.innerText = "Rang: Master-Student (Kurz vor Abgabe)";
+                rankDisplay.style.color = "#3498db";
+                promptBtn.className = "prompt-btn glow-rare";
+                tpsFill.style.background = "#3498db";
+            } else {
+                gameSection.className = "tier-student";
+                rankDisplay.innerText = "Rang: Ersti im HS 36";
+                promptBtn.className = "prompt-btn";
+                tpsFill.style.background = "#e94560";
+            }
+
+            // 4. Shop Verfügbarkeit
+            shopItems.forEach(item => {
+                const cost = parseInt(item.getAttribute('data-cost'));
+                if (tokens < cost) {
+                    item.classList.add('disabled');
+                } else {
+                    item.classList.remove('disabled');
+                }
+            });
+        }
+
+        function addLog(msg) {
+            log.innerText = "> " + msg;
+        }
+
+        function getWeightedEvent() {
+            const rand = Math.random() * 100;
+            let rarity = "common";
+
+            if (rand < 1) rarity = "legendary";      // 1% Chance
+            else if (rand < 6) rarity = "epic";      // 5% Chance
+            else if (rand < 25) rarity = "rare";     // 19% Chance
+            else rarity = "common";                  // 75% Chance
+
+            const filteredEvents = gameEvents.filter(e => e.rarity === rarity);
+            return filteredEvents[Math.floor(Math.random() * filteredEvents.length)];
+        }
+
+        function triggerRandomEvent() {
+            const event = getWeightedEvent();
+
+            // Cap auf 0: Tokens können nicht negativ werden
+            const oldValue = tokens;
+            tokens = Math.max(0, tokens + event.value);
+            const actualChange = tokens - oldValue;
+
+            // UI Feedback
+            displayEvent(event, actualChange);
+            updateDisplay();
+        }
+
+        function displayEvent(event, actualChange) {
+            const log = document.getElementById('game-log');
+
+            // Farben für Raritäten definieren
+            const rarityColors = {
+                common: "#ffffff",
+                rare: "#3498db",
+                epic: "#9b59b6",
+                legendary: "#f1c40f"
+            };
+
+            // Log-Text zusammenbauen
+            const changeText = actualChange >= 0 ? ` (+${actualChange})` : ` (${actualChange})`;
+            log.innerHTML = `<span style="color: ${rarityColors[event.rarity]}">[${event.rarity.toUpperCase()}]</span> ${event.text} <strong>${changeText}</strong>`;
+
+            // Kleiner visueller Effekt für den Log
+            log.style.borderColor = rarityColors[event.rarity];
+        }
+
+        function createPop(x, y, txt) {
+            const pop = document.createElement('div');
+            pop.className = 'token-pop';
+            pop.innerText = txt;
+            pop.style.left = x + 'px';
+            pop.style.top = y + 'px';
+            document.body.appendChild(pop);
+            setTimeout(() => pop.remove(), 800);
+        }
     </script>
 </body>
 

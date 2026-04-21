@@ -1,0 +1,101 @@
+
+            <!-- SECTION 5: METHOD WORKBENCHES -->
+            <section id="s3-workbenches" class="animated-on-scroll">
+                <div class="section-header">
+                    <h2>Methoden-Werkstatt: Strategien für den Erfolg</h2>
+                    <p>Jede Methode erfordert eine andere Art der Probenentnahme. Wählt euer Werkzeug:</p>
+                </div>
+
+                <div class="workbench-container">
+                    <!-- Tab Navigation -->
+                    <div class="workbench-nav">
+                        <button class="wb-tab active" data-target="wb-exp">🧪 Experiment (G1 & G3)</button>
+                        <button class="wb-tab" data-target="wb-survey">📋 Befragung (G2)</button>
+                        <button class="wb-tab" data-target="wb-ia">🔎 Inhaltsanalyse (G4)</button>
+                    </div>
+
+                    <!-- Tab Content -->
+                    <div class="wb-content-wrapper">
+
+                        <!-- Workbench: Experiments (G1 & G3) -->
+                        <div id="wb-exp" class="wb-panel active">
+                            <div class="wb-grid">
+                                <div class="wb-text">
+                                    <h3>Der "Goldstandard": Randomisierung</h3>
+                                    <p>Für G1 (Podcasts) und G3 (Bilder) ist die Stichprobenziehung zweigeteilt: Zuerst
+                                        die Rekrutierung, dann die <strong>Zufallszuteilung</strong>.</p>
+                                    <ul class="wb-list">
+                                        <li><strong>Problem:</strong> Systematische Unterschiede (z.B. nur Technik-Fans
+                                            in Gruppe A).</li>
+                                        <li><strong>Lösung:</strong> Der Zufallsgenerator in SoSci Survey übernimmt das
+                                            "Coin Flipping".</li>
+                                        <li><strong>Ziel:</strong> N = 100 (50 pro Gruppe), um statistische Effekte zu
+                                            sehen.</li>
+                                    </ul>
+                                </div>
+                                <div class="wb-interactive">
+                                    <div id="randomizer-sim">
+                                        <div class="sim-person">👤</div>
+                                        <div class="sim-arrow">→</div>
+                                        <div class="sim-groups">
+                                            <div class="sim-box" id="group-a">Gruppe A<br><small>(Human)</small></div>
+                                            <div class="sim-box" id="group-b">Gruppe B<br><small>(AI-Label)</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn-control mini" id="btn-simulate-rand">Teilnehmer zuteilen</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Workbench: Survey (G2) -->
+                        <div id="wb-survey" class="wb-panel">
+                            <div class="wb-grid">
+                                <div class="wb-text">
+                                    <h3>Die Suche nach Varianz</h3>
+                                    <p>G2 (Google AI) braucht Diversität. Wenn ihr nur Studierende fragt, habt ihr keine
+                                        Varianz im Alter oder im Bildungsgrad.</p>
+                                    <ul class="wb-list">
+                                        <li><strong>Diverses Alter:</strong> Nutzt den "Schneeball-Effekt".</li>
+                                        <li><strong>Strategie:</strong> Erstes Drittel: Peers. Zweites Drittel:
+                                            Familie/Kollegen. Drittes Drittel: Fachforen/LinkedIn.</li>
+                                        <li><strong>Vermeide:</strong> Die "Selbstselektion" (nur Leute, die KI hassen,
+                                            antworten).</li>
+                                    </ul>
+                                </div>
+                                <div class="wb-visual-aid">
+                                    <div class="recruitment-map">
+                                        <div class="map-node">WhatsApp (Peers)</div>
+                                        <div class="map-node">LinkedIn (Work)</div>
+                                        <div class="map-node">Facebook (Family)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Workbench: Content Analysis (G4) -->
+                        <div id="wb-ia" class="wb-panel">
+                            <div class="wb-grid">
+                                <div class="wb-text">
+                                    <h3>Das Aussieben (Sifting)</h3>
+                                    <p>G4 (WildChat) hat Millionen Fälle. Ihr müsst eine <strong>systematische
+                                            Auswahl</strong> treffen, die eure Codier-Kapazität nicht sprengt.</p>
+                                    <ul class="wb-list">
+                                        <li><strong>Filter 1:</strong> Sprache (Deutsch/Englisch).</li>
+                                        <li><strong>Filter 2:</strong> Zeitspanne (Letzte 6 Monate).</li>
+                                        <li><strong>Filter 3:</strong> Das Intervall (z.B. jeder 500. Fall).</li>
+                                    </ul>
+                                </div>
+                                <div class="wb-visual-aid">
+                                    <div class="sieve-animation">
+                                        <div class="data-stream">010110...</div>
+                                        <div class="sieve">━━━━</div>
+                                        <div class="selected-data">Codebook-Ready</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>

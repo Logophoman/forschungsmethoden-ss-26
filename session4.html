@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Andreas Reich">
+    <title>Sitzung 4: Untersuchungsdimensionen – Methodenprojekt C</title>
+    
+    <!-- Core Master Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Import der Session 3 Styles (für Brücke, Lab, Radar etc.) -->
+    <link rel="stylesheet" href="session3.css">
+    
+    <style>
+        /* Spezifische Ergänzungen für Sitzung 4 (optional) */
+        .mission-goal {
+            background-color: var(--s3-primary);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html">
+            <img src="uni-logo-de_hoh_weiss.png" alt="Uni Hohenheim" class="uni-logo">
+        </a>
+        <h1>Sitzung 4: Die Anatomie der Forschung</h1>
+        <p class="subtitle">Untersuchungsdimensionen, Konzepte & präzise Definitionen</p>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="index.html">Kursübersicht</a></li>
+                <li><a href="session1.html">Sitzung 1</a></li>
+                <li><a href="session2.html">Sitzung 2</a></li>
+                <li><a href="session3.html">Sitzung 3</a></li>
+                <li><a href="session4.html" class="active">Sitzung 4</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <!-- SECTION 1: HERO (SITZUNGS-INTRO) -->
+            <section id="s4-hero" class="animated-on-scroll">
+                <div class="mission-goal">
+                    <h2>Das Ziel: Was messen wir eigentlich?</h2>
+                    <p>Nachdem wir in Sitzung 3 geklärt haben, <strong>wen</strong> wir untersuchen (Stichprobe), bestimmen wir heute, <strong>was genau</strong> wir beobachten. Wir zerlegen komplexe Ideen in messbare Dimensionen.</p>
+                </div>
+            </section>
+
+            <hr>
+
+
+<!-- SEKTION 2: KORRESPONDENZ-BRIDGE -->
+<section id="s3-abstraction-abyss" class="animated-on-scroll">
+    <div class="section-header">
+        <span class="badge-expedition">Die Theorie-Lücke</span>
+        <h2>Der Abgrund der Abstraktion</h2>
+        <p>Zwischen eurer Hypothese (z.B. unhöflich“) und euren Daten (Zahlen in SPSS) liegt eine tiefe Schlucht. Wir überbrücken sie durch präzise <strong>Dimensionalisierung</strong>.</p>
+    </div>
+
+    <div class="abyss-container">
+        <!-- SVG Szenerie -->
+        <svg id="svg-abyss" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet">
+            <defs>
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                    <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+
+            <!-- Linke Seite: Berg der Theorie -->
+            <path d="M-50,400 L150,100 L300,400 Z" fill="#e1e8f0" />
+            <path d="M50,400 L200,150 L350,400 Z" fill="#cfd9e6" />
+            <circle cx="150" cy="100" r="40" fill="white" opacity="0.3" />
+            <text x="150" y="110" class="svg-label-bold" text-anchor="middle">THEORIE</text>
+            <text x="150" y="130" class="svg-sub-label" text-anchor="middle">Vage Begriffe</text>
+
+            <!-- Rechte Seite: Tal der Daten -->
+            <rect x="500" y="270" width="350" height="80" fill="#f1f4f8" />
+            <path d="M500,270 L850,270" stroke="#003560" stroke-width="2" />
+            <text x="650" y="310" class="svg-label-bold" text-anchor="middle">DATEN</text>
+            <text x="650" y="330" class="svg-sub-label" text-anchor="middle">Messbare Werte</text>
+
+            <!-- Die Brücke (wird per JS animiert) -->
+            <g id="bridge-group">
+                <line x1="250" y1="250" x2="550" y2="300" class="bridge-main-line" />
+                <!-- Brückensegmente (Dimensionen) -->
+                <rect x="280" y="250" width="60" height="10" class="bridge-plank" id="plank-1" />
+                <rect x="360" y="260" width="60" height="10" class="bridge-plank" id="plank-2" />
+                <rect x="440" y="270" width="60" height="10" class="bridge-plank" id="plank-3" />
+            </g>
+
+            <!-- Das Korrespondenzproblem Warning-Icon -->
+            <g id="warning-icon" transform="translate(385, 180)">
+                <path d="M15,0 L30,25 L0,25 Z" fill="#e85f3e" />
+                <text x="15" y="20" fill="white" font-size="12" font-weight="bold" text-anchor="middle">!</text>
+            </g>
+        </svg>
+
+        <div class="abyss-overlay">
+            <div class="explainer-card active" id="explain-1">
+                <h4>1. Konzeptspezifikation</h4>
+                <p>Was meint G1 mit z.B. „Genauigkeit“? Wir müssen den Nebel lichten.</p>
+            </div>
+            <div class="explainer-card" id="explain-2">
+                <h4>2. Dimensionalisierung</h4>
+                <p>G4 zerlegt „Höflichkeit“ in: Grußformeln, „Bitte/Danke“ und Beleidigungen.</p>
+            </div>
+            <div class="explainer-card" id="explain-3">
+                <h4>3. Indikatorenbildung</h4>
+                <p>Die feste Verbindung: Eine Frage im SoSci-Survey oder ein Code im Codebuch.</p>
+            </div>
+        </div>
+        
+        <div class="abyss-controls">
+            <button class="btn-expedition" id="btn-build-bridge">Nächsten Stein legen</button>
+        </div>
+    </div>
+</section>
+            
+            <hr>
+
+            <!-- HIER KOMMT SEKTION 3 REIN (DIE KALIBRIERUNGS-STATION / DRILL-DOWN) -->
+            <!-- Kopiere das HTML von id="s3-variable-lab" hierher -->
+
+            <hr>
+
+            <!-- SECTION 4: GRUPPEN-SPEZIFISCHE VERTIEFUNG -->
+            <section id="s4-group-details" class="animated-on-scroll">
+                <div class="section-header">
+                    <h2>Missions-Briefing: Dimensionen eurer Projekte</h2>
+                    <p>Hier findet ihr die spezifischen Herausforderungen für eure Gruppen-Themen (recycled aus den alten Unterlagen).</p>
+                </div>
+                
+                <!-- TODO: Hier kannst du die group-guidance-boxen aus deiner alten Seite einfügen -->
+            </section>
+
+            <hr>
+
+            <!-- SECTION 5: HOMEWORK (MEILENSTEIN 4) -->
+            <section id="s4-homework" class="animated-on-scroll">
+                <div class="mission-header">
+                    <span class="mission-badge">Meilenstein 04</span>
+                    <h2>Hausaufgabe: Das Dimensions-Dossier</h2>
+                    <p>Erstellt bis zur nächsten Sitzung die detaillierte Liste eurer Untersuchungsdimensionen und Definitionen.</p>
+                </div>
+                
+                <!-- TODO: Hier die Hausaufgaben-Details und die Checklist einfügen -->
+            </section>
+
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2026 Andreas Reich - Universität Hohenheim</p>
+    </footer>
+
+    <!-- Import der Session 3 Logik (für Brückenbau & Lab-Interaktionen) -->
+    <script src="session3.js" defer></script>
+    
+    <script>
+        // Falls du in Sitzung 4 zusätzliche Logik brauchst, hier einfügen:
+        console.log("Expedition Session 4: Anatomie-Modul geladen.");
+    </script>
+</body>
+
+</html>

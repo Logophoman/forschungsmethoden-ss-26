@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Andreas Reich">
+    <title>Sitzung 3: Die Zielgruppe – Methodenprojekt C</title>
+    <!-- Core Styles -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Session Specific Styles -->
+    <link rel="stylesheet" href="session3.css">
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html">
+            <img src="uni-logo-de_hoh_weiss.png" alt="Uni Hohenheim" class="uni-logo">
+        </a>
+        <h1>Sitzung 3: Die Zielgruppe im Visier</h1>
+        <p class="subtitle">Stichprobenplanung, Rekrutierung & Die Suche nach Varianz</p>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="index.html">Kursübersicht</a></li>
+                <li><a href="session1.html">Sitzung 1</a></li>
+                <li><a href="session2.html">Sitzung 2</a></li>
+                <li><a href="session3.html" class="active">Sitzung 3</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <!-- SECTION 1: HERO & EXPEDITION CONTEXT -->
+            <section id="s3-hero" class="animated-on-scroll">
+                <div class="hero-content">
+                    <div class="hero-icon">📡</div>
+                    <div class="hero-text">
+                        <h2>Kurs setzen: Wer gehört zur Crew?</h2>
+                        <p>In der letzten Sitzung haben wir die Landkarte (den Forschungsprozess) gezeichnet. Heute
+                            kalibrieren wir den Kompass: Wir definieren unsere <strong>Grundgesamtheit</strong> und
+                            entscheiden, wen wir aus dem Ozean der Daten fischen (<strong>Stichprobe</strong>).</p>
+                        <div class="hero-stats">
+                            <span class="badge">4 Forschungs-Teams</span>
+                            <span class="badge">N ≈ 200+ Ziel-Teilnehmende</span>
+                            <span class="badge">1 Mission: Erkenntnis</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <hr>
+            <!-- SEKTION 1: FEEDBACK & AUDIT -->
+            <section id="s3-feedback-log" class="animated-on-scroll">
+                <div class="section-header">
+                    <span class="badge-expedition">Kurskorrektur</span>
+                    <h2>Logbuch der Crew: Status-Check & Feedback</h2>
+                    <p>Bevor wir die Netze auswerfen, müssen wir den Ballast abwerfen. Basierend auf euren
+                        Prozessmodellen gibt es spezifische Optimierungen für jedes Team.</p>
+                </div>
+
+                <div class="feedback-grid">
+                    <!-- Gruppe 1: Podcasts -->
+                    <div class="feedback-card" data-group="1">
+                        <div class="card-header">🎙️ G1: Podcast-Labels</div>
+                        <div class="card-content">
+                            <div class="status-light yellow">Optimierung nötig</div>
+                            <ul>
+                                <li><strong>Appelman-Check:</strong> Woher kommt "Genauigkeit"? Skala kritisch prüfen.
+                                </li>
+                                <li><strong>PSI-Hürde:</strong> Kurzer Clip vs. gewachsene parasoziale Beziehung?</li>
+                                <li><strong>Form:</strong> Typos eliminieren (KI-Check nutzen).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Gruppe 2: Google AI -->
+                    <div class="feedback-card" data-group="2">
+                        <div class="card-header">🔍 G2: Google AI Overviews</div>
+                        <div class="card-content">
+                            <div class="status-light yellow">Scope-Alarm</div>
+                            <ul>
+                                <li><strong>Theorie-Overkill:</strong> Von 7 auf 2-3 Kern-Theorien reduzieren.</li>
+                                <li><strong>Google-Habit:</strong> Pragmatismus (Gewohnheit) statt nur Hochtheorie.</li>
+                                <li><strong>Bubble-Gefahr:</strong> Strategie für 40+ Jährige fehlt (Varianz!).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Gruppe 3: Visuals -->
+                    <div class="feedback-card" data-group="3">
+                        <div class="card-header">📸 G3: Visual Authenticity</div>
+                        <div class="card-content">
+                            <div class="status-light yellow">Gefahrenzone</div>
+                            <ul>
+                                <li><strong>Vampir-Effekt:</strong> Bild zu emotional? Überstrahlt das Label
+                                    (Ceiling-Effekt).</li>
+                                <li><strong>Geisterquellen:</strong> 7 Quellen im Verzeichnis, 0 im Text. Belegen!</li>
+                                <li><strong>Variable-Bloat:</strong> Fokus auf 2-3 Kern-AVs (z.B. Authentizität).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Gruppe 4: WildChat -->
+                    <div class="feedback-card" data-group="4">
+                        <div class="card-header">💬 G4: WildChat Politeness</div>
+                        <div class="card-content">
+                            <div class="status-light green">Stabil</div>
+                            <ul>
+                                <li><strong>Listen-Prosa:</strong> Eigene wissenschaftliche Handschrift statt
+                                    Block-Logik.</li>
+                                <li><strong>Zhao-Fauxpas:</strong> Fehlende Quelle im Verzeichnis korrigieren.</li>
+                                <li><strong>Generischer Text:</strong> Auswertungsphase spezifisch oder gar nicht
+                                    beschreiben.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+
+            <!-- SECTION 3: THE HYPOTHESIS AUDITOR -->
+            <section id="s3-hypothesis-lab" class="animated-on-scroll">
+                <div class="section-header">
+                    <h2>Theorie-Check: Das Hypothesen-Labor</h2>
+                    <p>Ein scharfer Stichprobenplan setzt eine messerscharfe Hypothese voraus. Teste deine
+                        Forschungsannahmen auf eure wissenschaftliche Belastbarkeit.</p>
+                </div>
+
+                <div class="lab-grid">
+                    <!-- The Auditor Tool -->
+                    <div class="auditor-card">
+                        <div class="auditor-header">
+                            <span class="auditor-status" id="auditor-status-light"></span>
+                            <h3>Hypothesen-Prüfstand</h3>
+                        </div>
+
+                        <div class="auditor-input-area">
+                            <label for="hypo-input">Gib deine Hypothese ein:</label>
+                            <textarea id="hypo-input"
+                                placeholder="Beispiel: Je mehr KI-Labels, desto geringer die Glaubwürdigkeit..."></textarea>
+                            <div class="keyword-tags" id="keyword-tags">
+                                <!-- Dynamic tags like "Je...desto", "Unterschied", etc. -->
+                            </div>
+                        </div>
+
+                        <div class="auditor-results" id="auditor-results">
+                            <div class="result-placeholder">Warten auf Eingabe...</div>
+                        </div>
+                    </div>
+
+                    <!-- The Theory Reference (Old Teacher's logic) -->
+                    <div class="theory-reference">
+                        <h4>Klassifizierung nach Prof. Standards</h4>
+                        <div class="theory-item" data-type="zusammenhang">
+                            <strong>Zusammenhang (Je...desto)</strong>
+                            <p>Verknüpft zwei kontinuierliche Variablen.</p>
+                        </div>
+                        <div class="theory-item" data-type="unterschied">
+                            <strong>Unterschied</strong>
+                            <p>Vergleicht zwei oder mehr Gruppen (A vs. B).</p>
+                        </div>
+                        <div class="theory-item" data-type="gerichtet">
+                            <strong>Gerichtet (Directed)</strong>
+                            <p>Gibt eine klare Richtung vor (höher/tiefer).</p>
+                        </div>
+                        <div class="theory-item" data-type="spezifisch">
+                            <strong>Spezifisch</strong>
+                            <p>Nennt die Größe des Effekts (selten in BA-Arbeiten).</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+            <!-- SECTION 4: THE SAMPLING FUNNEL -->
+            <section id="s3-sampling-funnel" class="animated-on-scroll">
+                <div class="section-header">
+                    <h2>Die Expedition eingrenzen: Der Sampling-Trichter</h2>
+                    <p>Wir können nicht den ganzen Ozean befragen. Wir müssen definieren, wo wir unser Netz auswerfen.
+                    </p>
+                </div>
+
+                <div class="funnel-layout">
+                    <!-- SVG Animation Area -->
+                    <div class="funnel-visual">
+                        <svg id="sampling-svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Funnel Shapes -->
+                            <path class="funnel-wall" d="M50,50 L350,50 L250,450 L150,450 Z" />
+
+                            <!-- Filter Lines -->
+                            <line class="funnel-filter" x1="85" y1="180" x2="315" y2="180" />
+                            <line class="funnel-filter" x1="125" y1="340" x2="275" y2="340" />
+
+                            <!-- Particle Container (Particles injected via JS) -->
+                            <g id="particle-container"></g>
+
+                            <!-- Labels inside SVG -->
+                            <text x="200" y="40" class="svg-label">Theoretische Grundgesamtheit</text>
+                            <text x="200" y="170" class="svg-label">Auswahlgesamtheit</text>
+                            <text x="200" y="330" class="svg-label">Stichprobe (N)</text>
+                        </svg>
+                        <button id="restart-funnel" class="btn-control badge">Re-Sampling starten 🔄</button>
+                    </div>
+
+                    <!-- Descriptive Steps -->
+                    <div class="funnel-steps">
+                        <div class="step-card" data-step="1">
+                            <span class="step-num">01</span>
+                            <h4>Theoretische Grundgesamtheit</h4>
+                            <p>Über wen wollt ihr eigentlich etwas aussagen? (z.B. "Alle Podcast-Hörer in Deutschland")
+                            </p>
+                        </div>
+                        <div class="step-card" data-step="2">
+                            <span class="step-num">02</span>
+                            <h4>Auswahlgesamtheit (Operational)</h4>
+                            <p>Wen könnet ihr technisch erreichen? (z.B. "Deutschsprachige Social-Media Nutzer")</p>
+                        </div>
+                        <div class="step-card" data-step="3">
+                            <span class="step-num">03</span>
+                            <h4>Realisierte Stichprobe</h4>
+                            <p>Wer hat den Fragebogen wirklich beendet? (euer finales N)</p>
+                        </div>
+                        <div class="funnel-warning">
+                            <strong>Achtung:</strong> Jeder Filter reduziert die <em>Repräsentativität</em>, erhöht aber
+                            die <em>Machbarkeit</em>.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+
+
+            <!-- SECTION 5: DER METHODEN-KOMPASS (DASHBOARD-SHELL) -->
+            <section id="s3-method-compass" class="animated-on-scroll">
+                <div class="section-header">
+                    <span class="badge-expedition">Spezialisierung</span>
+                    <h2>Der Methoden-Kompass: Dein Ziehungs-Plan</h2>
+                    <p>Jeder Forschungspfad hat seine eigene Logik für die Stichprobe. Wähle deine Ausrüstung, um die
+                        Details für dein Projekt zu sehen.</p>
+                </div>
+
+                <!-- Methoden-Wähler (Karten) -->
+                <div class="compass-selector">
+                    <div class="compass-card" id="card-ia" onclick="selectMethod('ia')">
+                        <div class="compass-icon">🔎</div>
+                        <h3>Inhaltsanalyse</h3>
+                        <p>Fokus: Medieneinheiten & Artefakte</p>
+                        <span class="compass-btn">Ausrüsten</span>
+                    </div>
+
+                    <div class="compass-card" id="card-exp" onclick="selectMethod('exp')">
+                        <div class="compass-icon">🧪</div>
+                        <h3>Experiment</h3>
+                        <p>Fokus: Randomisierung & Kausalität</p>
+                        <span class="compass-btn">Ausrüsten</span>
+                    </div>
+
+                    <div class="compass-card" id="card-survey" onclick="selectMethod('survey')">
+                        <div class="compass-icon">📋</div>
+                        <h3>Befragung</h3>
+                        <p>Fokus: Varianz & Repräsentativität</p>
+                        <span class="compass-btn">Ausrüsten</span>
+                    </div>
+                </div>
+
+                <!-- Dynamischer Content-Bereich (Bühne) -->
+                <div id="method-details-stage" class="method-stage-hidden">
+
+                    <!-- Modul: Inhaltsanalyse -->
+                    <div id="module-ia" class="method-module">
+                        <div class="module-grid">
+                            <div class="module-text">
+                                <div class="method-badge">Artefakt-Fokus</div>
+                                <h3>Stichproben in der Inhaltsanalyse</h3>
+                                <p>In der IA ziehen wir keine Menschen, sondern <strong>Untersuchungseinheiten</strong>
+                                    (Units). Für G4 bedeutet das: Wir ziehen keine Nutzer, sondern deren
+                                    <em>Prompts</em>.</p>
+
+                                <div class="theory-box-mini">
+                                    <h4>Was ist die Grundgesamtheit?</h4>
+                                    <p>Das "Universum" aller relevanten Medieneinheiten. Definiert über:</p>
+                                    <ul>
+                                        <li><strong>Zeit:</strong> (z.B. Jan bis April 2026)</li>
+                                        <li><strong>Raum:</strong> (z.B. Nur WildChat Datensatz)</li>
+                                        <li><strong>Inhalt:</strong> (z.B. Nur deutsche Prompts)</li>
+                                    </ul>
+                                </div>
+
+                                <div class="selection-logic">
+                                    <h4>Ziehungsverfahren wählen:</h4>
+                                    <div class="logic-buttons">
+                                        <button class="btn-logic" onclick="updateIAViz('random')">Zufall</button>
+                                        <button class="btn-logic" onclick="updateIAViz('system')">Systematisch</button>
+                                        <button class="btn-logic" onclick="updateIAViz('purposive')">Bewusst</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-visual">
+                                <div class="sieve-container">
+                                    <div class="sieve-label" id="ia-viz-title">Universum (Alles)</div>
+                                    <svg id="ia-sampling-svg" viewBox="0 0 300 400">
+                                        <!-- Funnel/Sieve Visual -->
+                                        <path d="M20,50 L280,50 L180,350 L120,350 Z" fill="none" stroke="#cbd5e1"
+                                            stroke-width="2" stroke-dasharray="5 5" />
+
+                                        <!-- Particles Area -->
+                                        <g id="ia-particles"></g>
+
+                                        <!-- The Filter Line -->
+                                        <line x1="80" y1="200" x2="220" y2="200" stroke="var(--s3-accent)"
+                                            stroke-width="3" />
+                                    </svg>
+                                    <div class="sieve-description" id="ia-viz-desc">
+                                        Wähle ein Verfahren, um den Filter-Prozess zu starten.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Zusätzliche Tiefe aus altem Material -->
+                        <div class="method-deep-dive">
+                            <h4>Der Sampling Frame (Auswahlrahmen)</h4>
+                            <div class="warning-box-styled">
+                                <strong>Wichtig für G4:</strong> Ihr braucht eine vollständige Liste aller Einheiten
+                                (z.B. alle Zeilen in eurem WildChat-Extrakt). Nur dann ist echte Zufallsauswahl möglich!
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Modul: Experiment -->
+                    <div id="module-exp" class="method-module">
+                        <div class="module-grid">
+                            <div class="module-text">
+                                <div class="method-badge secondary">Kausalitäts-Fokus</div>
+                                <h3>Stichproben im Experiment</h3>
+                                <p>Für G1 und G3 zählt nicht die Repräsentativität für ganz Deutschland, sondern die
+                                    <strong>interne Validität</strong>: Ist der Effekt wirklich auf das KI-Label
+                                    zurückzuführen?</p>
+
+                                <div class="theory-box-mini">
+                                    <h4>Repräsentativität vs. Kontrolle</h4>
+                                    <p>Experimente nutzen oft <em>Gelegenheitsstichproben</em> (Convenience Samples).
+                                        Das Ziel:</p>
+                                    <ul>
+                                        <li><strong>Homogenität:</strong> Eine ähnliche Gruppe (z.B. Studierende)
+                                            reduziert Störeinflüsse.</li>
+                                        <li><strong>Randomisierung:</strong> Die zufällige Zuteilung "löscht"
+                                            individuelle Unterschiede (wie Vorwissen über KI) statistisch aus.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="selection-logic">
+                                    <h4>Der Randomisierungs-Check:</h4>
+                                    <p class="small">Drücke den Button, um zu sehen, wie SoSci Survey Teilnehmer auf
+                                        eure Gruppen verteilt.</p>
+                                    <button class="btn-logic accent" onclick="runRandomizer()">Randomisierung starten
+                                        🎲</button>
+                                </div>
+                            </div>
+
+                            <div class="module-visual">
+                                <div class="machine-container">
+                                    <div class="machine-label">Teilnehmer-Pool (N=100)</div>
+                                    <div class="random-machine">
+                                        <div class="input-funnel">👥</div>
+                                        <div class="machine-core" id="machine-core">
+                                            <span class="gear">⚙️</span>
+                                        </div>
+                                        <div class="output-lanes">
+                                            <div class="lane" id="lane-a">
+                                                <div class="lane-label">Gruppe A (Human)</div>
+                                                <div class="lane-count" id="count-a">0</div>
+                                            </div>
+                                            <div class="lane" id="lane-b">
+                                                <div class="lane-label">Gruppe B (AI-Label)</div>
+                                                <div class="lane-count" id="count-b">0</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="machine-status" id="machine-status">Bereit für Zuteilung...</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="method-deep-dive">
+                            <h4>Implementierung in SoSci Survey</h4>
+                            <div class="info-box-styled">
+                                <strong>Profi-Tipp für G1 & G3:</strong> Nutzt den "Zufallsgenerator" als Urne. Er zieht
+                                für jeden Teilnehmer eine Nummer (1 oder 2). Das ist sauberer als ein händischer
+                                Wechsel!
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modul: Befragung -->
+                    <div id="module-survey" class="method-module">
+                        <div class="module-grid">
+                            <div class="module-text">
+                                <div class="method-badge survey">Repräsentativitäts-Check</div>
+                                <h3>Stichproben in der Befragung</h3>
+                                <p>Für G2 ist das Ziel meist die <strong>externe Validität</strong>: Können wir die
+                                    Ergebnisse auf die Bevölkerung (18-65 J.) übertragen?</p>
+
+                                <div id="survey-decision-tree">
+                                    <div class="tree-step" id="tree-step-1">
+                                        <h4>Schritt 1: Der Auswahlrahmen</h4>
+                                        <p>Besitzt ihr eine Liste aller Google-Nutzer in Deutschland (Sampling Frame)?
+                                        </p>
+                                        <div class="logic-buttons">
+                                            <button class="btn-logic" onclick="surveyStep(2, 'yes')">Ja</button>
+                                            <button class="btn-logic" onclick="surveyStep(2, 'no')">Nein</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-visual">
+                                <div class="logic-map-container">
+                                    <div class="map-header">Euer Ziehungs-Pfad</div>
+                                    <div id="survey-map-visual">
+                                        <!-- Wird dynamisch gefüllt -->
+                                        <div class="map-placeholder">Trefft eine Entscheidung links...</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tiefe aus altem Material: Systematik -->
+                        <div class="method-deep-dive">
+                            <h4>Systematik der Auswahlverfahren</h4>
+                            <div class="survey-table-wrapper">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Wahrscheinlichkeit (Zufall)</th>
+                                            <th>Nicht-Wahrscheinlichkeit (Willkürlich)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Einfacher Zufall:</strong> Lottoprinzip (Liste nötig).</td>
+                                            <td><strong>Gelegenheit:</strong> Wer gerade den Link klickt (Gefahr: Bias).
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Geschichtet:</strong> Zufall innerhalb von Quoten (z.B. Alter).
+                                            </td>
+                                            <td><strong>Schneeball:</strong> Teilnehmer rekrutieren Freunde (gut für
+                                                G2!).</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Klumpen:</strong> Ganze Gruppen (z.B. Schulklassen).</td>
+                                            <td><strong>Quote:</strong> Bewusste Auswahl, bis N pro Gruppe voll ist.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn-close-stage" onclick="closeMethodStage()">× Pfad wechseln</button>
+                </div>
+            </section>
+
+            <hr>
+
+            <!-- SECTION 6: LEGAL & ETHICAL GATEKEEPER -->
+            <section id="s3-legal-corner" class="animated-on-scroll">
+                <div class="section-header">
+                    <h2>Ethik-Check: Der Gatekeeper</h2>
+                    <p>Ein falscher Schritt bei der Stichprobenziehung kann eure gesamte Studie ungültig machen. Teste
+                        Dein Vorhaben:</p>
+                </div>
+
+                <div class="legal-game-container">
+                    <div class="gatekeeper-visual">
+                        <div class="traffic-light">
+                            <div class="light red" id="light-red"></div>
+                            <div class="light yellow" id="light-yellow"></div>
+                            <div class="light green" id="light-green"></div>
+                        </div>
+                        <div class="gatekeeper-avatar">⚖️</div>
+                    </div>
+
+                    <div class="scenario-box">
+                        <div id="scenario-text">Lade Szenario...</div>
+                        <div class="legal-choices">
+                            <button class="legal-btn" data-choice="green">Erlaubt (Grün)</button>
+                            <button class="legal-btn" data-choice="yellow">Vorsicht (Gelb)</button>
+                            <button class="legal-btn" data-choice="red">Verboten (Rot)</button>
+                        </div>
+                        <div id="legal-feedback" class="legal-feedback-box"></div>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+            <!-- SECTION 7: HOMEWORK & MISSION (STICHPROBENPLAN) -->
+            <section id="s3-homework" class="animated-on-scroll">
+                <div class="mission-header">
+                    <span class="mission-badge">Meilenstein 03</span>
+                    <h2>Die Mission: Der Stichprobenplan</h2>
+                    <p>Ein Schiff ohne Crew sinkt. Ihr müsst nun präzise festlegen, wen ihr an Bord holt. Euer
+                        Stichprobenplan ist das <strong>technische Protokoll</strong> eurer Rekrutierung.</p>
+                </div>
+
+                <div class="mission-grid">
+                    <!-- Task Details -->
+                    <div class="mission-details">
+                        <h3>Konkrete Arbeitsschritte für euer Dossier:</h3>
+
+                        <div class="task-step">
+                            <div class="step-num">1</div>
+                            <div class="step-content">
+                                <h4>Definition der Grundgesamtheiten (GG)</h4>
+                                <p>Unterscheidet sauber zwischen der <strong>theoretisch idealen GG</strong> (über wen
+                                    wollt ihr eigentlich sprechen?) und der <strong>operationalen GG</strong> (wen könnt
+                                    ihr mit euren Mitteln/Design wirklich erreichen?).</p>
+                                <ul class="sub-task">
+                                    <li>G2: Wer sind "regelmäßige Google-Nutzer"?</li>
+                                    <li>G4: Welcher Zeitraum und welche Sprachen im WildChat-Set?</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="task-step">
+                            <div class="step-num">2</div>
+                            <div class="step-content">
+                                <h4>Wahl & Begründung des Ziehungsverfahrens</h4>
+                                <p>Legt fest, wie ihr die Einheiten auswählt. Nutzt die Fachbegriffe aus der Sitzung:
+                                </p>
+                                <ul class="sub-task">
+                                    <li><strong>Zufallsauswahl:</strong> Habt ihr einen <em>Sampling Frame</em>
+                                        (vollständige Liste)?</li>
+                                    <li><strong>Nicht-Zufall:</strong> Nutzt ihr Quoten, Schneeballverfahren oder
+                                        Convenience? Warum ist das für euer Projekt vertretbar?</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="task-step">
+                            <div class="step-num">3</div>
+                            <div class="step-content">
+                                <h4>Fallzahlplanung (N) & Varianz</h4>
+                                <p>Wie viele Teilnehmende/Einheiten strebt ihr an? Begründet die Zahl (z.B.
+                                    Vergleichbarkeit der Gruppen, statistische Power).</p>
+                                <p><strong>Varianz-Check:</strong> Wie stellt ihr sicher, dass ihr nicht nur Hohenheimer
+                                    Studenten in der Stichprobe habt? (Relevant für G1, G2, G3).</p>
+                            </div>
+                        </div>
+
+                        <div class="task-step">
+                            <div class="step-num">4</div>
+                            <div class="step-content">
+                                <h4>Methodenspezifische Protokolle</h4>
+                                <ul class="sub-task">
+                                    <li><strong>G1 & G3 (Experiment):</strong> Skizziert exakt die Randomisierungs-Logik
+                                        in SoSci Survey (Zufallsgenerator).</li>
+                                    <li><strong>G4 (Inhaltsanalyse):</strong> Definiert die <em>Sampling Units</em>
+                                        (Prompts) und das Filter-Intervall (z.B. jeder 100. Fall).</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="submission-info-box">
+                            <h4>Formale Vorgaben</h4>
+                            <ul>
+                                <li><strong>Umfang:</strong> 3-4 DIN A4-Seiten Text (reiner Fließtext,
+                                    wissenschaftlicher Stil).</li>
+                                <li><strong>Zitation:</strong> Alle methodischen Entscheidungen sollten (wo möglich) mit
+                                    Quellen belegt sein (z.B. Rössler, 2017; Brosius et al., 2022) gemäß <strong>APA
+                                        7</strong>.</li>
+                                <li><strong>Deadline:</strong> Montag, 18:00 Uhr via ILIAS.</li>
+                                <li><strong>Output:</strong> 1 PDF-Dokument + Präsentation für die Sitzung.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Student Self-Check -->
+                    <div class="self-check-card">
+                        <h4>Qualitäts-Check</h4>
+                        <p class="small">Hakt diese Punkte ab, bevor ihr hochladet:</p>
+                        <div class="check-item">
+                            <input type="checkbox" id="check1">
+                            <label for="check1">Unterscheidung theoretische vs. operationale GG ist klar.</label>
+                        </div>
+                        <div class="check-item">
+                            <input type="checkbox" id="check2">
+                            <label for="check2">Ziehungsverfahren ist methodisch korrekt benannt.</label>
+                        </div>
+                        <div class="check-item">
+                            <input type="checkbox" id="check3">
+                            <label for="check3">Vor- und Nachteile (Bias/Repräsentativität) werden ehrlich
+                                diskutiert.</label>
+                        </div>
+                        <div class="check-item">
+                            <input type="checkbox" id="check4">
+                            <label for="check4">Rekrutierungsweg (z.B. Social Media Kanäle) ist konkret geplant.</label>
+                        </div>
+                        <div class="check-item">
+                            <input type="checkbox" id="check5">
+                            <label for="check5">Bei Experimenten: Randomisierung ist wasserdicht.</label>
+                        </div>
+                        <div id="check-feedback">Status: In Bearbeitung...</div>
+                    </div>
+                </div>
+
+                <div class="final-cta">
+                    <div class="warning-box-styled">
+                        <strong>Achtung:</strong> Ihr sollt den Plan entwickeln, aber die eigentliche Stichprobenziehung
+                        (das "Feld") noch <strong>nicht</strong> starten! Erst kommt das Feedback.
+                    </div>
+                    <a href="index.html" class="btn-control outline">← Zurück zum Basislager</a>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2026 Andreas Reich - Universität Hohenheim</p>
+    </footer>
+
+    <!-- Core Script -->
+    <script src="session3.js" defer></script>
+</body>
+
+</html>
