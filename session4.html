@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Andreas Reich">
     <title>Sitzung 4: Untersuchungsdimensionen – Methodenprojekt C</title>
-    
+
     <!-- Core Master Styles -->
     <link rel="stylesheet" href="style.css">
-    
+
     <!-- Import der Session 3 Styles (für Brücke, Lab, Radar etc.) -->
     <link rel="stylesheet" href="session3.css">
-    
+    <link rel="stylesheet" href="session4.css">
+
     <style>
         /* Spezifische Ergänzungen für Sitzung 4 (optional) */
         .mission-goal {
@@ -47,116 +48,455 @@
         </nav>
 
         <main>
-            <!-- SECTION 1: HERO (SITZUNGS-INTRO) -->
-            <section id="s4-hero" class="animated-on-scroll">
-                <div class="mission-goal">
-                    <h2>Das Ziel: Was messen wir eigentlich?</h2>
-                    <p>Nachdem wir in Sitzung 3 geklärt haben, <strong>wen</strong> wir untersuchen (Stichprobe), bestimmen wir heute, <strong>was genau</strong> wir beobachten. Wir zerlegen komplexe Ideen in messbare Dimensionen.</p>
+            <!-- SECTION 0: EYE-WATERING HERO -->
+            <section id="s4-hero-lab">
+                <div class="lab-grid-overlay"></div>
+                <div class="scanning-beam"></div>
+
+                <div class="hero-wrapper">
+                    <div class="mission-meta">
+                        <span class="step-indicator">Schritt 04</span>
+                        <span class="status-badge">Präzisions-Modus aktiv</span>
+                    </div>
+
+                    <div class="hero-main-content">
+                        <h1 class="glitch-text" data-text="Die Anatomie der Begriffe">Die Anatomie der Begriffe</h1>
+                        <p class="hero-lead">
+                            Wir verlassen den weiten Ozean der Stichproben und betreten das
+                            <span class="highlight-blur">Labor der Schärfe</span>.
+                            Heute zerlegen wir eure Visionen in messbare Atome.
+                        </p>
+                    </div>
+
+                    <div class="lab-progress-path">
+                        <div class="path-node completed"><span>👥</span><label>Stichprobe</label></div>
+                        <div class="path-connector active"></div>
+                        <div class="path-node current"><span>🔬</span><label>Dimensionen</label></div>
+                        <div class="path-connector"></div>
+                        <div class="path-node"><span>📐</span><label>Indikatoren</label></div>
+                    </div>
+                </div>
+
+                <div class="scroll-prompt">
+                    <div class="mouse"></div>
+                    <span>In den Abstraktions-Abgrund</span>
                 </div>
             </section>
 
             <hr>
 
+            <!-- SECTION 1: THE AUDIT TERMINAL -->
+            <section id="s4-audit-terminal" class="animated-on-scroll">
+                <div class="section-header">
+                    <span class="badge-expedition">Labor-Audit</span>
+                    <h2>Kalibrierung der Instrumente: Der Audit-Check</h2>
+                    <p>Vor dem Start der Feinplanung (Sitzung 4) müssen wir den Kurs basierend auf euren
+                        Stichprobenplänen korrigieren. Hier sind eure <strong>Audit-Ergebnisse</strong>:</p>
+                </div>
 
-<!-- SEKTION 2: KORRESPONDENZ-BRIDGE -->
-<section id="s3-abstraction-abyss" class="animated-on-scroll">
-    <div class="section-header">
-        <span class="badge-expedition">Die Theorie-Lücke</span>
-        <h2>Der Abgrund der Abstraktion</h2>
-        <p>Zwischen eurer Hypothese (z.B. unhöflich“) und euren Daten (Zahlen in SPSS) liegt eine tiefe Schlucht. Wir überbrücken sie durch präzise <strong>Dimensionalisierung</strong>.</p>
-    </div>
+                <div class="audit-grid">
+                    <!-- Group 1: Podcasts -->
+                    <div class="audit-card" id="audit-g1">
+                        <div class="audit-header">
+                            <span class="group-tag">Gruppe 01</span>
+                            <h3>🎙️ Podcast & Credibility</h3>
+                        </div>
+                        <div class="audit-body">
+                            <div class="status-box success">
+                                <strong>Theorie-Upgrade:</strong> Der Wechsel zum MAIN-Modell ist konsistent. PSI-Exit
+                                war goldrichtig.
+                            </div>
+                            <div class="status-box warning">
+                                <strong>Calibration Alert:</strong> Der Audio-Stimulus ist eure größte Baustelle. Ohne
+                                Content kein Pretest.
+                            </div>
+                            <p class="mission-instruction"><strong>Nächster Schritt:</strong> Stimulus-Inhalt
+                                finalisieren.</p>
+                        </div>
+                    </div>
 
-    <div class="abyss-container">
-        <!-- SVG Szenerie -->
-        <svg id="svg-abyss" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet">
-            <defs>
-                <filter id="glow">
-                    <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
-                    <feMerge>
-                        <feMergeNode in="coloredBlur"/>
-                        <feMergeNode in="SourceGraphic"/>
-                    </feMerge>
-                </filter>
-            </defs>
+                    <!-- Group 2: Google AI -->
+                    <div class="audit-card" id="audit-g2">
+                        <div class="audit-header">
+                            <span class="group-tag">Gruppe 02</span>
+                            <h3>🔍 Google AI & Habit</h3>
+                        </div>
+                        <div class="audit-body">
+                            <div class="status-box success">
+                                <strong>Theorie-Upgrade:</strong> Habit-Perspektive (Allcott et al.) hebt das Projekt
+                                auf Pro-Level.
+                            </div>
+                            <div class="status-box danger">
+                                <strong>Calibration Alert:</strong> Santiago-Beispiel ist zu trivial. <em>Gefahr:
+                                    Bottom-Effekt.</em>
+                            </div>
+                            <p class="mission-instruction"><strong>Nächster Schritt:</strong> Wählt einen "komplexeren"
+                                Stimulus.</p>
+                        </div>
+                    </div>
 
-            <!-- Linke Seite: Berg der Theorie -->
-            <path d="M-50,400 L150,100 L300,400 Z" fill="#e1e8f0" />
-            <path d="M50,400 L200,150 L350,400 Z" fill="#cfd9e6" />
-            <circle cx="150" cy="100" r="40" fill="white" opacity="0.3" />
-            <text x="150" y="110" class="svg-label-bold" text-anchor="middle">THEORIE</text>
-            <text x="150" y="130" class="svg-sub-label" text-anchor="middle">Vage Begriffe</text>
+                    <!-- Group 3: Visuals -->
+                    <div class="audit-card" id="audit-g3">
+                        <div class="audit-header">
+                            <span class="group-tag">Gruppe 03</span>
+                            <h3>📸 Visual Labels</h3>
+                        </div>
+                        <div class="audit-body">
+                            <div class="status-box success">
+                                <strong>Theorie-Upgrade:</strong> Interne Validität (Shadish et al.) wurde methodisch
+                                sauber begründet.
+                            </div>
+                            <div class="status-box warning">
+                                <strong>Calibration Alert:</strong> Vorsicht vor dem "Vampir-Effekt" des emotionalen
+                                Bildes.
+                            </div>
+                            <p class="mission-instruction"><strong>Nächster Schritt:</strong> Pre-Pretest zur
+                                Bildwirkung.</p>
+                        </div>
+                    </div>
 
-            <!-- Rechte Seite: Tal der Daten -->
-            <rect x="500" y="270" width="350" height="80" fill="#f1f4f8" />
-            <path d="M500,270 L850,270" stroke="#003560" stroke-width="2" />
-            <text x="650" y="310" class="svg-label-bold" text-anchor="middle">DATEN</text>
-            <text x="650" y="330" class="svg-sub-label" text-anchor="middle">Messbare Werte</text>
+                    <!-- Group 4: WildChat -->
+                    <div class="audit-card" id="audit-g4">
+                        <div class="audit-header">
+                            <span class="group-tag">Gruppe 04</span>
+                            <h3>💬 WildChat Politeness</h3>
+                        </div>
+                        <div class="audit-body">
+                            <div class="status-box success">
+                                <strong>Methodik-Upgrade:</strong> Python-Sampling schließt menschlichen Bias
+                                (Confirmation Bias) aus.
+                            </div>
+                            <div class="status-box danger">
+                                <strong>Calibration Alert:</strong> "Theoretische Sättigung" ist bei 4.8 Mio.
+                                Datenpunkten ein Risiko.
+                            </div>
+                            <p class="mission-instruction"><strong>Nächster Schritt:</strong> Trennscharfes Codebuch
+                                entwickeln.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-            <!-- Die Brücke (wird per JS animiert) -->
-            <g id="bridge-group">
-                <line x1="250" y1="250" x2="550" y2="300" class="bridge-main-line" />
-                <!-- Brückensegmente (Dimensionen) -->
-                <rect x="280" y="250" width="60" height="10" class="bridge-plank" id="plank-1" />
-                <rect x="360" y="260" width="60" height="10" class="bridge-plank" id="plank-2" />
-                <rect x="440" y="270" width="60" height="10" class="bridge-plank" id="plank-3" />
-            </g>
 
-            <!-- Das Korrespondenzproblem Warning-Icon -->
-            <g id="warning-icon" transform="translate(385, 180)">
-                <path d="M15,0 L30,25 L0,25 Z" fill="#e85f3e" />
-                <text x="15" y="20" fill="white" font-size="12" font-weight="bold" text-anchor="middle">!</text>
-            </g>
-        </svg>
 
-        <div class="abyss-overlay">
-            <div class="explainer-card active" id="explain-1">
-                <h4>1. Konzeptspezifikation</h4>
-                <p>Was meint G1 mit z.B. „Genauigkeit“? Wir müssen den Nebel lichten.</p>
-            </div>
-            <div class="explainer-card" id="explain-2">
-                <h4>2. Dimensionalisierung</h4>
-                <p>G4 zerlegt „Höflichkeit“ in: Grußformeln, „Bitte/Danke“ und Beleidigungen.</p>
-            </div>
-            <div class="explainer-card" id="explain-3">
-                <h4>3. Indikatorenbildung</h4>
-                <p>Die feste Verbindung: Eine Frage im SoSci-Survey oder ein Code im Codebuch.</p>
-            </div>
-        </div>
-        
-        <div class="abyss-controls">
-            <button class="btn-expedition" id="btn-build-bridge">Nächsten Stein legen</button>
-        </div>
-    </div>
-</section>
-            
+            <!-- SEKTION 2: KORRESPONDENZ-BRIDGE -->
+            <section id="s3-abstraction-abyss" class="animated-on-scroll">
+                <div class="section-header">
+                    <span class="badge-expedition">Die Theorie-Lücke</span>
+                    <h2>Der Abgrund der Abstraktion</h2>
+                    <p>Zwischen eurer Hypothese (z.B. unhöflich“) und euren Daten (Zahlen in SPSS) liegt eine tiefe
+                        Schlucht. Wir überbrücken sie durch präzise <strong>Dimensionalisierung</strong>.</p>
+                </div>
+
+                <div class="abyss-container">
+                    <!-- SVG Szenerie -->
+                    <svg id="svg-abyss" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet">
+                        <defs>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+                        </defs>
+
+                        <!-- Linke Seite: Berg der Theorie -->
+                        <path d="M-50,400 L150,100 L300,400 Z" fill="#e1e8f0" />
+                        <path d="M50,400 L200,150 L350,400 Z" fill="#cfd9e6" />
+                        <circle cx="150" cy="100" r="40" fill="white" opacity="0.3" />
+                        <text x="150" y="110" class="svg-label-bold" text-anchor="middle">THEORIE</text>
+                        <text x="150" y="130" class="svg-sub-label" text-anchor="middle">Vage Begriffe</text>
+
+                        <!-- Rechte Seite: Tal der Daten -->
+                        <rect x="500" y="270" width="350" height="80" fill="#f1f4f8" />
+                        <path d="M500,270 L850,270" stroke="#003560" stroke-width="2" />
+                        <text x="650" y="310" class="svg-label-bold" text-anchor="middle">DATEN</text>
+                        <text x="650" y="330" class="svg-sub-label" text-anchor="middle">Messbare Werte</text>
+
+                        <!-- Die Brücke (wird per JS animiert) -->
+                        <g id="bridge-group">
+                            <line x1="250" y1="250" x2="550" y2="300" class="bridge-main-line" />
+                            <!-- Brückensegmente (Dimensionen) -->
+                            <rect x="280" y="250" width="60" height="10" class="bridge-plank" id="plank-1" />
+                            <rect x="360" y="260" width="60" height="10" class="bridge-plank" id="plank-2" />
+                            <rect x="440" y="270" width="60" height="10" class="bridge-plank" id="plank-3" />
+                        </g>
+
+                        <!-- Das Korrespondenzproblem Warning-Icon -->
+                        <g id="warning-icon" transform="translate(385, 180)">
+                            <path d="M15,0 L30,25 L0,25 Z" fill="#e85f3e" />
+                            <text x="15" y="20" fill="white" font-size="12" font-weight="bold"
+                                text-anchor="middle">!</text>
+                        </g>
+                    </svg>
+
+                    <div class="abyss-overlay">
+                        <div class="explainer-card active" id="explain-1">
+                            <h4>1. Konzeptspezifikation</h4>
+                            <p>Was meint G1 mit z.B. „Genauigkeit“? Wir müssen den Nebel lichten.</p>
+                        </div>
+                        <div class="explainer-card" id="explain-2">
+                            <h4>2. Dimensionalisierung</h4>
+                            <p>G4 zerlegt „Höflichkeit“ in: Grußformeln, „Bitte/Danke“ und Beleidigungen.</p>
+                        </div>
+                        <div class="explainer-card" id="explain-3">
+                            <h4>3. Indikatorenbildung</h4>
+                            <p>Die feste Verbindung: Eine Frage im SoSci-Survey oder ein Code im Codebuch.</p>
+                        </div>
+                    </div>
+
+                    <div class="abyss-controls">
+                        <button class="btn-expedition" id="btn-build-bridge">Nächsten Stein legen</button>
+                    </div>
+                </div>
+            </section>
+
             <hr>
+
+            <!-- SECTION 3: THE VERTICAL VARIABLE SPECIFICATION -->
+            <section id="s4-variable-spec" class="animated-on-scroll">
+                <div class="section-header">
+                    <span class="badge-expedition">System-Analyse</span>
+                    <h2>Die Variablen-Spezifikation: Das Skelett eurer Forschung</h2>
+                    <p>In der Wissenschaft messen wir keine Begriffe, wir messen <strong>Indikatoren</strong>. Wählt
+                        eure Gruppe, um das vollständige vertikale Variablen-System zu laden. Bedenkt: Das hier ist nur
+                        euer aktueller Status Quo (mehr oder weniger). Überlegt euch genau: <strong>Was braucht
+                            ihr?</strong></p>
+                </div>
+
+                <div class="spec-workstation">
+                    <!-- Group Selector -->
+                    <div class="spec-nav">
+                        <button class="nav-item active" onclick="loadSpec('g1')">G1: Podcast Credibility</button>
+                        <button class="nav-item" onclick="loadSpec('g2')">G2: Google AI Search</button>
+                        <button class="nav-item" onclick="loadSpec('g3')">G3: Visual Authenticity</button>
+                        <button class="nav-item" onclick="loadSpec('g4')">G4: WildChat Politeness</button>
+                    </div>
+
+                    <!-- The Vertical Display -->
+                    <div class="spec-display">
+                        <div id="spec-target">
+                            <!-- Data injected vertically here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <!-- HIER KOMMT SEKTION 3 REIN (DIE KALIBRIERUNGS-STATION / DRILL-DOWN) -->
             <!-- Kopiere das HTML von id="s3-variable-lab" hierher -->
 
             <hr>
 
-            <!-- SECTION 4: GRUPPEN-SPEZIFISCHE VERTIEFUNG -->
-            <section id="s4-group-details" class="animated-on-scroll">
+            <!-- SECTION 4: THE DEFINITION FORGE -->
+            <section id="s4-definition-forge" class="animated-on-scroll">
                 <div class="section-header">
-                    <h2>Missions-Briefing: Dimensionen eurer Projekte</h2>
-                    <p>Hier findet ihr die spezifischen Herausforderungen für eure Gruppen-Themen (recycled aus den alten Unterlagen).</p>
+                    <span class="badge-expedition">Begriffs-Schärfe</span>
+                    <h2>Die Definitions-Schmiede: Den Nebel lichten</h2>
+                    <p>Ein "messerscharfes" Forschungsergebnis beginnt mit einer messerscharfen Definition. Nutzt den
+                        <strong>Focus-Slider</strong>, um zu sehen, wie aus Alltagssprache Wissenschaft wird.</p>
                 </div>
-                
-                <!-- TODO: Hier kannst du die group-guidance-boxen aus deiner alten Seite einfügen -->
+
+                <div class="forge-container">
+                    <!-- The Focusing Tool -->
+                    <div class="optics-station">
+                        <div class="lens-view">
+                            <div class="lens-frame">
+                                <div id="forge-text-display" class="forge-blur">
+                                    Authentizität ist, wenn man merkt, dass das Bild echt ist und nicht gefaked wurde.
+                                </div>
+                            </div>
+                            <div class="lens-glint"></div>
+                        </div>
+
+                        <div class="optics-controls">
+                            <label>Fokus-Kalibrierung (Präzision)</label>
+                            <input type="range" id="focus-slider" min="0" max="100" value="0">
+                            <div class="slider-labels">
+                                <span>Vage (Alltag)</span>
+                                <span>Scharf (Wissenschaft)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- The Rules of the Forge -->
+                    <div class="forge-rules">
+                        <div class="rule-card">
+                            <div class="rule-icon">🚫</div>
+                            <div class="rule-content">
+                                <h4>Keine Zirkelschlüsse</h4>
+                                <p>"Glaubwürdigkeit ist die Eigenschaft, glaubwürdig zu sein." –
+                                    <strong>Systemfehler.</strong> Definiert das Konstrukt durch andere Begriffe.</p>
+                            </div>
+                        </div>
+                        <div class="rule-card">
+                            <div class="rule-icon">📏</div>
+                            <div class="rule-content">
+                                <h4>Abgrenzung (Falsifizierbarkeit)</h4>
+                                <p>Was gehört <em>nicht</em> dazu? Grenzen ziehen ist wichtiger als alles einschließen.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="rule-card">
+                            <div class="rule-icon">📚</div>
+                            <div class="rule-content">
+                                <h4>Theoretischer Anker</h4>
+                                <p>Nutzt eure Quellen (Sundar, Appelman, Zipf). Erfindet das Rad nicht neu, sondern
+                                    schärft es.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
+
+                        <hr>
+
+           <!-- SECTION 4.5: THE COMPLEXITY SIZER -->
+<section id="s4-complexity-sizer" class="animated-on-scroll">
+    <div class="section-header">
+        <span class="badge-expedition">Struktur-Check</span>
+        <h2>Bohren oder Messen? Was ist dran</h2>
+        <p>Nicht jeder Begriff braucht eine weitere Zerlegung. Wer "Alter" in Dimensionen zerlegt, verschwendet Zeit. Wer "KI-Vertrauen" als ein einzelnes Item misst, bekommt Datenmüll. <strong>Sortiert die Proben:</strong></p>
+    </div>
+
+    <div class="sizer-workstation">
+        <div class="sizer-display">
+            <div id="probe-card" class="probe-active">
+                <span class="probe-label">Test-Objekt:</span>
+                <h3 id="current-probe-name">Lade Probe...</h3>
+            </div>
+            
+            <div class="sizer-zones">
+                <button class="size-btn atom" onclick="checkSize('atom')">
+                    <div class="icon">⚛️</div>
+                    <div class="label"><strong>Atom</strong> (Eindimensional)</div>
+                    <div class="desc">Direkt messbarer Fakt/Indikator.</div>
+                </button>
+                
+                <button class="size-btn molecule" onclick="checkSize('molecule')">
+                    <div class="icon">🧪</div>
+                    <div class="label"><strong>Molekül</strong> (Mehrdimensional)</div>
+                    <div class="desc">Komplexes Konstrukt. Drill-down nötig.</div>
+                </button>
+            </div>
+        </div>
+
+        <div id="sizer-feedback" class="sizer-feedback-hidden">
+            <div class="feedback-icon"></div>
+            <div class="feedback-text">
+                <h4 id="sizer-result-title"></h4>
+                <p id="sizer-result-desc"></p>
+            </div>
+            <button class="btn-expedition" id="next-sizer-btn" onclick="nextProbe()" style="display:none;">Nächste Probe</button>
+        </div>
+    </div>
+</section>             
+
+            <hr>
+
+<!-- SECTION 5: THE LOGIC DEBUGGER -->
+<section id="s4-logic-debugger" class="animated-on-scroll">
+    <div class="section-header">
+        <span class="badge-expedition">System-Diagnose</span>
+        <h2>Der Logic-Debugger: Fehler im System</h2>
+        <p>Ein Konstruktionsfehler in der Definition führt zu Datenmüll. Wählt eine von mir für euch gebastelte <strong>Fehlerhafte Aussage</strong> aus euren Projekten aus und findet den logischen Defekt, um das System zu reparieren.</p>
+    </div>
+
+    <div class="debugger-terminal">
+        <!-- Sidebar: The Probes -->
+        <div class="terminal-sidebar">
+            <div class="sidebar-label">Fehlerhafte Proben (Drafts)</div>
+            <button class="probe-btn" data-probe="g1">Probe G1: Podcasts</button>
+            <button class="probe-btn" data-probe="g2">Probe G2: Google AI</button>
+            <button class="probe-btn" data-probe="g3">Probe G3: Visuals</button>
+            <button class="probe-btn" data-probe="g4">Probe G4: WildChat</button>
+        </div>
+
+        <!-- Main Interface -->
+        <div class="terminal-main">
+            <div class="terminal-window">
+                <div class="window-header">
+                    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                    <span class="window-title">LOGIC_ANALYSIS_TOOL_V4.exe</span>
+                </div>
+                <div class="window-content">
+                    <div id="debug-text-display">Wähle eine Probe zur Analyse...</div>
+                    <div id="error-highlight" class="hidden-highlight"></div>
+                </div>
+            </div>
+
+            <div class="diagnostic-controls">
+                <div class="control-label">Diagnostisches Tool wählen:</div>
+                <div class="control-grid">
+                    <button class="diag-btn" data-diag="level">Level-Jumping (Indikator vs Dim)</button>
+                    <button class="diag-btn" data-diag="trivial">Trivialitäts-Falle (Varianzlos)</button>
+                    <button class="diag-btn" data-diag="mix">Konstrukt-Vermischung (X vs Y)</button>
+                    <button class="diag-btn" data-diag="anthro">Anthro-Bias (Voraussetzung)</button>
+                </div>
+            </div>
+
+            <!-- Result Overlay -->
+            <div id="debugger-feedback" class="feedback-hidden">
+                <div class="feedback-header">
+                    <span class="alert-icon">⚠️</span>
+                    <h4 id="feedback-title">FEHLER ERKANNT</h4>
+                </div>
+                <div class="feedback-body">
+                    <p id="feedback-explanation"></p>
+                    <div class="correction-box">
+                        <strong>Korrektur-Protokoll:</strong>
+                        <p id="feedback-correction"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
             <hr>
 
             <!-- SECTION 5: HOMEWORK (MEILENSTEIN 4) -->
-            <section id="s4-homework" class="animated-on-scroll">
-                <div class="mission-header">
-                    <span class="mission-badge">Meilenstein 04</span>
-                    <h2>Hausaufgabe: Das Dimensions-Dossier</h2>
-                    <p>Erstellt bis zur nächsten Sitzung die detaillierte Liste eurer Untersuchungsdimensionen und Definitionen.</p>
+            <!-- SECTION 6: THE MISSION DOSSIER -->
+            <section id="s4-mission-milestone" class="animated-on-scroll">
+                <div class="mission-briefing-box">
+                    <div class="briefing-header">
+                        <div class="briefing-id">MS-04</div>
+                        <h3>Mission Meilenstein: Das Dimensions-Dossier</h3>
+                    </div>
+
+                    <div class="briefing-content">
+                        <p>Euer Auftrag ist die Erstellung der <strong>Technischen Spezifikation</strong> eurer Studie.
+                            Dabei gilt wie immer: Arbeitet wo möglich theoretisch fundiert. Und gebt neben euren Untersuchungsdimensionen auch eure Changes, Entscheidungen und Probleme an. </p>
+
+                        <div class="dossier-grid">
+                            <div class="dossier-task">
+                                <h4>1. Die Variablen-Matrix</h4>
+                                <p>Erstellt eine vollständige Liste aller UVs, AVs und Drittvariablen
+                                    (Kontrollvariablen) inklusive ihrer Dimensionen.</p>
+                            </div>
+                            <div class="dossier-task">
+                                <h4>2. Das Begriffs-Register</h4>
+                                <p>Definiert jeden einzelnen Begriff scharf. Nutzt für eurer Dokument mindestens 5 wissenschaftliche
+                                    Quellen (APA 7).</p>
+                            </div>
+                        </div>
+
+                        <div class="submission-specs">
+                            <div class="spec-item"><span>📄</span> 3-4 Seiten Fließtext</div>
+                            <div class="spec-item"><span>📅</span> Montag, 18:00 Uhr via ILIAS</div>
+                            <div class="spec-item"><span>📊</span> Folien für die Sitzung</div>
+                        </div>
+
+                        <div class="pro-tip-box">
+                            <strong>🌟 Das macht eine gute Abgabe aus:</strong>
+                            <p>Wenn ihr nicht nur definiert, sondern im Text begründet, WARUM ihr eine Dimension gewählt
+                                habt und was für Probleme es gibt/gab.</p>
+                        </div>
+                    </div>
                 </div>
-                
-                <!-- TODO: Hier die Hausaufgaben-Details und die Checklist einfügen -->
+            </section>
+
+            <!-- TODO: Hier die Hausaufgaben-Details und die Checklist einfügen -->
             </section>
 
         </main>
@@ -168,7 +508,8 @@
 
     <!-- Import der Session 3 Logik (für Brückenbau & Lab-Interaktionen) -->
     <script src="session3.js" defer></script>
-    
+    <script src="session4.js" defer></script>
+
     <script>
         // Falls du in Sitzung 4 zusätzliche Logik brauchst, hier einfügen:
         console.log("Expedition Session 4: Anatomie-Modul geladen.");
