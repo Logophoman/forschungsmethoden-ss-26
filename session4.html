@@ -56,7 +56,7 @@
                 <div class="hero-wrapper">
                     <div class="mission-meta">
                         <span class="step-indicator">Schritt 04</span>
-                        <span class="status-badge">Präzisions-Modus aktiv</span>
+                        <span class="status-badge">Untersuchungsdimensionen</span>
                     </div>
 
                     <div class="hero-main-content">
@@ -104,7 +104,7 @@
                         <div class="audit-body">
                             <div class="status-box success">
                                 <strong>Theorie-Upgrade:</strong> Der Wechsel zum MAIN-Modell ist konsistent. PSI-Exit
-                                war goldrichtig.
+                                war richtig.
                             </div>
                             <div class="status-box warning">
                                 <strong>Calibration Alert:</strong> Der Audio-Stimulus ist eure größte Baustelle. Ohne
@@ -123,8 +123,8 @@
                         </div>
                         <div class="audit-body">
                             <div class="status-box success">
-                                <strong>Theorie-Upgrade:</strong> Habit-Perspektive (Allcott et al.) hebt das Projekt
-                                auf Pro-Level.
+                                <strong>Theorie-Upgrade:</strong> Habit-Perspektive (Allcott et al.) wertet das Projekt
+                                auf.
                             </div>
                             <div class="status-box danger">
                                 <strong>Calibration Alert:</strong> Santiago-Beispiel ist zu trivial. <em>Gefahr:
@@ -170,7 +170,7 @@
                                 <strong>Calibration Alert:</strong> "Theoretische Sättigung" ist bei 4.8 Mio.
                                 Datenpunkten ein Risiko.
                             </div>
-                            <p class="mission-instruction"><strong>Nächster Schritt:</strong> Trennscharfes Codebuch
+                            <p class="mission-instruction"><strong>Nächster Schritt:</strong> Trennscharfe Begriffsdefinitionen
                                 entwickeln.</p>
                         </div>
                     </div>
@@ -184,7 +184,7 @@
                 <div class="section-header">
                     <span class="badge-expedition">Die Theorie-Lücke</span>
                     <h2>Der Abgrund der Abstraktion</h2>
-                    <p>Zwischen eurer Hypothese (z.B. unhöflich“) und euren Daten (Zahlen in SPSS) liegt eine tiefe
+                    <p>Zwischen eurer Hypothese (z.B. unhöflich“) und euren Daten liegt eine tiefe
                         Schlucht. Wir überbrücken sie durch präzise <strong>Dimensionalisierung</strong>.</p>
                 </div>
 
@@ -294,7 +294,8 @@
                     <span class="badge-expedition">Begriffs-Schärfe</span>
                     <h2>Die Definitions-Schmiede: Den Nebel lichten</h2>
                     <p>Ein "messerscharfes" Forschungsergebnis beginnt mit einer messerscharfen Definition. Nutzt den
-                        <strong>Focus-Slider</strong>, um zu sehen, wie aus Alltagssprache Wissenschaft wird.</p>
+                        <strong>Focus-Slider</strong>, um zu sehen, wie aus Alltagssprache Wissenschaft wird.
+                    </p>
                 </div>
 
                 <div class="forge-container">
@@ -326,7 +327,8 @@
                             <div class="rule-content">
                                 <h4>Keine Zirkelschlüsse</h4>
                                 <p>"Glaubwürdigkeit ist die Eigenschaft, glaubwürdig zu sein." –
-                                    <strong>Systemfehler.</strong> Definiert das Konstrukt durch andere Begriffe.</p>
+                                    <strong>Systemfehler.</strong> Definiert das Konstrukt durch andere Begriffe.
+                                </p>
                             </div>
                         </div>
                         <div class="rule-card">
@@ -349,153 +351,211 @@
                 </div>
             </section>
 
-                        <hr>
+            <hr>
 
-           <!-- SECTION 4.5: THE COMPLEXITY SIZER -->
-<section id="s4-complexity-sizer" class="animated-on-scroll">
-    <div class="section-header">
-        <span class="badge-expedition">Struktur-Check</span>
-        <h2>Bohren oder Messen? Was ist dran</h2>
-        <p>Nicht jeder Begriff braucht eine weitere Zerlegung. Wer "Alter" in Dimensionen zerlegt, verschwendet Zeit. Wer "KI-Vertrauen" als ein einzelnes Item misst, bekommt Datenmüll. <strong>Sortiert die Proben:</strong></p>
-    </div>
+            <!-- SECTION 4.5: THE COMPLEXITY SIZER -->
+            <section id="s4-complexity-sizer" class="animated-on-scroll">
+                <div class="section-header">
+                    <span class="badge-expedition">Struktur-Check</span>
+                    <h2>Bohren oder Messen? Was ist dran</h2>
+                    <p>Nicht jeder Begriff braucht eine weitere Zerlegung. Wer "Alter" in Dimensionen zerlegt,
+                        verschwendet Zeit. Wer "KI-Vertrauen" als ein einzelnes Item misst, bekommt Datenmüll.
+                        <strong>Sortiert die Proben:</strong></p>
+                </div>
 
-    <div class="sizer-workstation">
-        <div class="sizer-display">
-            <div id="probe-card" class="probe-active">
-                <span class="probe-label">Test-Objekt:</span>
-                <h3 id="current-probe-name">Lade Probe...</h3>
-            </div>
-            
-            <div class="sizer-zones">
-                <button class="size-btn atom" onclick="checkSize('atom')">
-                    <div class="icon">⚛️</div>
-                    <div class="label"><strong>Atom</strong> (Eindimensional)</div>
-                    <div class="desc">Direkt messbarer Fakt/Indikator.</div>
-                </button>
-                
-                <button class="size-btn molecule" onclick="checkSize('molecule')">
-                    <div class="icon">🧪</div>
-                    <div class="label"><strong>Molekül</strong> (Mehrdimensional)</div>
-                    <div class="desc">Komplexes Konstrukt. Drill-down nötig.</div>
-                </button>
-            </div>
-        </div>
+                <div class="sizer-workstation">
+                    <div class="sizer-display">
+                        <div id="probe-card" class="probe-active">
+                            <span class="probe-label">Test-Objekt:</span>
+                            <h3 id="current-probe-name">Lade Probe...</h3>
+                        </div>
 
-        <div id="sizer-feedback" class="sizer-feedback-hidden">
-            <div class="feedback-icon"></div>
-            <div class="feedback-text">
-                <h4 id="sizer-result-title"></h4>
-                <p id="sizer-result-desc"></p>
-            </div>
-            <button class="btn-expedition" id="next-sizer-btn" onclick="nextProbe()" style="display:none;">Nächste Probe</button>
-        </div>
-    </div>
-</section>             
+                        <div class="sizer-zones">
+                            <button class="size-btn atom" onclick="checkSize('atom')">
+                                <div class="icon">⚛️</div>
+                                <div class="label"><strong>Atom</strong> (Eindimensional)</div>
+                                <div class="desc">Direkt messbarer Fakt/Indikator.</div>
+                            </button>
+
+                            <button class="size-btn molecule" onclick="checkSize('molecule')">
+                                <div class="icon">🧪</div>
+                                <div class="label"><strong>Molekül</strong> (Mehrdimensional)</div>
+                                <div class="desc">Komplexes Konstrukt. Drill-down nötig.</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="sizer-feedback" class="sizer-feedback-hidden">
+                        <div class="feedback-icon"></div>
+                        <div class="feedback-text">
+                            <h4 id="sizer-result-title"></h4>
+                            <p id="sizer-result-desc"></p>
+                        </div>
+                        <button class="btn-expedition" id="next-sizer-btn" onclick="nextProbe()"
+                            style="display:none;">Nächste Probe</button>
+                    </div>
+                </div>
+            </section>
 
             <hr>
 
-<!-- SECTION 5: THE LOGIC DEBUGGER -->
-<section id="s4-logic-debugger" class="animated-on-scroll">
-    <div class="section-header">
-        <span class="badge-expedition">System-Diagnose</span>
-        <h2>Der Logic-Debugger: Fehler im System</h2>
-        <p>Ein Konstruktionsfehler in der Definition führt zu Datenmüll. Wählt eine von mir für euch gebastelte <strong>Fehlerhafte Aussage</strong> aus euren Projekten aus und findet den logischen Defekt, um das System zu reparieren.</p>
-    </div>
-
-    <div class="debugger-terminal">
-        <!-- Sidebar: The Probes -->
-        <div class="terminal-sidebar">
-            <div class="sidebar-label">Fehlerhafte Proben (Drafts)</div>
-            <button class="probe-btn" data-probe="g1">Probe G1: Podcasts</button>
-            <button class="probe-btn" data-probe="g2">Probe G2: Google AI</button>
-            <button class="probe-btn" data-probe="g3">Probe G3: Visuals</button>
-            <button class="probe-btn" data-probe="g4">Probe G4: WildChat</button>
-        </div>
-
-        <!-- Main Interface -->
-        <div class="terminal-main">
-            <div class="terminal-window">
-                <div class="window-header">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                    <span class="window-title">LOGIC_ANALYSIS_TOOL_V4.exe</span>
+            <!-- SECTION 5: THE LOGIC DEBUGGER -->
+            <section id="s4-logic-debugger" class="animated-on-scroll">
+                <div class="section-header">
+                    <span class="badge-expedition">System-Diagnose</span>
+                    <h2>Der Logic-Debugger: Fehler im System</h2>
+                    <p>Ein Konstruktionsfehler in der Definition führt zu Datenmüll. Wählt eine von mir für euch
+                        gebastelte <strong>Fehlerhafte Aussage</strong> aus euren Projekten aus und findet den logischen
+                        Defekt, um das System zu reparieren.</p>
                 </div>
-                <div class="window-content">
-                    <div id="debug-text-display">Wähle eine Probe zur Analyse...</div>
-                    <div id="error-highlight" class="hidden-highlight"></div>
-                </div>
-            </div>
 
-            <div class="diagnostic-controls">
-                <div class="control-label">Diagnostisches Tool wählen:</div>
-                <div class="control-grid">
-                    <button class="diag-btn" data-diag="level">Level-Jumping (Indikator vs Dim)</button>
-                    <button class="diag-btn" data-diag="trivial">Trivialitäts-Falle (Varianzlos)</button>
-                    <button class="diag-btn" data-diag="mix">Konstrukt-Vermischung (X vs Y)</button>
-                    <button class="diag-btn" data-diag="anthro">Anthro-Bias (Voraussetzung)</button>
-                </div>
-            </div>
-
-            <!-- Result Overlay -->
-            <div id="debugger-feedback" class="feedback-hidden">
-                <div class="feedback-header">
-                    <span class="alert-icon">⚠️</span>
-                    <h4 id="feedback-title">FEHLER ERKANNT</h4>
-                </div>
-                <div class="feedback-body">
-                    <p id="feedback-explanation"></p>
-                    <div class="correction-box">
-                        <strong>Korrektur-Protokoll:</strong>
-                        <p id="feedback-correction"></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-            <hr>
-
-            <!-- SECTION 5: HOMEWORK (MEILENSTEIN 4) -->
-            <!-- SECTION 6: THE MISSION DOSSIER -->
-            <section id="s4-mission-milestone" class="animated-on-scroll">
-                <div class="mission-briefing-box">
-                    <div class="briefing-header">
-                        <div class="briefing-id">MS-04</div>
-                        <h3>Mission Meilenstein: Das Dimensions-Dossier</h3>
+                <div class="debugger-terminal">
+                    <!-- Sidebar: The Probes -->
+                    <div class="terminal-sidebar">
+                        <div class="sidebar-label">Fehlerhafte Proben (Drafts)</div>
+                        <button class="probe-btn" data-probe="g1">Probe G1: Podcasts</button>
+                        <button class="probe-btn" data-probe="g2">Probe G2: Google AI</button>
+                        <button class="probe-btn" data-probe="g3">Probe G3: Visuals</button>
+                        <button class="probe-btn" data-probe="g4">Probe G4: WildChat</button>
                     </div>
 
-                    <div class="briefing-content">
-                        <p>Euer Auftrag ist die Erstellung der <strong>Technischen Spezifikation</strong> eurer Studie.
-                            Dabei gilt wie immer: Arbeitet wo möglich theoretisch fundiert. Und gebt neben euren Untersuchungsdimensionen auch eure Changes, Entscheidungen und Probleme an. </p>
-
-                        <div class="dossier-grid">
-                            <div class="dossier-task">
-                                <h4>1. Die Variablen-Matrix</h4>
-                                <p>Erstellt eine vollständige Liste aller UVs, AVs und Drittvariablen
-                                    (Kontrollvariablen) inklusive ihrer Dimensionen.</p>
+                    <!-- Main Interface -->
+                    <div class="terminal-main">
+                        <div class="terminal-window">
+                            <div class="window-header">
+                                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                                <span class="window-title">LOGIC_ANALYSIS_TOOL_V4.exe</span>
                             </div>
-                            <div class="dossier-task">
-                                <h4>2. Das Begriffs-Register</h4>
-                                <p>Definiert jeden einzelnen Begriff scharf. Nutzt für eurer Dokument mindestens 5 wissenschaftliche
-                                    Quellen (APA 7).</p>
+                            <div class="window-content">
+                                <div id="debug-text-display">Wähle eine Probe zur Analyse...</div>
+                                <div id="error-highlight" class="hidden-highlight"></div>
                             </div>
                         </div>
 
-                        <div class="submission-specs">
-                            <div class="spec-item"><span>📄</span> 3-4 Seiten Fließtext</div>
-                            <div class="spec-item"><span>📅</span> Montag, 18:00 Uhr via ILIAS</div>
-                            <div class="spec-item"><span>📊</span> Folien für die Sitzung</div>
+                        <div class="diagnostic-controls">
+                            <div class="control-label">Diagnostisches Tool wählen:</div>
+                            <div class="control-grid">
+                                <button class="diag-btn" data-diag="level">Level-Jumping (Indikator vs Dim)</button>
+                                <button class="diag-btn" data-diag="trivial">Trivialitäts-Falle (Varianzlos)</button>
+                                <button class="diag-btn" data-diag="mix">Konstrukt-Vermischung (X vs Y)</button>
+                                <button class="diag-btn" data-diag="anthro">Anthro-Bias (Voraussetzung)</button>
+                            </div>
                         </div>
 
-                        <div class="pro-tip-box">
-                            <strong>🌟 Das macht eine gute Abgabe aus:</strong>
-                            <p>Wenn ihr nicht nur definiert, sondern im Text begründet, WARUM ihr eine Dimension gewählt
-                                habt und was für Probleme es gibt/gab.</p>
+                        <!-- Result Overlay -->
+                        <div id="debugger-feedback" class="feedback-hidden">
+                            <div class="feedback-header">
+                                <span class="alert-icon">⚠️</span>
+                                <h4 id="feedback-title">FEHLER ERKANNT</h4>
+                            </div>
+                            <div class="feedback-body">
+                                <p id="feedback-explanation"></p>
+                                <div class="correction-box">
+                                    <strong>Korrektur-Protokoll:</strong>
+                                    <p id="feedback-correction"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
+            <hr>
+
+            <!-- SECTION 5: HOMEWORK (MEILENSTEIN 4) -->
+            <!-- SECTION 6: THE MISSION DOSSIER -->
+            <!-- SECTION 6: THE MISSION DOSSIER (UPGRADED) -->
+            <section id="s4-mission-milestone" class="animated-on-scroll">
+                <div class="mission-directive">
+                    <!-- Badge & Header -->
+                    <div class="directive-header">
+                        <div class="mission-stamp">NEUE AUFGABE</div>
+                        <div class="header-main">
+                            <div class="directive-id">04</div>
+                            <h1>Eure Aufgabe: <span class="cyan-text">Untersuchungsdinmensions-Dossier</span></h1>
+                        </div>
+                        <p class="directive-intro">Jetzt erstellen wir den <strong>Bauplan</strong> für eure
+                            Messinstrumente. Präzision hier verhindert das Scheitern im Feld.</p>
+                    </div>
+
+                    <div class="directive-grid">
+                        <!-- Phase 1: Die Inventur -->
+                        <div class="directive-phase">
+                            <div class="phase-number">01</div>
+                            <h4>Konzept-Inventur</h4>
+                            <ul>
+                                <li><strong>Zentrale Begriffe:</strong> Identifiziert alle UVs, AVs und Moderatoren aus
+                                    euren Hypothesen.</li>
+                                <li><strong>Drittvariablen (Z):</strong> Welche Faktoren (Alter, KI-Vorwissen,
+                                    Technikaffinität) müsst ihr kontrollieren?</li>
+                                <li><strong>Übergreifende Begrifflichkeiten:</strong> Definiert auch Rollen (z.B.
+                                    "Rezipient") oder Objekte ("KI-Inhalt").</li>
+                            </ul>
+                        </div>
+
+                        <!-- Phase 2: Die Tiefenbohrung -->
+                        <div class="directive-phase">
+                            <div class="phase-number">02</div>
+                            <h4>Anatomie & Dimensionen</h4>
+                            <ul>
+                                <li><strong>Molekül-Check:</strong> Zerlegt komplexe Konstrukte in Teilaspekte
+                                    (Dimensionen).</li>
+                                <li><strong>Begründung:</strong> Warum sind genau <em>diese</em> Dimensionen für eure
+                                    Studie kritisch? Gibt es Paper dazu?</li>
+                                <li><strong>Struktur:</strong> Zeigt auf, wie die Dimensionen zueinander stehen.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Phase 3: Das Register -->
+                        <div class="directive-phase">
+                            <div class="phase-number">03</div>
+                            <h4>Das Begriffs-Register</h4>
+                            <ul>
+                                <li><strong>Präzisions-Definition:</strong> Formuliert scharfe Definitionen für JEDES
+                                    relevante Konzept.</li>
+                                <li><strong>Literatur-Anker:</strong> Nutzt mindestens 5 wissenschaftliche Quellen für
+                                    das Dokument (APA 7).</li>
+                                <li><strong>Keine Umgangssprache:</strong> Verwendet keine Alltagssprache, sondern
+                                    Fachbegriffe.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- The "Big No" Warning -->
+                    <div class="exclusion-zone">
+                        <div class="exclusion-icon">🚫</div>
+                        <div class="exclusion-content">
+                            <strong>NEGATIV-MISSION (WICHTIG):</strong>
+                            <p>Es geht diese Woche <strong>NOCH NICHT</strong> um konkrete Fragen, Skalen oder
+                                Codebuch-Kategorien (Indikatoren). Wir bauen das Fundament, noch nicht das Haus. Wer
+                                jetzt schon alle Fragen schreibt, verpasst die theoretische Tiefe.</p>
+                        </div>
+                    </div>
+
+                    <!-- Deliverables Footer -->
+                    <div class="directive-footer">
+                        <div class="deliverable-card">
+                            <span class="label">📄 Dokumentation</span>
+                            <span class="value">3-4 Seiten Fließtext (PDF)</span>
+                        </div>
+                        <div class="deliverable-card accent">
+                            <span class="label">📅 Deadline</span>
+                            <span class="value">Montag, 18:00 Uhr (ILIAS)</span>
+                        </div>
+                        <div class="deliverable-card">
+                            <span class="label">📊 Präsentation</span>
+                            <span class="value">Folien für die Präsentation (PDF/PPTX)</span>
+                        </div>
+                    </div>
+
+                    <div class="excellence-check">
+                        <strong>🌟 Was eine gute Abgabe ausmacht:</strong>
+                        <p>Seid wie immer ehrlich bzgl. eurer methodischen Hürden. Wenn ein Begriff (z.B.
+                            "Authentizität") extrem schwer zu fassen ist, thematisiert die verschiedenen
+                            wissenschaftlichen Sichtweisen im Text.</p>
+                    </div>
+                </div>
+            </section>
             <!-- TODO: Hier die Hausaufgaben-Details und die Checklist einfügen -->
             </section>
 
