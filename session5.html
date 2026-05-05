@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitzung 5/6: Das Forschungs-Labor – Methodenprojekt C</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="session3.css">
+    <link rel="stylesheet" href="session4.css"> <!-- Reusing Lab Aesthetics -->
+    <link rel="stylesheet" href="session5.css">
+</head>
+<body>
+
+    <header>
+        <a href="index.html">
+            <img src="uni-logo-de_hoh_weiss.png" alt="Uni Hohenheim" class="uni-logo">
+        </a>
+        <h1>Sitzung 5 & 6: Das Instrumenten-Labor</h1>
+        <p class="subtitle">Operationalisierung, Auswertungsstrategie & Qualitäts-Checks</p>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="index.html">Kursübersicht</a></li>
+                <li><a href="session1.html">Sitzung 1</a></li>
+                <li><a href="session2.html">Sitzung 2</a></li>
+                <li><a href="session3.html">Sitzung 3</a></li>
+                <li><a href="session4.html">Sitzung 4</a></li>
+                <li><a href="session5.html" class="active">Sitzung 5</a></li>
+            </ul>
+        </nav>
+
+        <main>
+<!-- SECTION 1: THE AUDIT TERMINAL -->
+<section id="s5-audit-terminal" class="lab-section animated-on-scroll">
+    <div class="lab-workspace">
+        <div class="section-header">
+            <span class="badge-expedition">Labor-Audit</span>
+            <h2>System-Diagnose & Missions-Check</h2>
+            <p>Wähle deine Crew-Einheit aus. Das System lädt deine spezifischen Anforderungen basierend auf dem letzten Dossier.</p>
+        </div>
+
+        <!-- Navigation: High-End Tab System -->
+        <div class="lab-selector">
+            <button class="lab-tab" onclick="initLabDiagnostic('g1')" id="tab-g1">G1: Podcast</button>
+            <button class="lab-tab" onclick="initLabDiagnostic('g2')" id="tab-g2">G2: Google AI</button>
+            <button class="lab-tab" onclick="initLabDiagnostic('g3')" id="tab-g3">G3: Visuals</button>
+            <button class="lab-tab" onclick="initLabDiagnostic('g4')" id="tab-g4">G4: WildChat</button>
+        </div>
+
+        <div id="lab-main-frame" class="lab-frame hidden">
+            <div class="lab-grid">
+                <!-- Left: Metrics -->
+                <div class="lab-panel metrics">
+                    <h3 class="panel-title">System-Metriken</h3>
+                    <div id="metrics-container">
+                        <!-- Bars injected here -->
+                    </div>
+                </div>
+
+                <!-- Right: Specific Report -->
+                <div class="lab-panel report">
+                    <h3 class="panel-title">Fehler-Protokoll</h3>
+                    <div class="report-box-styled">
+                        <div id="report-text"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom: The Unique Safety Gate -->
+            <div class="lab-safety-gate">
+                <div class="gate-header">
+                    <span class="alert-icon">!</span>
+                    <h3>Spezifische Einsatzvoraussetzungen</h3>
+                </div>
+                <div id="unique-requirements-list" class="gate-list">
+                    <!-- Unique checkboxes per group injected here -->
+                </div>
+                
+                <div class="launch-control">
+                    <button id="final-launch-btn" class="launch-btn disabled" disabled onclick="scrollToNextSection()">
+                        Operationalisierung Starten
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 2: THE ANATOMY OF MEASUREMENT -->
+<section id="s5-translation-engine" class="lab-section blueprint-theme animated-on-scroll">
+    <div class="lab-workspace">
+        <div class="section-header-2">
+            <span class="badge-blueprint">Blueprint: Operationalisierung</span>
+            <h2>Die Anatomie der Messung</h2>
+            <p>Vom abstrakten Gedanken zur klaren Messung: Wir konstruieren die Brücke zwischen Theorie und Empirie.</p>
+        </div>
+
+        <!-- COMPONENT A: THE DISTILLATION PIPE -->
+        <div class="blueprint-card">
+            <h3 class="card-subtitle">1. Der Destillations-Prozess</h3>
+            <div class="distillation-bench">
+                <div class="distill-stage">
+                    <div class="node-label">Theoretisches Konzept</div>
+                    <div class="concept-cloud">Vage Idee</div>
+                </div>
+                <div class="distill-separator">
+                    <svg class="pipe-svg" viewBox="0 0 100 100">
+                        <path d="M0,50 L100,50" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 4"/>
+                        <circle id="concept-particle" cx="10" cy="50" r="6" fill="var(--lab-cyan)"/>
+                    </svg>
+                    <div class="core-box">Messvorschrift</div>
+                </div>
+                <div class="distill-stage">
+                    <div class="node-label">Empirischer Indikator</div>
+                    <div class="data-crystal">Messwert</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMPONENT B: THE EXPLOSION DRAWING -->
+        <div class="blueprint-card">
+            <h3 class="card-subtitle">2. Konstrukt-Explosionszeichnung</h3>
+            <div class="explosion-bench">
+                <div id="explosion-stage" class="zoom-state-1">
+                    <!-- Layer 1: Konstrukt -->
+                    <div class="layer layer-construct">
+                        <div class="blueprint-node master">KI-Glaubwürdigkeit</div>
+                    </div>
+                    <!-- Layer 2: Dimensionen -->
+                    <div class="layer layer-dimensions">
+                        <div class="blueprint-node dim">Richtigkeit</div>
+                        <div class="blueprint-node dim">Fairness</div>
+                        <div class="blueprint-node dim">Transparenz</div>
+                    </div>
+                    <!-- Layer 3: Indikatoren -->
+                    <div class="layer layer-indicators">
+                        <div class="blueprint-node item">"Die Info stimmt"</div>
+                        <div class="blueprint-node item">"KI ist neutral"</div>
+                        <div class="blueprint-node item">"Quellen sind klar"</div>
+                    </div>
+                </div>
+                
+                <div class="zoom-controls">
+                    <input type="range" id="dimension-zoom" min="1" max="3" value="1" class="lab-slider">
+                    <div class="slider-ticks">
+                        <span>Konstrukt</span>
+                        <span>Dimensionen</span>
+                        <span>Indikatoren</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMPONENT C: PRECISION SCOPE -->
+        <div class="blueprint-card">
+            <h3 class="card-subtitle">3. Qualitäts-Check: Validität & Reliabilität</h3>
+            <div class="scope-bench">
+                <div class="scope-visual">
+                    <div class="target-system">
+                        <div class="ring r3"></div>
+                        <div class="ring r2"></div>
+                        <div class="ring r1"></div>
+                        <div id="hit-container"></div>
+                    </div>
+                </div>
+                <div class="scope-content">
+                    <h4 id="scope-status">Status: Scan läuft...</h4>
+                    <p id="scope-explainer">Wähle einen Testmodus für die Messgenauigkeit.</p>
+                    <div class="scope-btn-group">
+                        <button class="scope-btn" onclick="updateScope('invalid')">Low Validity</button>
+                        <button class="scope-btn" onclick="updateScope('reliable')">Reliable Only</button>
+                        <button class="scope-btn active" onclick="updateScope('perfect')">Perfect Match</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 3: THE STATISTICAL POWER-GRID -->
+<section id="s5-scale-grid" class="lab-section matrix-theme animated-on-scroll">
+    <div class="lab-workspace">
+        <div class="section-header">
+            <span class="badge-matrix">Logik-Schnittstelle</span>
+            <h2>The Statistical Power-Grid</h2>
+            <p>Euer Skalenniveau bestimmt die mathematische Reichweite eurer Forschung. Ein Fehler hier limitiert die gesamte Auswertung.</p>
+        </div>
+
+        <div class="power-grid-interface">
+            <!-- Sidebar: Level Selector -->
+            <div class="level-control">
+                <button class="level-btn" onclick="activateLevel('nominal')" id="btn-nominal">
+                    <span class="level-num">L1</span>
+                    <div class="level-info"><strong>Nominal</strong> <small>Klassifikation</small></div>
+                </button>
+                <button class="level-btn" onclick="activateLevel('ordinal')" id="btn-ordinal">
+                    <span class="level-num">L2</span>
+                    <div class="level-info"><strong>Ordinal</strong> <small>Rangfolge</small></div>
+                </button>
+                <button class="level-btn active" onclick="activateLevel('metric')" id="btn-metric">
+                    <span class="level-num">L3</span>
+                    <div class="level-info"><strong>Metrisch</strong> <small>Abstand & Nullpunkt</small></div>
+                </button>
+                
+                <div class="quasi-toggle-box">
+                    <label class="quasi-switch">
+                        <input type="checkbox" id="quasi-trigger" onchange="toggleQuasi()">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="quasi-label">Pragmatik-Modus: <strong>Quasi-Metrisch</strong></span>
+                </div>
+            </div>
+
+            <!-- Main: The Permission Matrix -->
+            <div class="matrix-display">
+                <div class="matrix-header">Statistische Berechtigungen</div>
+                <div class="permission-grid">
+                    <div class="perm-cell" id="perm-mode">
+                        <div class="perm-icon">∑</div>
+                        <div class="perm-label">Modus</div>
+                        <div class="perm-status">ERLAUBT</div>
+                    </div>
+                    <div class="perm-cell" id="perm-median">
+                        <div class="perm-icon">x͂</div>
+                        <div class="perm-label">Median</div>
+                        <div class="perm-status">ERLAUBT</div>
+                    </div>
+                    <div class="perm-cell" id="perm-mean">
+                        <div class="perm-icon">x̄</div>
+                        <div class="perm-label">Mittelwert</div>
+                        <div class="perm-status" id="mean-status">ERLAUBT</div>
+                    </div>
+                    <div class="perm-cell" id="perm-sd">
+                        <div class="perm-icon">σ</div>
+                        <div class="perm-label">Std.-Abw.</div>
+                        <div class="perm-status" id="sd-status">ERLAUBT</div>
+                    </div>
+                </div>
+
+                <!-- Live Example: Scale Transformer -->
+                <div class="scale-transformer">
+                    <div class="transformer-header">Beispiel: Operationalisierung von "KI-Erfahrung"</div>
+                    <div id="transformer-content" class="transformer-body">
+                        <div class="example-box">
+                            <span class="tag-level" id="trans-tag">Metrisch</span>
+                            <p id="trans-text">"Wie viele Stunden pro Woche nutzen Sie ChatGPT?" <br><strong>[____] Stunden</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Group Calibration -->
+        <div class="group-calibration-panel">
+            <div class="calib-card">
+                <h5>Strategie-Check für G1, G2, G3</h5>
+                <p>Eure Hypothesen verlangen nach Gruppenvergleichen. <strong>Nutzt Likert-Skalen (1-5/7)</strong>, um im Pragmatik-Modus Mittelwerte berechnen zu können!</p>
+            </div>
+            <div class="calib-card alt">
+                <h5>Strategie-Check für G4</h5>
+                <p>Artefakte sind oft nominal (kommt vor / nicht vor). Eure Power liegt im <strong>Vergleich von Häufigkeiten (Prozenten)</strong> zwischen den Kategorien.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 4: THE INDEX RECIPE BOOK -->
+<section id="s5-index-synthesis" class="lab-section lab-theme-light animated-on-scroll">
+    <div class="lab-workspace">
+        <div class="section-header">
+            <span class="badge-blueprint">Variablen-Synthese</span>
+            <h2>Das Index-Rezeptbuch</h2>
+            <p>Einzelne Indikatoren sind fehleranfällig. Erst durch die Verrechnung zu einem Index entsteht ein stabiles Messmodell.</p>
+        </div>
+
+        <div class="recipe-grid">
+            <!-- RECIPE 1: THE MEAN MACHINE (G1, G2, G3) -->
+            <div class="recipe-card mean-machine">
+                <div class="recipe-header">
+                    <span class="recipe-icon">⚖️</span>
+                    <h3>Rezept 1: Mittelwert-Index</h3>
+                    <small>Ideal für Likert-Skalen (1-5/7)</small>
+                </div>
+                
+                <div class="recipe-simulator">
+                    <div class="sim-controls">
+                        <div class="control-row">
+                            <label>Item 1: Glaubwürdigkeit</label>
+                            <input type="range" class="index-slider" min="1" max="5" value="4" oninput="calcMeanIndex()">
+                            <span class="val-display">4</span>
+                        </div>
+                        <div class="control-row">
+                            <label>Item 2: Vertrauen</label>
+                            <input type="range" class="index-slider" min="1" max="5" value="3" oninput="calcMeanIndex()">
+                            <span class="val-display">3</span>
+                        </div>
+                        <div class="control-row invert-row" id="row-invert">
+                            <label>Item 3: Skepsis <small>(Negativ formuliert)</small></label>
+                            <input type="range" class="index-slider" min="1" max="5" value="2" oninput="calcMeanIndex()">
+                            <span class="val-display">2</span>
+                            <button class="btn-invert" onclick="toggleInversion(this)">Invertieren: AUS</button>
+                        </div>
+                    </div>
+
+                    <div class="recipe-result">
+                        <div class="formula-box">
+                            (I1 + I2 + <span id="formula-i3">I3</span>) / 3
+                        </div>
+                        <div class="result-circle">
+                            <span id="mean-result">3.00</span>
+                            <small>Indexwert</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="recipe-footer-info">
+                    <strong>Achtung:</strong> Negativ formulierte Items müssen vor der Berechnung umgepolt werden ($y = (max+1) - x$).
+                </div>
+            </div>
+
+            <!-- RECIPE 2: THE ACCUMULATOR (G4) -->
+            <div class="recipe-card sum-machine">
+                <div class="recipe-header">
+                    <span class="recipe-icon">🧪</span>
+                    <h3>Rezept 2: Summen-Index</h3>
+                    <small>Ideal für Inhaltsanalysen (0/1)</small>
+                </div>
+
+                <div class="accumulator-bench">
+                    <div class="beaker-container">
+                        <svg class="beaker-svg" viewBox="0 0 100 120">
+                            <path d="M20,10 L20,100 Q20,110 30,110 L70,110 Q80,110 80,100 L80,10 Z" fill="none" stroke="var(--lab-blue)" stroke-width="2"/>
+                            <rect id="liquid-fill" x="22" y="108" width="56" height="0" fill="var(--lab-cyan)" transition="all 0.5s"/>
+                        </svg>
+                        <div class="beaker-value" id="sum-result">0</div>
+                    </div>
+
+                    <div class="accumulator-checks">
+                        <label class="check-item"><input type="checkbox" onchange="calcSumIndex()"> NF: Konflikt</label>
+                        <label class="check-item"><input type="checkbox" onchange="calcSumIndex()"> NF: Prominenz</label>
+                        <label class="check-item"><input type="checkbox" onchange="calcSumIndex()"> NF: Emotion</label>
+                        <label class="check-item"><input type="checkbox" onchange="calcSumIndex()"> NF: Nutzwert</label>
+                    </div>
+                </div>
+                <div class="recipe-footer-info">
+                    <strong>Vorteil:</strong> Misst die Intensität eines Phänomens durch die bloße Anzahl vorhandener Merkmale.
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Protocol Guide -->
+        <div class="protocol-blueprint">
+            <h3>Dokumentations-Pflicht</h3>
+            <p>Jeder Index muss in eurem Dossier mit diesen vier Parametern definiert werden:</p>
+            <div class="protocol-grid">
+                <div class="proto-item"><span>1</span><strong>Name</strong> (z.B. Cred_Index)</div>
+                <div class="proto-item"><span>2</span><strong>Variablen</strong> (z.B. q1_1, q1_2)</div>
+                <div class="proto-item"><span>3</span><strong>Operation</strong> (z.B. Mean)</div>
+                <div class="proto-item"><span>4</span><strong>Missings</strong> (Umgang mit Fehlwerten)</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- SECTION 5: THE SURVEY & STIMULUS FORGE -->
+<section id="s5-survey-forge" class="lab-section forge-theme animated-on-scroll">
+    <div class="lab-workspace">
+        <div class="section-header">
+            <span class="badge-blueprint">Präzisions-Werkstatt</span>
+            <h2>The Survey & Stimulus Forge</h2>
+            <p>Ein Messinstrument ist nur so gut wie seine schwächste Frage. Hier operieren wir am "offenen Item" und konfigurieren das Treatment.</p>
+        </div>
+
+        <!-- Component A: Item Surgery (The Scalpel) -->
+        <div class="forge-card surgery-bench">
+            <div class="card-header-inner">
+                <h3>Item-Chirurgie: Fehler-Diagnose</h3>
+                <p class="small">Klicke auf den logischen Defekt im Item, um die Operation zu starten.</p>
+            </div>
+            
+<div class="operation-table">
+    <!-- Das "kranke" Item -->
+    <div id="patient-item" class="item-to-fix">
+        "Ich finde die KI-Antwort <span class="tumor" onclick="operate()">sicher und zuverlässig</span>."
+    </div>
+    
+    <div id="surgery-feedback" class="surgery-feedback hidden">
+        <!-- Linke Seite: Was ist das Problem? -->
+        <div class="diagnosis-panel">
+            <div class="status-badge-mini alert">Befund</div>
+            <h4 id="diag-title">...</h4>
+            <p id="diag-expl">...</p>
+        </div>
+
+        <!-- Rechte Seite: Die Heilung (wird erst nach Diagnose sichtbar) -->
+        <div class="healing-panel">
+            <div class="status-badge-mini success">Heilung</div>
+            <div id="healed-items-list" class="healed-items">
+                <!-- Neue Items kommen hier rein -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Kontroll-Leiste -->
+    <div class="surgery-controls">
+        <button id="next-patient-btn" class="launch-btn disabled" disabled onclick="nextPatient()">
+            Nächster Patient
+        </button>
+    </div>
+</div>
+        </div>
+
+        <div class="stimulus-config-grid">
+            <!-- Component B: G1 Audio Timeline Simulator -->
+            <div class="forge-card">
+                <h3>G1 Control: Disclaimer Timing</h3>
+                <div class="timeline-sim">
+                    <div class="timeline-track">
+                        <div class="timeline-marker" id="disclaimer-marker" style="left: 10%;">Disclaimer</div>
+                        <div class="timeline-audio-block">Podcast Clip (2 Min)</div>
+                    </div>
+                    <input type="range" min="0" max="90" value="10" oninput="updateG1Timeline(this.value)">
+                </div>
+                <div id="g1-logic-feedback" class="sim-note">
+                    <strong>Primacy-Effekt:</strong> Der Hinweis erfolgt SOFORT. Die Erwartungshaltung ist maximal manipuliert.
+                </div>
+            </div>
+
+<div class="forge-card">
+    <h3>G3 Control: Treatment-Logik & Sichtbarkeit</h3>
+    <div class="visual-mockup">
+        <div class="mockup-img" id="g3-mockup-area">
+            <!-- Dynamische Elemente -->
+            <div id="g3-label" class="label-banner">KI-GENERIERT</div>
+            <div id="g3-warning-overlay" class="warning-overlay hidden">
+                <div class="overlay-content">
+                    <span style="font-size:2rem">⚠️</span><br>
+                    <strong>ACHTUNG:</strong><br>Das folgende Bild wurde von einer KI erstellt.
+                </div>
+            </div>
+            <div class="mockup-content">📸 BILD-STIMULUS</div>
+        </div>
+        
+        <!-- NEU: Consent Checkmark Mockup -->
+        <div id="g3-consent-area" class="consent-mockup hidden">
+            <input type="checkbox" id="mock-consent"> 
+            <label for="mock-consent">Ich habe verstanden, dass dieses Bild KI-generiert ist.</label>
+        </div>
+
+        <div class="mockup-controls-grid">
+            <button class="compass-btn btn-logic sm" onclick="setG3Style('banner')">Banner</button>
+            <button class="compass-btn btn-logic sm" onclick="setG3Style('caption')">Caption</button>
+            <button class="compass-btn btn-logic sm" onclick="setG3Style('text')">Nur Text-Briefing</button>
+            <button class="compass-btn btn-logic sm" onclick="setG3Style('image')">Voll-Warnung</button>
+            <button class="compass-btn btn-logic sm" onclick="setG3Style('consent')">Consent-Check</button>
+        </div>
+    </div>
+    <p class="small-desc" id="g3-desc">Wähle einen Modus, um die Stärke der Manipulation zu kalibrieren.</p>
+</div>
+        </div>
+
+        <!-- Component D: The Manipulation Check Template -->
+        <div class="m-check-blueprint">
+            <div class="proto-header">Qualitäts-Gate: Der Manipulation Check</div>
+            <div class="proto-content">
+                <p>Euer Experiment ist wertlos, wenn das Treatment nicht bemerkt wurde. Integriert zwingend diese Frage am Ende:</p>
+                <div class="m-check-box">
+                    <strong>"Wer hat den soeben gehörten/gesehenen Inhalt erstellt?"</strong>
+                    <ul>
+                        <li>[ ] Ein Mensch</li>
+                        <li>[ ] Eine Künstliche Intelligenz</li>
+                        <li>[ ] Ich weiß es nicht</li>
+                    </ul>
+                </div>
+                <small>Tipp: Probanden, die hier falsch antworten, müssen später aus dem Datensatz "gefiltert" werden.</small>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 6: THE CONTENT ANALYSIS LAB -->
+<section id="s5-content-lab" class="lab-section lab-theme-clinical animated-on-scroll">
+    <div class="lab-workspace">
+        <div class="section-header">
+            <span class="badge-blueprint">Linguistisches Mikroskop</span>
+            <h2>The Content Analysis Lab</h2>
+            <p>Inhaltsanalyse ist keine Interpretation, sondern standardisierte Messung. Wir kalibrieren den Blick auf das Manifeste.</p>
+        </div>
+
+        <div class="lab-grid-microscope">
+            <!-- Component A: The Mind-Reading Detector -->
+            <div class="microscope-station">
+                <div class="card-header-inner">
+                    <h3>1. Objektivitäts-Check: Die "Interpretations-Falle"</h3>
+                    <p class="small">Klicke auf eine Linse, um den Prompt zu analysieren.</p>
+                </div>
+                
+                <div class="specimen-slide">
+                    <div id="text-specimen" class="prompt-text">
+                        "Hey, kannst du mir das mal kurz erklären? Wäre echt nett von dir!"
+                    </div>
+                    <div class="scanner-line"></div>
+                </div>
+
+                <div class="lens-controls">
+                    <button class="lens-btn" onclick="applyLens('interpretation')">
+                        <span class="icon">🔮</span>
+                        <div class="label">Linse A: Interpretation<small>(Gedankenlesen)</small></div>
+                    </button>
+                    <button class="lens-btn" onclick="applyLens('manifest')">
+                        <span class="icon">🔬</span>
+                        <div class="label">Linse B: Manifest<small>(Wissenschaftlich)</small></div>
+                    </button>
+                </div>
+
+                <div id="lens-result" class="lens-feedback hidden">
+                    <!-- Dynamic Feedback -->
+                </div>
+            </div>
+
+            <!-- Component C: The Turn-Visualizer -->
+            <div class="context-station">
+                <h3>2. Analyseeinheiten</h3>
+                <p class="small">Definiere den Kontext für G4: Was genau wird codiert?</p>
+                
+                <div class="chat-sim-display">
+                    <div class="chat-unit unit-sentence" id="unit-1">"Hey, kannst du mir das mal erklären?"</div>
+                    <div class="chat-unit unit-prompt" id="unit-2">"Wäre echt nett von dir!"</div>
+                    <div class="chat-unit unit-response" id="unit-3">🤖 [KI-ANTWORT]: "Klar, gerne..."</div>
+                </div>
+
+                <div class="context-slider-box">
+                    <input type="range" min="1" max="3" value="2" id="context-slider" oninput="updateContext(this.value)">
+                    <div class="context-labels">
+                        <span>Einzelsatz</span>
+                        <span>Gesamter Prompt</span>
+                        <span>Interaktions-Turn</span>
+                    </div>
+                </div>
+                <div id="context-warning" class="sim-note">
+                    <strong>Gewählte Einheit:</strong> Gesamter Prompt. Ideal für Höflichkeits-Marker.
+                </div>
+            </div>
+        </div>
+
+        <!-- Component D: The Codebook Axiom -->
+        <div class="codebook-template">
+            <div class="proto-header">Beispiel-Bauplan (stark vereinfacht) 🏗️: Die Kategorie-Definition</div>
+            <div class="codebook-grid">
+                <div class="cb-field">
+                    <label>Kategorie-Name</label>
+                    <div class="cb-mock-input">Lexikalische Höflichkeit</div>
+                </div>
+                <div class="cb-field">
+                    <label>Definition (Harte Grenze)</label>
+                    <div class="cb-mock-input">Vorkommen von expliziten Höflichkeitsformeln oder Partikeln.</div>
+                </div>
+                <div class="cb-field">
+                    <label>Ankerbeispiele</label>
+                    <div class="cb-mock-input">"Bitte", "Danke", "Schönen Guten Tag", "Sehr erfreut".</div>
+                </div>
+                <div class="cb-field highlighted">
+                    <label>Codieranweisung (Regel)</label>
+                    <div class="cb-mock-input">Codierung = 1, wenn mind. ein Wort aus Liste X vorkommt.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 7: THE GHOST TABLE WORKSHOP -->
+<section id="s5-ghost-tables" class="lab-section simulator-theme animated-on-scroll">
+    <div class="lab-workspace">
+        <div class="section-header">
+            <span class="badge-blueprint">Ergebnis-Vorschau</span>
+            <h2>Der Endgame-Simulator (Ghost Tables)</h2>
+            <p>Designt eure Daten bevor ihr sie erhebt. Wer seine Tabelle heute bauen kann, versteht seine Forschung von morgen.</p>
+        </div>
+
+        <div class="simulator-grid">
+            <!-- Sidebar: Variable Configurator -->
+            <div class="sim-sidebar">
+                <div class="card-header-inner">
+                    <h3>Tabellen-Konstrukteur</h3>
+                    <p class="small">Wähle Deine Gruppe, um das Datenmodell zu laden.</p>
+                </div>
+                <div class="group-select-list">
+                    <button class="select-btn" onclick="buildGhostTable('g1')">G1/G3: Experiment</button>
+                    <button class="select-btn" onclick="buildGhostTable('g2')">G2: Befragung</button>
+                    <button class="select-btn" onclick="buildGhostTable('g4')">G4: Inhaltsanalyse</button>
+                </div>
+
+                <div class="formatting-tools">
+                    <label>Prüfungs-Standard:</label>
+                    <button class="btn-logic btn-scalpel" id="btn-format" onclick="toggleFormatting()">Layout-Skalpell: AUS</button>
+                    <ul class="standard-checklist">
+                        <li id="check-vert">Keine vertikalen Linien</li>
+                        <li id="check-round">2 Nachkommastellen (Punkt)</li>
+                        <li id="check-unit">Einheiten in Kopfzeile (%)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Main: The Ghost Table Display -->
+            <div class="sim-main">
+                <div id="table-canvas" class="table-container-styled">
+                    <!-- Table injected here -->
+                    <div class="empty-canvas">Wähle einen Tabellentyp...</div>
+                </div>
+
+                <!-- Part C: Interpretation Training -->
+                <div id="interpretation-box" class="interpretation-area hidden">
+                    <div class="proto-header">So-What? Interpretation</div>
+                    <p class="small">Fülle die Lücken basierend auf den Geister-Werten oben:</p>
+                    <div class="mad-libs">
+                        In der Bedingung <span class="gap" id="gap-uv">...</span> ist die <span class="gap">Glaubwürdigkeit</span> mit M = <span class="gap" id="gap-val1">...</span> deutlich <span class="gap">höher/tiefer</span> als in der Gruppe <span class="gap" id="gap-uv2">...</span> (M = <span class="gap" id="gap-val2">...</span>). Dies stützt <span class="gap">Hypothese 1</span>.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 8: THE DATA CLEANING PROTOCOL -->
+<section id="s5-cleaning-protocol" class="lab-section clean-room-theme animated-on-scroll">
+    <div class="lab-workspace">
+        <div class="section-header-2">
+            <span class="badge-blueprint">Daten-Hygiene</span>
+            <h2>The Data Cleaning Protocol</h2>
+            <p>Rohdaten sind oft "dreckig". Bevor wir analysieren, müssen wir Speeder, Straight-Liner und unvollständige Fälle in Quarantäne schicken.</p>
+        </div>
+
+        <div class="decontamination-zone">
+            <!-- Left side: The Specimen Scanner -->
+            <div class="cleaning-scanner">
+                <div class="scanner-unit">
+                    <div class="scanner-header">
+                        <span class="id-tag">PROBAND_ID: <span id="current-pid">#0815</span></span>
+                        <div class="scanner-status" id="scan-status">BEREIT FÜR SCAN</div>
+                    </div>
+                    
+                    <div class="specimen-data" id="specimen-data-display">
+                        <!-- Data rows injected here -->
+                        <div class="data-row"><span>Bearbeitungszeit:</span> <strong id="spec-time">45 Sek.</strong></div>
+                        <div class="data-row"><span>Antwortmuster:</span> <div class="pattern-dots" id="spec-pattern"></div></div>
+                        <div class="data-row"><span>Invertiertes Item:</span> <strong id="spec-invert">3</strong></div>
+                    </div>
+                    
+                    <div class="scanner-actions">
+                        <button class="btn-clean" onclick="evaluateData('keep')">Zulassen (Valid)</button>
+                        <button class="btn-trash" onclick="evaluateData('discard')">Eliminieren (Junk)</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right side: The Exclusion Logbook -->
+            <div class="exclusion-log">
+                <div class="log-header">Exklusions-Protokoll (N-Counter)</div>
+                <div class="log-stats">
+                    <div class="stat-box">
+                        <span class="label">Brutto (N)</span>
+                        <span class="value" id="count-gross">6</span>
+                    </div>
+                    <div class="stat-box warning">
+                        <span class="label">Exkludiert (n)</span>
+                        <span class="value" id="count-excluded">0</span>
+                    </div>
+                    <div class="stat-box success">
+                        <span class="label">Netto (N)</span>
+                        <span class="value" id="count-net">0</span>
+                    </div>
+                </div>
+                <div class="log-history" id="log-history-list">
+                    <!-- History entries -->
+                    <div class="log-placeholder">Warte auf Reinigungslauf...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Component C: Missing Value Guide -->
+        <div class="missing-value-bench">
+            <div class="proto-header">Umgang mit Fehlwerten (Missing Values)</div>
+            <div class="logic-options">
+                <div class="option-box">
+                    <strong>Listenweiser Ausschluss</strong>
+                    <p>Der gesamte Fall wird gelöscht, wenn ein Wert fehlt. Sicherster Weg für kleine Projekte.</p>
+                </div>
+                <div class="option-box">
+                    <strong>Paarweiser Ausschluss</strong>
+                    <p>Der Fall bleibt im Datensatz und wird nur bei den Analysen ignoriert, für die Daten fehlen.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 9: THE MANIPULATION CHECK SCANNER -->
+<section id="s5-manipulation-check" class="lab-section biometric-theme animated-on-scroll">
+    <div class="lab-workspace">
+        <div class="section-header">
+            <span class="badge-blueprint">Qualitäts-Audit</span>
+            <h2>The Manipulation Check Scanner</h2>
+            <p>Ein Experiment scheitert nicht an den Daten, sondern an der Unachtsamkeit der Probanden. Wer das Treatment nicht bemerkt, darf nicht in die Wertung.</p>
+        </div>
+
+        <!-- Component A: The Perception Filter Simulator -->
+        <div class="biometric-scanner-bench">
+            <div class="scanner-visual">
+                <div class="eye-scanner">
+                    <div class="scanner-laser"></div>
+                    <div class="iris-target">
+                        <span id="scanner-icon">👁️</span>
+                    </div>
+                </div>
+                <div class="scanner-status-text" id="biometric-status">Warte auf Datensatz...</div>
+            </div>
+
+            <div class="data-verification-panel">
+                <div class="verification-card">
+                    <div class="v-row">
+                        <span class="v-label">Tatsächlicher Reiz (UV):</span>
+                        <span class="v-value" id="v-actual">KI-GENERIERTER CLIP</span>
+                    </div>
+                    <div class="v-row">
+                        <span class="v-label">Recall des Probanden:</span>
+                        <select id="v-proband-recall" onchange="runPerceptionScan()">
+                            <option value="none">-- Antwort wählen --</option>
+                            <option value="correct">"Das war eine KI"</option>
+                            <option value="wrong">"Das war ein Mensch"</option>
+                            <option value="unsure">"Ich weiß es nicht"</option>
+                        </select>
+                    </div>
+                    <hr>
+                    <div id="v-result" class="v-result-box hidden">
+                        <div class="v-decision" id="v-decision-text">ELIMINIEREN</div>
+                        <p class="v-expl" id="v-expl-text">Der Proband hat die Manipulation nicht bemerkt. Sein Urteil zur Glaubwürdigkeit ist zufällig und würde den Effekt künstlich abschwächen.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scanner-strategy-grid">
+            <!-- Component B: Strategy Cards -->
+            <div class="strategy-column">
+                <h3>Check-Strategien</h3>
+                <div class="strategy-cards">
+                    <div class="s-card" onclick="this.classList.toggle('flipped')">
+                        <div class="s-card-front">Recall-Check <span>(Empfohlen)</span></div>
+                        <div class="s-card-back">"Welchen Hinweis haben Sie gesehen?" <br><small>Misst die Aufmerksamkeit, ohne das Ziel der Studie zu verraten.</small></div>
+                    </div>
+                    <div class="s-card" onclick="this.classList.toggle('flipped')">
+                        <div class="s-card-front">Subjektiver Check</div>
+                        <div class="s-card-back">"Wie künstlich wirkte der Inhalt?" <br><small>Prüft die Stärke des Reizes. Gut für G1 (Stimm-Manipulation).</small></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Component C: The Visibility Dilemma -->
+            <div class="dilemma-column">
+                <h3>Das Sichtbarkeits-Dilemma</h3>
+                <div class="dilemma-simulator">
+                    <div class="dilemma-labels">
+                        <span>Ökologische Validität<br><small>(Realismus)</small></span>
+                        <span>Experimentelle Kontrolle<br><small>(Sicherheit)</small></span>
+                    </div>
+                    <input type="range" min="1" max="100" value="50" class="dilemma-slider" id="dilemma-slider" oninput="updateDilemma(this.value)">
+                    <div class="dilemma-output">
+                        <div class="out-box">
+                            <span class="label">M-Check Fail Rate:</span>
+                            <span class="value" id="fail-rate">25%</span>
+                        </div>
+                        <div class="out-box">
+                            <span class="label">Reaktanz-Gefahr:</span>
+                            <span class="value" id="reactance-risk">Mittel</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 10: THE ICR-PROTOCOL (SYNCHRONIZATION LAB) -->
+<section id="s5-icr-protocol" class="lab-section sync-theme animated-on-scroll">
+    <div class="lab-workspace">
+        <div class="section-header-2">
+            <span class="badge-blueprint">Objektivitäts-Abgleich</span>
+            <h2>Das ICR-Protokoll (Inter-Coder-Reliabilität)</h2>
+            <p>Ein Codebuch ist kein Tagebuch. Wir testen, ob zwei unabhängige Beobachter die Realität durch eure Kategorien identisch wahrnehmen.</p>
+        </div>
+
+        <div class="sync-grid">
+            <!-- Component A: The Sync-Test Simulator -->
+            <div class="sync-panel coder-comparison">
+                <div class="card-header-inner">
+                    <h3>1. Der Synchronisations-Check</h3>
+                    <p class="small">Codieren beide das Gleiche? (Fokus: G4 Politeness)</p>
+                </div>
+
+                <div class="prompt-display-mini">
+                    "Könntest du mir eventuell bei diesem Code helfen?"
+                </div>
+
+                <div class="dual-coder-ui">
+                    <div class="coder-track" id="track-alpha">
+                        <span class="coder-id">CODER_ALPHA</span>
+                        <div class="pulse-wave" id="wave-alpha"></div>
+                        <div class="decision-tag" id="dec-alpha">HÖFLICH</div>
+                    </div>
+                    <div class="coder-track" id="track-beta">
+                        <span class="coder-id">CODER_BETA</span>
+                        <div class="pulse-wave" id="wave-beta"></div>
+                        <div class="decision-tag" id="dec-beta">NEUTRAL</div>
+                    </div>
+                </div>
+
+                <div class="sync-status" id="sync-status-indicator">
+                    <div class="sync-msg" id="sync-msg">OUT OF SYNC</div>
+                    <div class="kappa-val">κ < 0.70</div>
+                </div>
+
+                <div class="sync-controls">
+                    <button class="btn-logic sm" onclick="runSync('vage')">Vage Regel (Gedankenlesen)</button>
+                    <button class="btn-logic sm" onclick="runSync('scharf')">Scharfe Regel (Manifest)</button>
+                </div>
+            </div>
+
+            <!-- Component B: The Reliability Killer -->
+            <div class="sync-panel reli-killer">
+                <h3>2. Die Interpretations-Falle</h3>
+                <p class="small">Wie viel "Gedankenlesen" erlaubt eure Kategorie?</p>
+                
+                <div class="guage-container">
+                    <input type="range" min="0" max="100" value="80" class="lab-slider" id="reli-slider" oninput="updateReliKiller(this.value)">
+                    <div class="guage-labels">
+                        <span>Manifest <br><small>(Worte zählen)</small></span>
+                        <span>Interpretativ <br><small>(Absicht raten)</small></span>
+                    </div>
+                </div>
+
+                <div class="reli-result-box">
+                    <div class="reli-stat">
+                        <span class="label">Erwartete Reliabilität:</span>
+                        <span class="value" id="reli-perc">42%</span>
+                    </div>
+                    <div class="reli-warning" id="reli-warning-msg">KRITISCH: Wissenschaftlicher Zufallswert.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Component C: The 10% Calculator -->
+        <div class="reli-calc-bench">
+            <div class="calc-header">Reli-Sample Kalkulator (Die 10%-Regel)</div>
+            <div class="calc-flex">
+                <div class="input-group-lab">
+                    <label>Geplantes Gesamt-N:</label>
+                    <input type="number" id="calc-n" value="500" oninput="calculateReliSize()">
+                </div>
+                <div class="calc-arrow">→</div>
+                <div class="result-group-lab">
+                    <div class="res-label">Reli-Sample (Doppelcodierung):</div>
+                    <div class="res-value" id="reli-sample-res">50 Einheiten</div>
+                </div>
+            </div>
+            <p class="calc-note">Mindestens 10-20% eures Materials müssen von zwei Personen unabhängig codiert werden, um Cohen's Kappa zu berechnen. Noch besser wäre Krippendorffs Alpha (Das ist die Königsklasse)</p>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 11: THE PRETEST-BLUEPRINT (WIND TUNNEL) -->
+<section id="s5-pretest-blueprint" class="lab-section wind-tunnel-theme animated-on-scroll">
+    <div class="lab-workspace">
+        <div class="section-header">
+            <span class="badge-blueprint" >Belastungstest</span>
+            <h2>The Pretest-Blueprint</h2>
+            <p>Bevor das Instrument ins Feld geht, muss es in den Windkanal. Wir testen Verständlichkeit, Technik und Logik an einer kleinen Testgruppe. <strong>Jetzt ist noch nicht der Pretest.</strong> Aber wir wollen ihn zumindest schon einmal im Blick halten.</p>
+        </div>
+
+        <!-- Component A: Stress-Test Simulator -->
+        <div class="wind-tunnel-bench">
+            <div class="oscilloscope-container">
+                <div class="osci-screen">
+                    <svg id="osci-wave" viewBox="0 0 200 100">
+                        <path id="wave-path" d="M0 50 Q 25 10, 50 50 T 100 50 T 150 50 T 200 50" fill="none" stroke="#22c55e" stroke-width="2"/>
+                    </svg>
+                    <div id="test-probe-icon" class="probe-icon">👤</div>
+                    <div class="tunnel-status" id="tunnel-status">STÖRUNGSFREIE STRÖMUNG (OK)</div>
+                </div>
+                <div class="osci-controls">
+                    <button class="btn-logic btn-warn" onclick="simulateStress('jargon')">Szenario: Fachjargon</button>
+                    <button class="btn-logic btn-warn" onclick="simulateStress('tech')">Szenario: Tech-Fail</button>
+                    <button class="btn-logic btn-warn" onclick="simulateStress('gap')">Szenario: Code-Lücke</button>
+                </div>
+            </div>
+
+            <div class="stress-report" id="stress-report">
+                <div class="report-idle">Wählen Sie ein Belastungsszenario aus...</div>
+            </div>
+        </div>
+
+        <div class="pretest-method-grid">
+            <!-- Component B: The 3-Step Protocol -->
+            <div class="method-card">
+                <h3>Pretest-Methoden</h3>
+                <div class="method-steps">
+                    <div class="m-step">
+                        <span class="m-num">1</span>
+                        <strong>Lautes Denken</strong>
+                        <p>Probanden verbalisieren jeden Gedanken beim Ausfüllen. Deckt Verständnisfehler sofort auf.</p>
+                    </div>
+                    <div class="m-step">
+                        <span class="m-num">2</span>
+                        <strong>Standard-Interview</strong>
+                        <p>Gezielte Nachbefragung: "Was war anstrengend?", "War das Label sichtbar?"</p>
+                    </div>
+                    <div class="m-step">
+                        <span class="m-num">3</span>
+                        <strong>Technik-Audit</strong>
+                        <p>Geräte-Mix testen (iOS, Android, Desktop). Stimmen die Audio-Pegel?</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Component C: The Fix-it Log -->
+            <div class="method-card">
+                <h3>Das "Fix-it" Logbuch</h3>
+                <p class="small">So dokumentiert ihr den Fortschritt im Dossier:</p>
+                <div class="log-table-mock">
+                    <div class="log-row header">
+                        <span>Problem</span><span>Schwere</span><span>Lösung</span>
+                    </div>
+                    <div class="log-row">
+                        <span>"Wording zu komplex"</span><span class="tag-s">High</span><span>"Vereinfacht"</span>
+                    </div>
+                    <div class="log-row">
+                        <span>"Audio zu leise"</span><span class="tag-s">Easy</span><span>"Normalisiert"</span>
+                    </div>
+                    <div class="log-row">
+                        <span>"Instruktion fehlt"</span><span class="tag-s">Med</span><span>"Ergänzt"</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Component D: Recruitment Strategy -->
+        <div class="recruitment-matrix">
+            <div class="proto-header">Rekrutierung: n = 5 bis 10</div>
+            <div class="matrix-flex">
+                <div class="target-box">
+                    <strong>G1, G2, G3 (Befragte)</strong>
+                    <p>Varianz suchen! Fragt nicht nur Kommilitonen, sondern auch Eltern/Bekannte (wg. Alter/Technik-Skeptizismus).</p>
+                </div>
+                <div class="target-box">
+                    <strong>G4 (Codierer)</strong>
+                    <p>Zwei Codierer testen das Codebuch an ~50+ "frischen" Einheiten. Ziel: ICR-Abgleich.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 12: THE MISSION DOSSIER (FINAL BRIEFING) -->
+<section id="s5-mission-briefing" class="lab-section dossier-theme animated-on-scroll">
+    <div class="lab-workspace">
+        <div class="section-header">
+            <span class="badge-blueprint">Finales Protokoll</span>
+            <h2>Missions-Briefing: Meilenstein 05/06</h2>
+            <p>In den nächsten 14 Tagen verschmelzen Operationalisierung und Auswertungsstrategie zu einem technischen Master-Dossier.</p>
+        </div>
+
+        <!-- Component A: 2-Week Timeline -->
+        <div class="mission-timeline-container">
+            <div class="timeline-visual">
+                <div class="timeline-line"></div>
+                <div class="timeline-point active" onclick="setTimelinePhase(1)">
+                    <span class="t-date">Woche 1</span>
+                    <span class="t-label">Konstruktion</span>
+                </div>
+                <div class="timeline-point" onclick="setTimelinePhase(2)">
+                    <span class="t-date">Woche 2</span>
+                    <span class="t-label">Kalibrierung</span>
+                </div>
+            </div>
+            <div id="timeline-detail-card" class="timeline-card">
+                <h4 id="phase-title">Phase 1: Das Instrument (The Lock)</h4>
+                <p id="phase-desc">Fokus auf Items, Codebuch-Kategorien und die Finalisierung der Stimuli. Nächste Woche präsentieren wir den Status Quo (informell).</p>
+            </div>
+        </div>
+
+        <!-- Component B: Dossier Folders (Content structure) -->
+        <div class="dossier-interface">
+            <div class="dossier-tabs">
+                <button class="d-tab active" onclick="openDossier('instrument')">1. Das Instrument</button>
+                <button class="d-tab" onclick="openDossier('begruendung')">2. Die Begründung</button>
+                <button class="d-tab" onclick="openDossier('analyse')">3. Die Strategie</button>
+            </div>
+            <div id="dossier-content" class="dossier-body">
+                <!-- Content injected here -->
+                <ul class="task-list-styled">
+                    <li><strong>Ausgearbeites Instrument:</strong> Fragebogen oder fertiges Codebuch.</li>
+                    <li><strong>Stimulus-Material:</strong> Audio (G1), Screenshots (G2), Bilder (G3) oder Sampling-Script (G4).</li>
+                    <li><strong>Technik-Check:</strong> Fangt in der zweiten Woche schon mit euren SoSci Survey/Unipark Fragebögen an.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Component C: Presentation & Grading -->
+        <div class="grading-info-box">
+            <div class="grid-2">
+                <div class="info-side">
+                    <h4>Präsentations-Modus</h4>
+                    <ul>
+                        <li><strong>Nächste Woche:</strong> Informeller Status-Check (Instrumenten-Pitch) nur mit Präsentation.</li>
+                        <li><strong>Woche 2:</strong> Abgabe und Präsentation des Dossiers.</li>
+                        <li><em>Hinweis:</em> Aufgaben-Splitting ist möglich, wenn Verantwortlichkeiten klar getrennt sind.</li>
+                    </ul>
+                </div>
+                <div class="info-side">
+                    <h4>Die Abgabe (Ein Dokument)</h4>
+                    <p><strong>Umfang:</strong> ca. 8-12 Seiten (PDF) + Instrumenten-Anhang.</p>
+                    <p><strong>Präsentation:</strong> Jede Woche.</p>
+                    <p><strong>Deadline:</strong> 18.05.2026, Montag, 18:00 Uhr via ILIAS.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Component D: Final Commitment -->
+        <div class="commitment-gate">
+            <div class="status-stamp" id="mission-status-stamp">STATUS: PENDING</div>
+            <button class="launch-btn" id="btn-seal-mission" onclick="sealMission()">Missions-Parameter akzeptiert</button>
+        </div>
+    </div>
+</section>
+
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2026 Andreas Reich - Universität Hohenheim</p>
+    </footer>
+
+    <script src="session5.js" defer></script>
+</body>
+</html>
