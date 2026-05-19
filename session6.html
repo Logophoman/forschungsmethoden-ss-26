@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitzung 6: Der Windkanal – Hardening & Stress-Test</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="session5.css">
+    <link rel="stylesheet" href="session6.css">
+</head>
+
+<body class="engineering-mode">
+
+    <!-- STANDARD HEADER -->
+    <header>
+        <a href="index.html">
+            <img src="uni-logo-de_hoh_weiss.png" alt="Uni Hohenheim" class="uni-logo">
+        </a>
+        <h1>Sitzung 6: Der Windkanal</h1>
+        <p class="subtitle">Instrument-Hardening & Pretest-Stress-Tests</p>
+    </header>
+
+    <!-- PHASE 1: EVOLUTION TEASER -->
+    <div class="evolution-header">
+        <div class="teaser-container">
+            <div class="teaser-pane wireframe" id="pane-builder">
+                <div class="status-indicator">OFFLINE / ARCHIVE</div>
+                <span class="system-id">v.05 // THE BUILDER</span>
+                <h3>Konstruktions-Phase</h3>
+                <ul class="teaser-list">
+                    <li>Mindset: "Wie messe ich das?"</li>
+                    <li>Fokus: Bauteile & Logik</li>
+                    <li>Resultat: Fragiler Prototyp</li>
+                </ul>
+            </div>
+
+            <div class="teaser-divider">
+                <div class="scan-line"></div>
+                <div class="upgrade-shield">
+                    <span class="glitch-text" data-text="EVOLUTION">EVOLUTION</span>
+                </div>
+            </div>
+
+            <div class="teaser-pane hardened" id="pane-pilot">
+                <div class="status-indicator active">SYSTEM ACTIVE</div>
+                <span class="system-id">v.06 // THE PILOT</span>
+                <h3>Hardening-Phase</h3>
+                <ul class="teaser-list">
+                    <li>Mindset: "Wie machen sie es kaputt?"</li>
+                    <li>Fokus: Stress-Tests & Präzision</li>
+                    <li>Resultat: Einsatzbereites Instrument</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- STANDARD NAVIGATION -->
+        <nav>
+            <ul>
+                <li><a href="index.html">Kursübersicht</a></li>
+                <li><a href="session1.html">Sitzung 1</a></li>
+                <li><a href="session2.html">Sitzung 2</a></li>
+                <li><a href="session3.html">Sitzung 3</a></li>
+                <li><a href="session4.html">Sitzung 4</a></li>
+                <li><a href="session5.html">Sitzung 5</a></li>
+                <li><a href="session6.html" class="active">Sitzung 6</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <!-- PHASE 2: EMERGENCY PROTOCOL -->
+            <section id="mission-update-protocol" class="protocol-banner">
+                <div class="hazard-stripes"></div>
+                <div class="protocol-content">
+                    <div class="protocol-header">
+                        <div class="alert-pulse"></div>
+                        <span class="protocol-id">SIGNAL_TYPE: CRITICAL_UPDATE</span>
+                        <h2>MISSION-UPDATE: PROTOKOLLÄNDERUNG</h2>
+                    </div>
+                    <div class="protocol-message">
+                        <div class="new-target">
+                            <span class="target-label">NEUES PRIMÄRZIEL:</span>
+                            <p>Erfolg = Integrität der Felddaten + Exzellenz der Summit-Präsentation.</p>
+                        </div>
+                        <p class="protocol-subtext">Saubere Daten sind ab jetzt eure einzige Währung. Wer im Pretest
+                            schläft, scheitert am Summit.</p>
+                    </div>
+                    <button id="btn-acknowledge" class="protocol-btn">Protokoll Bestätigen</button>
+                </div>
+                <div class="hazard-stripes bottom"></div>
+            </section>
+
+            <!-- PHASE 3: SIGNAL-TO-NOISE RADAR -->
+            <section id="oscilloscope-lab" class="lab-panel animated-on-scroll">
+                <div class="panel-header">
+                    <span class="badge-expedition">Frequenz-Analyse</span>
+                    <h2>Signal-to-Noise Radar</h2>
+                    <p>Simulation: Wie Item-Qualität über Signifikanz entscheidet.</p>
+                </div>
+                <div class="radar-bench">
+                    <div class="oscilloscope-display">
+                        <div class="screen-glare"></div>
+                        <svg id="radar-svg" viewBox="0 0 800 300" preserveAspectRatio="none">
+                            <defs>
+                                <pattern id="radar-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0, 210, 255, 0.1)"
+                                        stroke-width="1" />
+                                </pattern>
+                            </defs>
+                            <rect width="100%" height="100%" fill="url(#radar-grid)" />
+                            <path id="noise-wave" d="" fill="none" stroke="rgba(232, 95, 62, 0.3)" stroke-width="1" />
+                            <path id="signal-wave" d="" fill="none" stroke="#00d2ff" stroke-width="3" />
+                            <line id="scan-line" x1="0" y1="0" x2="0" y2="300" stroke="rgba(0, 210, 255, 0.5)"
+                                stroke-width="2" />
+                        </svg>
+                        <div class="radar-hud">
+                            <div class="hud-box top-left">CH_1: STIMULUS_RESPONSE</div>
+                            <div class="hud-box top-right" id="detection-status">STATUS: CALIBRATING...</div>
+                        </div>
+                    </div>
+                    <div class="radar-controls">
+                        <div class="control-card">
+                            <label>Item-Ambiguität (Noise)</label>
+                            <div class="slider-wrapper">
+                                <input type="range" id="radar-noise-slider" min="0" max="100" value="50">
+                                <span class="val-num" id="noise-val">50%</span>
+                            </div>
+                        </div>
+                        <div class="control-card">
+                            <label>Mess-Präzision (Signal)</label>
+                            <div class="slider-wrapper">
+                                <input type="range" id="radar-signal-slider" min="0" max="100" value="20">
+                                <span class="val-num" id="signal-val">20%</span>
+                            </div>
+                        </div>
+                        <div id="radar-verdict" class="radar-verdict warning">FEHLER: Rauschen überdeckt Effekt.</div>
+                    </div>
+                </div>
+            </section>
+
+
+<!-- PHASE 4: PRE-FLIGHT MAINTENANCE (WERKZEUGKASTEN) -->
+<section id="preflight-maintenance" class="lab-panel animated-on-scroll">
+    <div class="panel-header">
+        <span class="badge-blueprint">Wartungshandbuch</span>
+        <h2>Pre-Flight Maintenance</h2>
+        <p>Wählt eine Test-Prozedur, um das Instrument für den Einsatz zu kalibrieren.</p>
+    </div>
+
+    <div class="maintenance-grid">
+        <!-- Prozedur 1 -->
+        <div class="maintenance-card" onclick="showProcedure('aloud')">
+            <div class="m-icon">🗣️</div>
+            <div class="m-content">
+                <h4>Lautes Denken</h4>
+                <p>Spürt Jargon-Fallen und Verständnisfehler auf.</p>
+            </div>
+        </div>
+        <!-- Prozedur 2 -->
+        <div class="maintenance-card" onclick="showProcedure('device')">
+            <div class="m-icon">📱</div>
+            <div class="m-content">
+                <h4>Technik-Audit</h4>
+                <p>Prüft Darstellung auf iOS, Android & Desktop.</p>
+            </div>
+        </div>
+        <!-- Prozedur 3 -->
+        <div class="maintenance-card" onclick="showProcedure('timing')">
+            <div class="m-icon">⏱️</div>
+            <div class="m-content">
+                <h4>Timing-Check</h4>
+                <p>Verhindert Datenmüll durch Ermüdung (Fatigue).</p>
+            </div>
+        </div>
+        <!-- Prozedur 4 -->
+        <div class="maintenance-card" onclick="showProcedure('data')">
+            <div class="m-icon">📥</div>
+            <div class="m-content">
+                <h4>Dummy-Export</h4>
+                <p>Prüft Variablen-Struktur vor dem Feldstart.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dynamisches Detail-Panel -->
+    <div id="maintenance-details" class="maintenance-details-box hidden">
+        <div class="details-header">
+            <h3 id="proc-title">Prozedur wählen...</h3>
+            <button class="close-btn" onclick="closeProcedure()">×</button>
+        </div>
+        <div class="details-body">
+            <div class="details-col">
+                <label>Was wird geprüft?</label>
+                <p id="proc-check">...</p>
+            </div>
+            <div class="details-col">
+                <label>Zielsetzung</label>
+                <p id="proc-goal">...</p>
+            </div>
+            <div class="details-col full">
+                <label>Vorgehen (Best Practice)</label>
+                <p id="proc-action">...</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+            <!-- PHASE 7: RED-TEAM LOG & LAUNCH LEVER -->
+            <section id="red-team-log" class="lab-panel animated-on-scroll">
+                <div class="panel-header">
+                    <div class="status-indicator active">PERSISTENT STORAGE ACTIVE</div>
+                    <h2>Red-Team Fix-it Log</h2>
+                    <p>Dokumentiert eure chirurgischen Eingriffe am Instrument. Daten werden automatisch im Browser
+                        gesichert.</p>
+                </div>
+
+                <div class="log-table-wrapper">
+                    <table class="fix-table" id="fix-it-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 30%;">Detektierter Fehler</th>
+                                <th style="width: 30%;">Evidenz (Pretest)</th>
+                                <th style="width: 35%;">Surgical Fix</th>
+                                <th style="width: 5%;"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="fix-log-body">
+                            <!-- Rows injected via JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="log-actions">
+                    <div class="action-group-right">
+                        <button class="btn-logic btn-add" onclick="addRow()">
+                            <span class="btn-plus">➕</span> Zeile hinzufügen
+                        </button>
+                        <button class="btn-logic btn-outline" onclick="exportToCSV()">
+                            <span class="btn-icon">💾</span> Als CSV exportieren
+                        </button>
+                        <button class="btn-logic btn-danger-outline" onclick="clearLog()">
+                            <span class="btn-icon">🗑️</span> Log löschen
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- PHASE 8: MISSION DIRECTIVE (DIE AUFGABE) -->
+            <section id="s6-mission-directive" class="lab-panel animated-on-scroll">
+                <div class="mission-directive-header">
+                    <span class="badge-blueprint">Einsatzbefehl</span>
+                    <h2>Directive 06: Der Belastungstest</h2>
+                    <p>Bevor die Triebwerke für die Feldphase zünden, muss das Instrument den Windkanal überstehen. Eure
+                        Aufgabe ist die Durchführung und Dokumentation des Pretests.</p>
+                </div>
+
+                <div class="directive-grid">
+                    <!-- Schritt 1: Durchführung -->
+                    <div class="directive-card">
+                        <div class="step-badge">01</div>
+                        <h4>Pretest-Durchführung</h4>
+                        <p>Sammelt Realdaten unter Testbedingungen, um Schwachstellen zu identifizieren:</p>
+                        <ul class="task-list-styled">
+                            <li><strong>G1, G2, G3:</strong> N = 5 bis 10 Testpersonen (keine Kommilitonen aus dem
+                                Kurs!).</li>
+                            <li><strong>G4:</strong> N = 30 bis 50 Einheiten (Doppelcodierung zur ICR-Prüfung).</li>
+                            <li>Nutzt Methoden wie <em>Lautes Denken</em> oder kurze Nachbefragungen.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Schritt 2: Analyse -->
+                    <div class="directive-card warning-border">
+                        <div class="step-badge amber">02</div>
+                        <h4>Fehler-Protokollierung</h4>
+                        <p>Jeder Abbruch und jedes Missverständnis ist ein Erfolg für den Pretest!</p>
+                        <ul class="task-list-styled">
+                            <li>Dokumentiert unklare Formulierungen und technische Glitches.</li>
+                            <li><strong>G4 Spezial:</strong> Berechnet die Inter-Coder-Reliabilität (Krippendorff).</li>
+                            <li>Füllt das <em>Fix-it Log</em> (so wie oben) mit euren chirurgischen Eingriffen.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Schritt 3: Finalisierung -->
+                    <div class="directive-card success-border">
+                        <div class="step-badge green">03</div>
+                        <h4>Dossier-Abgabe</h4>
+                        <p>Erstellt das technische Pretest-Dossier (ca. 3-7 Seiten PDF):</p>
+                        <ul class="task-list-styled">
+                            <li>Beschreibung der Durchführung & Stichprobe.</li>
+                            <li>Darstellung der Probleme & ICR-Werte.</li>
+                            <li><strong>Finale Instrumente:</strong> Link zum Fragebogen oder fertiges Codebuch oder
+                                alles im PDF.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="submission-gate">
+                    <div class="gate-info">
+                        <strong>DEADLINE:</strong> Montag, 18:00 Uhr via ILIAS <br>
+                        <strong>FORMAT:</strong> PDF (Bericht) + Finale Instrumente (Link/Datei) + Präsentation nicht
+                        vergessen
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="launch-control" class="launch-chamber">
+                <div class="lever-bench">
+                    <div class="safety-cover" id="lever-cover" onclick="breakGlass()">
+                        <span class="warning-text">BREAK GLASS TO AUTHORIZE</span>
+                    </div>
+                    <div class="lever-track">
+                        <div class="lever-handle" id="main-lever"></div>
+                    </div>
+                </div>
+                <div id="launch-status" class="launch-status">READY FOR DEPLOYMENT</div>
+            </section>
+
+
+
+
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2026 Andreas Reich - Universität Hohenheim</p>
+    </footer>
+
+
+    <script src="session6.js" defer></script>
+</body>
+
+</html>

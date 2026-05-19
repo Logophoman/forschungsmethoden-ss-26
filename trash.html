@@ -1,0 +1,108 @@
+
+            <!-- METHOD CHAMBERS (PHASE 4, 5, 6) -->
+            <section id="method-chambers" class="animated-on-scroll">
+                <div class="chamber-nav">
+                    <button class="chamber-tab active" data-target="chamber-exp">🧪 Experiment HUD</button>
+                    <button class="chamber-tab" data-target="chamber-survey">📋 Survey Funnel</button>
+                    <button class="chamber-tab" data-target="chamber-analysis">🔍 ICR Sync-Terminal</button>
+                </div>
+
+                <div class="chamber-frame">
+                    <!-- CHAMBER A: EXPERIMENT (G1/G3) -->
+                    <div id="chamber-exp" class="chamber-pane active">
+                        <div class="chamber-grid">
+                            <div class="surgical-station">
+                                <h3>Logic Scalpel: Hypothesen-Härtung</h3>
+                                <p class="instruction">Klicke auf die Fehler ("Je...desto"), um die Logik zu operieren.
+                                </p>
+                                <div id="logic-display" class="logic-display">
+                                    " <span class="logic-error" onclick="operateLogic('je')">Je eher</span> ein Bild als
+                                    echte Fotografie deklariert wird, <span class="logic-error"
+                                        onclick="operateLogic('desto')">desto höher</span> ist die Authentizität. "
+                                </div>
+                                <div id="logic-repair-kit" class="repair-kit hidden">
+                                    <button class="btn-repair" onclick="applyFix('difference')">Unterschieds-Hypothese
+                                        anwenden</button>
+                                </div>
+                                <div id="logic-log" class="terminal-log">> SYSTEM_READY...</div>
+                            </div>
+                            <div class="mobile-station">
+                                <h3>Mobile-Visibility Stress-Test</h3>
+                                <div class="smartphone-mockup">
+                                    <div class="phone-screen">
+                                        <div id="stimulus-label" class="stim-label subtle">KI-GENERIERT</div>
+                                        <div class="mock-image">🖼️ BILD_STIMULUS</div>
+                                    </div>
+                                </div>
+                                <div class="visibility-controls">
+                                    <button class="btn-logic sm" onclick="setLabelStyle('subtle')">Subtle</button>
+                                    <button class="btn-logic sm" onclick="setLabelStyle('loud')">Loud (Safe)</button>
+                                    <div id="visibility-warning" class="visibility-alert warning">⚠️ Überseh-Gefahr!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CHAMBER B: SURVEY (G2) -->
+                    <div id="chamber-survey" class="chamber-pane">
+                        <div class="chamber-grid">
+                            <div class="mortality-station">
+                                <h3>N-Mortalitäts-Kalkulator</h3>
+                                <div class="funnel-visual">
+                                    <div class="stick-man-emitter" id="emitter"></div>
+                                    <svg viewBox="0 0 200 200" class="funnel-svg">
+                                        <path d="M20,10 L180,10 L120,150 L80,150 Z" fill="none" stroke="#cbd5e1"
+                                            stroke-width="2" />
+                                    </svg>
+                                    <div class="mortality-stats">
+                                        <div class="m-stat">Brutto: <span id="n-brutto">200</span></div>
+                                        <div class="m-stat success">Netto: <span id="n-netto">160</span></div>
+                                    </div>
+                                </div>
+                                <input type="range" id="severity-slider" min="0" max="90" value="20"
+                                    oninput="updateMortality()">
+                                <div id="recruitment-advice" class="visibility-alert warning">Prüfe Teilnehmer-Zahl...
+                                </div>
+                            </div>
+                            <div class="detector-station">
+                                <h3>Double-Barreled Detector</h3>
+                                <textarea id="item-scanner" placeholder="Item paste..." oninput="scanItem()"></textarea>
+                                <div id="scan-feedback" class="scan-feedback"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CHAMBER C: CONTENT ANALYSIS (G4) -->
+                    <div id="chamber-analysis" class="chamber-pane">
+                        <div class="chamber-grid">
+                            <div class="sync-station">
+                                <h3>ICR Sync-Terminal</h3>
+                                <div class="terminal-comparison">
+                                    <p class="unit-text">"Hey ChatGPT, kannst du mir evtl. helfen? Bitte!"</p>
+                                    <div class="dual-coder-interface">
+                                        <select id="coder-a-select" onchange="checkCoderSync()">
+                                            <option value="none">-- Wählen --</option>
+                                            <option value="polite">Höflich</option>
+                                            <option value="neutral">Neutral</option>
+                                        </select>
+                                        <div class="fixed-code">NEUTRAL (Partner)</div>
+                                    </div>
+                                    <div id="sync-result-msg" class="sync-feedback-box amber">Out of Sync</div>
+                                </div>
+                            </div>
+                            <div class="harden-station">
+                                <h3>Codebook Hardener</h3>
+                                <div class="progress-bg">
+                                    <div id="harden-progress" class="progress-fill" style="width: 20%;"></div>
+                                </div>
+                                <div class="input-row">
+                                    <input type="text" id="rule-input" placeholder="Neue Anker-Regel...">
+                                    <button class="btn-repair" onclick="injectRule()">Härten</button>
+                                </div>
+                                <div id="rules-archive" class="rules-archive"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
